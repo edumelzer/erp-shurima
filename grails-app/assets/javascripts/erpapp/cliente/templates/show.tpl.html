@@ -1,0 +1,24 @@
+<div crud-breadcrumbs="show"></div>
+<h2>Show Cliente</h2>
+<div flash-message ></div>
+
+<table class="table table-bordered table-striped">
+    <tr display-field label="Nome" value="ctrl.cliente.nome"></tr>
+    <tr display-field label="Cnpj" value="ctrl.cliente.cnpj"></tr>
+    <tr display-field label="Inscricao Estadual" value="ctrl.cliente.inscricaoEstadual"></tr>
+    <tr display-field label="Endereco" value="ctrl.cliente.endereco"></tr>
+    <tr display-field label="Numero" value="ctrl.cliente.numero"></tr>
+    <tr display-field label="Complemento" value="ctrl.cliente.complemento"></tr>
+    <tr display-field label="Cidade" value="ctrl.cliente.cidade"></tr>
+    <tr display-field label="Bairro" value="ctrl.cliente.bairro"></tr>
+    <tr display-field label="U F" value="ctrl.cliente.UF"></tr>
+    <tr display-field label="C E P" value="ctrl.cliente.CEP"></tr>
+    <tr display-field label="Telefone1" value="ctrl.cliente.telefone1"></tr>
+    <tr display-field label="Telefone2" value="ctrl.cliente.telefone2"></tr>
+    <tr display-field label="Email" value="ctrl.cliente.email"></tr>
+</table>
+
+<div class="form-actions">
+    <button crud-button="edit" item="ctrl.cliente"></button>
+    <button crud-button="delete" item="ctrl.cliente" ></button>
+</div>

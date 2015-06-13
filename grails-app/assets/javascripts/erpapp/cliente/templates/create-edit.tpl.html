@@ -1,0 +1,68 @@
+<div crud-breadcrumbs="{{ctrl.cliente.id ? 'edit' : 'create'}}"></div>
+<h2>
+    <span ng-hide="ctrl.cliente.id">Create Cliente</span>
+    <span ng-show="ctrl.cliente.id">Edit Cliente</span>
+</h2>
+
+<div flash-message ></div>
+
+<form name="form" class="form-horizontal" role="form" novalidate> 
+	
+	<div field-container label="Nome" invalid="form.nome.$invalid">
+		<input name="nome" type="text" class='form-control' ng-model="ctrl.cliente.nome" required  />
+	</div>
+	
+	<div field-container label="Cnpj" invalid="form.cnpj.$invalid">
+		<input name="cnpj" type="text" class='form-control' ng-model="ctrl.cliente.cnpj" required  />
+	</div>
+	
+	<div field-container label="Inscricao Estadual" invalid="form.inscricaoEstadual.$invalid">
+		<input name="inscricaoEstadual" type="text" class='form-control' ng-model="ctrl.cliente.inscricaoEstadual" required  />
+	</div>
+	
+	<div field-container label="Endereco" invalid="form.endereco.$invalid">
+		<input name="endereco" type="text" class='form-control' ng-model="ctrl.cliente.endereco" required  />
+	</div>
+	
+	<div field-container label="Numero" invalid="form.numero.$invalid">
+		<input name="numero" type="text" class='form-control' ng-model="ctrl.cliente.numero" required  />
+	</div>
+	
+	<div field-container label="Complemento" invalid="form.complemento.$invalid">
+		<input name="complemento" type="text" class='form-control' ng-model="ctrl.cliente.complemento" required  />
+	</div>
+	
+	<div field-container label="Cidade" invalid="form.cidade.$invalid">
+		<input name="cidade" type="text" class='form-control' ng-model="ctrl.cliente.cidade" required  />
+	</div>
+	
+	<div field-container label="Bairro" invalid="form.bairro.$invalid">
+		<input name="bairro" type="text" class='form-control' ng-model="ctrl.cliente.bairro" required  />
+	</div>
+	
+	<div field-container label="U F" invalid="form.UF.$invalid">
+		<input name="UF" type="text" class='form-control' ng-model="ctrl.cliente.UF" required  />
+	</div>
+	
+	<div field-container label="C E P" invalid="form.CEP.$invalid">
+		<input name="CEP" type="text" class='form-control' ng-model="ctrl.cliente.CEP" required  />
+	</div>
+	
+	<div field-container label="Telefone1" invalid="form.telefone1.$invalid">
+		<input name="telefone1" type="text" class='form-control' ng-model="ctrl.cliente.telefone1" required  />
+	</div>
+	
+	<div field-container label="Telefone2" invalid="form.telefone2.$invalid">
+		<input name="telefone2" type="text" class='form-control' ng-model="ctrl.cliente.telefone2" required  />
+	</div>
+	
+	<div field-container label="Email" invalid="form.email.$invalid">
+		<input name="email" type="text" class='form-control' ng-model="ctrl.cliente.email" required  />
+	</div>
+
+    <div>
+        <button crud-button="save" item="ctrl.cliente" is-disabled="form.$invalid"></button>
+        <span ng-if="ctrl.cliente.id"><button crud-button="delete" item="ctrl.cliente"></button></span>
+    </div>
+
+</form>
