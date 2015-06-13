@@ -1,3 +1,5 @@
+import controleestoque.Transacao
+
 class BootStrap {
 
     def init = { servletContext ->

@@ -1,5 +1,7 @@
 package controleestoque
+import grails.rest.Resource
 
+@Resource(uri='/transacoes')
 class Transacao {
 
     Date data
