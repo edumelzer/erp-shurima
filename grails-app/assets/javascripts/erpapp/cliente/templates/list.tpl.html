@@ -1,33 +1,21 @@
 <div crud-breadcrumbs="list"></div>
 
 <div class="clearfix">
-	<h2 class="pull-left">Cliente List</h2>
+	<h2 class="pull-left">Listar Cliente</h2>
 	<div class="pull-right"><button crud-button="create" ></button></div>
 </div>
 <div flash-message ></div>
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><i class="fa fa-filter"></i> Filter List</h3>
+    <h3 class="panel-title"><i class="fa fa-filter"></i> Filtrar Lista</h3>
   </div>
   <div class="panel-body">
 <div class="row">
 <form class="form">
-	<div class="form-group col-md-3">
+	<div class="form-group col-md-7">
 		<label for="filter.nome">Nome</label>
 		<input type="text" class='form-control' ng-model="ctrl.filter.nome" ng-model-options="{ debounce: 300 }"  />
-    </div>
-	<div class="form-group col-md-3">
-		<label for="filter.cnpj">Cnpj</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.cnpj" ng-model-options="{ debounce: 300 }"  />
-    </div>
-	<div class="form-group col-md-3">
-		<label for="filter.inscricaoEstadual">Inscricao Estadual</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.inscricaoEstadual" ng-model-options="{ debounce: 300 }"  />
-    </div>
-	<div class="form-group col-md-3">
-		<label for="filter.endereco">Endereco</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.endereco" ng-model-options="{ debounce: 300 }"  />
     </div>
 </form>
 </div>
@@ -40,8 +28,8 @@
         <th sortable-column title="Id" property="id"></th>
 		<th sortable-column title="Nome" property="nome"></th>
 		<th sortable-column title="Cnpj" property="cnpj"></th>
-		<th sortable-column title="Inscricao Estadual" property="inscricaoEstadual"></th>
-		<th sortable-column title="Endereco" property="endereco"></th>
+		<th sortable-column title="Inscrição Estadual" property="inscricaoEstadual"></th>
+		<th sortable-column title="Endereço" property="endereco"></th>
         <th>&nbsp;</th>
     </thead>
     <tbody>

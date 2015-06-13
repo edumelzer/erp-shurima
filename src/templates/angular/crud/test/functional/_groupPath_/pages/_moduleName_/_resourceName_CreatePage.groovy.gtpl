@@ -7,9 +7,9 @@ class ${resourceName}CreatePage extends Page {
 
     static url = "${moduleName}#/create"
 
-    static at = { ${DOLLAR_SIGN}('h2').text() == 'Create ${resourceName}' }
+    static at = { ${DOLLAR_SIGN}('h2').text() == 'Criar ${resourceName}' }
 
-    static content = { 
+    static content = {
 <%= domainProperties.collect {"${TAB*2}${it.name}Field {${DOLLAR_SIGN}(\"${it.domainClass ? 'select' : 'input'}[ng-model='ctrl.${moduleName}.${it.name}']\")}" }.join(NEWLINE) %>
         saveButton { ${DOLLAR_SIGN}('button[crud-button="save"]') }
     }

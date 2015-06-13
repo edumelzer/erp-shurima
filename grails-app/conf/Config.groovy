@@ -84,4 +84,4 @@ log4j.main = {
 grails.databinding.dateFormats = ["yyyy-MM-dd'T'hh:mm:ss'Z'", "yyyy-MM-dd'T'hh:mm:ss.SSS'Z'"]
 
 angular.pageSize = 25
-angular.dateFormat="MM/dd/yyyy"
+angular.dateFormat="dd/MM/yyyy"

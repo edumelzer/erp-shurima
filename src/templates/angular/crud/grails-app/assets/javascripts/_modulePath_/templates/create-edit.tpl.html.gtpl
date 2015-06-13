@@ -1,13 +1,13 @@
 <div crud-breadcrumbs="{{ctrl.${moduleName}.id ? 'edit' : 'create'}}"></div>
 <h2>
-    <span ng-hide="ctrl.${moduleName}.id">Create ${resourceName}</span>
-    <span ng-show="ctrl.${moduleName}.id">Edit ${resourceName}</span>
+    <span ng-hide="ctrl.${moduleName}.id">Criar ${resourceName}</span>
+    <span ng-show="ctrl.${moduleName}.id">Editar ${resourceName}</span>
 </h2>
 
 <div flash-message ></div>
 
 <form name="form" class="form-horizontal" role="form" novalidate> <% domainProperties.each { property -> %>
-	
+
 	<div field-container label="${property.label}" invalid="form.${property.name}.${DOLLAR_SIGN}invalid">
 		<%= renderInput(property, 'ctrl.${moduleName}') %>
 	</div><% } %>

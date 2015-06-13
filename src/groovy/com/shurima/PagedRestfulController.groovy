@@ -16,8 +16,11 @@ class PagedRestfulController<T> extends RestfulController<T> {
 		params.page = params.int('page') ?: 1
 		params.max = grailsApplication.config.angular.pageSize ?: 25
 		params.offset = ((params.page - 1) * params.max)
-		
+
 		def results = loadPagedResults(params)
+
+		println "Resultado xD"
+		println results
 
 		response.setHeader('Content-Range', getContentRange((int)results.totalCount, params.offset, params.max))
 		respond results, formats: ['json', 'html']
@@ -25,11 +28,11 @@ class PagedRestfulController<T> extends RestfulController<T> {
 
 	protected PagedResultList loadPagedResults(params) {
         resource.createCriteria().list(max: params.max, offset: params.offset) {
-			
+
 			params.filter?.each { String name, String value ->
                setDefaultCriteria(delegate, name, value)
             }
-         
+
             if (params.sort) {
               	order(params.sort, params.order == "asc" ? "asc" : "desc")
             }
@@ -39,10 +42,10 @@ class PagedRestfulController<T> extends RestfulController<T> {
     protected void setDefaultCriteria(criteria, String propertyName, String propertyValue) {
 		String declaredPropertyName = propertyName - 'Id'
 		Class propertyClass = GrailsClassUtils.getPropertyType(resource, declaredPropertyName)
-		
+
 		if (!propertyClass) {
 			return
-		}	
+		}
 		else if (propertyName.endsWith('Id')) {
 			criteria."${declaredPropertyName}" {
 				eq('id', propertyValue.toLong())
@@ -53,7 +56,7 @@ class PagedRestfulController<T> extends RestfulController<T> {
 				case String:
 					criteria.ilike(propertyName, "%${propertyValue}%")
 					break
-                
+
 				case [Float, Integer, BigDecimal]:
 					if (propertyValue.isNumber()) {
 						criteria.eq(propertyName, propertyValue.asType(propertyClass))
@@ -62,11 +65,11 @@ class PagedRestfulController<T> extends RestfulController<T> {
 						criteria.eq(propertyName, null)
 					}
 					break
-                
+
 				case Date:
 					def dateFormats = grailsApplication.config.grails.databinding?.dateFormats
 					def dateProperty = params.date("filter.${propertyName}", dateFormats)
-        
+
 					if (dateProperty) {
 						criteria.ge(propertyName, dateProperty)
 					}
@@ -74,10 +77,10 @@ class PagedRestfulController<T> extends RestfulController<T> {
 						criteria.eq(propertyName, null)
 					}
 					break
-                
+
 				default:
-					criteria.eq(propertyName, propertyValue.asType(propertyClass))					
-			}			
+					criteria.eq(propertyName, propertyValue.asType(propertyClass))
+			}
 		}
     }
 

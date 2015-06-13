@@ -18,7 +18,7 @@
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <g:link uri="/" class="navbar-brand">Angular Grails</g:link>
+                <g:link uri="/" class="navbar-brand">ERP Shurima</g:link>
             </div>
             <ul class="nav navbar-nav navbar-left">
                 <li><g:link uri="/"><i class="fa fa-home"></i> Home</g:link></li>
@@ -30,10 +30,12 @@
                             class="fa fa-database"></i> ${c.logicalPropertyName.capitalize()} List</a></li>
                 </g:each>
             </ul>
+            <!--
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://github.com/craigburke/lazybones-angular-grails"><i class="fa fa-github"></i> Github
+                <li><a href="https://github.com/edumelzer/controle-estoque"><i class="fa fa-github"></i> Github
                 </a></li>
             </ul>
+          -->
         </div>
     </nav>
 </div>

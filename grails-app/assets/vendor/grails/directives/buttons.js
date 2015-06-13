@@ -48,7 +48,7 @@ function crudButton($location, $injector, defaultCrudResource, FlashService) {
                             if ($scope.afterAction) {
                                 $scope.afterAction();
                             }
-							var message = defaultResource.getName() + " was successfully updated";
+							var message = defaultResource.getName() + " foi atualizado com sucesso";
                             FlashService.success(message, {routeChange: true});
                         },
                         errorFunction)
@@ -60,7 +60,7 @@ function crudButton($location, $injector, defaultCrudResource, FlashService) {
                             if ($scope.afterAction) {
                                 $scope.afterAction();
                             }
-							var message = defaultResource.getName() + " was successfully created";
+							var message = defaultResource.getName() + " foi criado com sucesso";
                             FlashService.success(message, {routeChange: true});
                         },
                         errorFunction)
@@ -70,7 +70,7 @@ function crudButton($location, $injector, defaultCrudResource, FlashService) {
             var deleteFn = function () {
                 var successFn = function () {
 					var routeChange = ($location.path() !== '/')
-					
+
 					if ($scope.afterAction) {
                         $scope.afterAction();
                     }
@@ -78,12 +78,12 @@ function crudButton($location, $injector, defaultCrudResource, FlashService) {
 						$location.path('/');
 					}
 
-					var message = defaultResource.getName() + ' was successfully deleted';
-                    FlashService.success(message, {routeChange: routeChange});					
+					var message = defaultResource.getName() + ' foi deletado com sucesso';
+                    FlashService.success(message, {routeChange: routeChange});
                 };
 
                 var errorFn = function () {
-					var message = "Couldn't delete " + defaultResource.getName();
+					var message = "Não foi possível deletar " + defaultResource.getName();
                     FlashService.error(message);
                 };
 
@@ -125,4 +125,3 @@ function crudButton($location, $injector, defaultCrudResource, FlashService) {
 
 angular.module('grails.directives.buttons', ['grails.services'])
     .directive('crudButton', crudButton);
-
