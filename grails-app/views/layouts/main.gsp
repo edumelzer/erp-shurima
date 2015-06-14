@@ -32,7 +32,7 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://github.com/edumelzer/controle-estoque"><i class="fa fa-github"></i> Github
+                <li><a href="https://github.com/edumelzer/erp-shurima"><i class="fa fa-github"></i> Github
                 </a></li>
             </ul>
         </div>
