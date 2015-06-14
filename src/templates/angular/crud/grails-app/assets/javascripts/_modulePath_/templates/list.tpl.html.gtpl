@@ -41,4 +41,7 @@
     </tbody>
 </table>
 
-<div pagination total-items="ctrl.${moduleName}List.getTotalCount()" items-per-page="ctrl.pageSize" ng-model="ctrl.page" ng-change="ctrl.load()"></div>
+<div pagination total-items="ctrl.${moduleName}List.getTotalCount()"
+	items-per-page="ctrl.pageSize" ng-model="ctrl.page" ng-change="ctrl.load()"
+	next-text="Próxima" previous-text="Anterior" first-text="Primeira" last-text="Última">
+</div>

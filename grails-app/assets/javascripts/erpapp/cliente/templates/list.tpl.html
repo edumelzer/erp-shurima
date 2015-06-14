@@ -41,7 +41,7 @@
 			<td>{{ item.endereco }}</td>
             <td>
                 <button crud-button="edit" item="item" ></button>
-                <button crud-button="delete" item="item" after-action="ctrl.reload()"></button>
+                <button class="btn btn-danger remove" crud-button="delete" item="item" after-action="ctrl.reload()"></button>
             </td>
         </tr>
     </tbody>

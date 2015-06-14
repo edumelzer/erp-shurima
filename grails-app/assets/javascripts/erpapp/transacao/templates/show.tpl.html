@@ -1,0 +1,15 @@
+<div crud-breadcrumbs="show"></div>
+<h2>Exibir Transacao</h2>
+<div flash-message ></div>
+
+<table class="table table-bordered table-striped">
+    <tr display-field label="Data" value="ctrl.transacao.data | date: 'MMM d, yyyy'"></tr>
+    <tr display-field label="Valor" value="ctrl.transacao.valor"></tr>
+    <tr display-field label="Empresa" value="ctrl.transacao.empresa.toText"></tr>
+    <tr display-field label="Tipo" value="ctrl.transacao.tipo"></tr>
+</table>
+
+<div class="form-actions">
+    <button crud-button="edit" item="ctrl.transacao"></button>
+    <button crud-button="delete" item="ctrl.transacao" ></button>
+</div>

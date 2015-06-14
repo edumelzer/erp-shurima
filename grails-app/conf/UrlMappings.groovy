@@ -2,7 +2,9 @@ class UrlMappings {
 
 	static mappings = {
 
-        				'/empresa'(view: 'empresa')
+        						'/transacao'(view: 'transacao')
+		'/api/transacao'(resources: 'transacao')
+'/empresa'(view: 'empresa')
 		'/api/empresa'(resources: 'empresa')
 '/cliente'(view: 'cliente')
 		'/api/cliente'(resources: 'cliente')

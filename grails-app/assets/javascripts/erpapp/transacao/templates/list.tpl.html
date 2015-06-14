@@ -1,7 +1,7 @@
 <div crud-breadcrumbs="list"></div>
 
 <div class="clearfix">
-	<h2 class="pull-left">Empresa List</h2>
+	<h2 class="pull-left">Transacao List</h2>
 	<div class="pull-right"><button crud-button="create" ></button></div>
 </div>
 <div flash-message ></div>
@@ -14,20 +14,20 @@
 <div class="row">
 <form class="form">
 	<div class="form-group col-md-3">
-		<label for="filter.nome">Nome</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.nome" ng-model-options="{ debounce: 300 }"  />
+		<label for="filter.data">Data</label>
+		<input type="text" class='form-control' date-field ng-model="ctrl.filter.data" ng-model-options="{ debounce: 300 }"  />
     </div>
 	<div class="form-group col-md-3">
-		<label for="filter.cnpj">Cnpj</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.cnpj" ng-model-options="{ debounce: 300 }"  />
+		<label for="filter.valor">Valor</label>
+		<input type="text" class='form-control' ng-model="ctrl.filter.valor" ng-model-options="{ debounce: 300 }"  />
     </div>
 	<div class="form-group col-md-3">
-		<label for="filter.inscricaoEstadual">Inscricao Estadual</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.inscricaoEstadual" ng-model-options="{ debounce: 300 }"  />
+		<label for="filter.empresa">Empresa</label>
+		<select class="form-control" ng-model="ctrl.filter.empresaId" ng-options="item.id as item.toText for item in ctrl.empresaList" ng-model-options="{ debounce: 300 }"  ><option value="">-- Select Empresa--</option></select>
     </div>
 	<div class="form-group col-md-3">
-		<label for="filter.endereco">Endereco</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.endereco" ng-model-options="{ debounce: 300 }"  />
+		<label for="filter.tipo">Tipo</label>
+		<input type="text" class='form-control' ng-model="ctrl.filter.tipo" ng-model-options="{ debounce: 300 }"  />
     </div>
 </form>
 </div>
@@ -38,19 +38,19 @@
 
     <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
         <th sortable-column title="Id" property="id"></th>
-		<th sortable-column title="Nome" property="nome"></th>
-		<th sortable-column title="Cnpj" property="cnpj"></th>
-		<th sortable-column title="Inscricao Estadual" property="inscricaoEstadual"></th>
-		<th sortable-column title="Endereco" property="endereco"></th>
+		<th sortable-column title="Data" property="data"></th>
+		<th sortable-column title="Valor" property="valor"></th>
+		<th sortable-column title="Empresa" property="empresa"></th>
+		<th sortable-column title="Tipo" property="tipo"></th>
         <th>&nbsp;</th>
     </thead>
     <tbody>
-        <tr class="animate-repeat" ng-repeat="item in ctrl.empresaList">
+        <tr class="animate-repeat" ng-repeat="item in ctrl.transacaoList">
             <td><a href="#/show/{{item.id}}">{{item.id}}</a></td>
-			<td>{{ item.nome }}</td>
-			<td>{{ item.cnpj }}</td>
-			<td>{{ item.inscricaoEstadual }}</td>
-			<td>{{ item.endereco }}</td>
+			<td>{{ item.data | date: 'MMM d, yyyy' }}</td>
+			<td>{{ item.valor }}</td>
+			<td>{{ item.empresa.toText }}</td>
+			<td>{{ item.tipo }}</td>
             <td>
                 <button crud-button="edit" item="item" ></button>
                 <button crud-button="delete" item="item" after-action="ctrl.reload()"></button>
@@ -59,7 +59,7 @@
     </tbody>
 </table>
 
-<div pagination total-items="ctrl.empresaList.getTotalCount()"
+<div pagination total-items="ctrl.transacaoList.getTotalCount()"
 	items-per-page="ctrl.pageSize" ng-model="ctrl.page" ng-change="ctrl.load()"
 	next-text="Próxima" previous-text="Anterior" first-text="Primeira" last-text="Última">
 </div>
