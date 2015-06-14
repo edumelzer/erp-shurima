@@ -31,4 +31,8 @@ class Empresa {
     isFornecedor type: 'yes_no'
   }
 
+  String toString() {
+    return this.nome
+  }
+
 }

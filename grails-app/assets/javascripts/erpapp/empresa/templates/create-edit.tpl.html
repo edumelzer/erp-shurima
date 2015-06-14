@@ -6,14 +6,13 @@
 
 <div flash-message ></div>
 
-<form name="form" class="form-horizontal" role="form" novalidate> 
-
+<form name="form" class="form-horizontal" role="form" novalidate>
 	<div field-container label="Nome" invalid="form.nome.$invalid">
 		<input name="nome" type="text" class='form-control' ng-model="ctrl.empresa.nome" required  />
 	</div>
 
 	<div field-container label="Cnpj" invalid="form.cnpj.$invalid">
-		<input name="cnpj" type="text" class='form-control' ng-model="ctrl.empresa.cnpj" required  />
+		<input name="cnpj" type="number" class='form-control' ng-model="ctrl.empresa.cnpj" required  />
 	</div>
 
 	<div field-container label="Inscricao Estadual" invalid="form.inscricaoEstadual.$invalid">
@@ -25,7 +24,7 @@
 	</div>
 
 	<div field-container label="Numero" invalid="form.numero.$invalid">
-		<input name="numero" type="text" class='form-control' ng-model="ctrl.empresa.numero" required  />
+		<input name="numero" type="number" class='form-control' ng-model="ctrl.empresa.numero" required  />
 	</div>
 
 	<div field-container label="Complemento" invalid="form.complemento.$invalid">
@@ -40,34 +39,62 @@
 		<input name="bairro" type="text" class='form-control' ng-model="ctrl.empresa.bairro" required  />
 	</div>
 
-	<div field-container label="U F" invalid="form.UF.$invalid">
-		<input name="UF" type="text" class='form-control' ng-model="ctrl.empresa.UF" required  />
+	<div field-container label="UF" invalid="form.UF.$invalid">
+    <select name="UF" class='form-control' ng-model="ctrl.empresa.UF" required>
+      <option value="">Selecione</option>
+    	<option value="AC">AC</option>
+    	<option value="AL">AL</option>
+    	<option value="AM">AM</option>
+    	<option value="AP">AP</option>
+    	<option value="BA">BA</option>
+    	<option value="CE">CE</option>
+    	<option value="DF">DF</option>
+    	<option value="ES">ES</option>
+    	<option value="GO">GO</option>
+    	<option value="MA">MA</option>
+    	<option value="MG">MG</option>
+    	<option value="MS">MS</option>
+    	<option value="MT">MT</option>
+    	<option value="PA">PA</option>
+    	<option value="PB">PB</option>
+    	<option value="PE">PE</option>
+    	<option value="PI">PI</option>
+    	<option value="PR">PR</option>
+    	<option value="RJ">RJ</option>
+    	<option value="RN">RN</option>
+    	<option value="RS">RS</option>
+    	<option value="RO">RO</option>
+    	<option value="RR">RR</option>
+    	<option value="SC">SC</option>
+    	<option value="SE">SE</option>
+    	<option value="SP">SP</option>
+    	<option value="TO">TO</option>
+    </select>
 	</div>
 
-	<div field-container label="C E P" invalid="form.CEP.$invalid">
-		<input name="CEP" type="text" class='form-control' ng-model="ctrl.empresa.CEP" required  />
+	<div field-container label="CEP" invalid="form.CEP.$invalid">
+		<input name="CEP" type="number" class='form-control' ng-model="ctrl.empresa.CEP" required  />
 	</div>
 
 	<div field-container label="Telefone1" invalid="form.telefone1.$invalid">
-		<input name="telefone1" type="text" class='form-control' ng-model="ctrl.empresa.telefone1" required  />
+		<input name="telefone1" type="number" class='form-control' ng-model="ctrl.empresa.telefone1" required  />
 	</div>
 
 	<div field-container label="Telefone2" invalid="form.telefone2.$invalid">
-		<input name="telefone2" type="text" class='form-control' ng-model="ctrl.empresa.telefone2" required  />
+		<input name="telefone2" type="number" class='form-control' ng-model="ctrl.empresa.telefone2" required  />
 	</div>
 
 	<div field-container label="Email" invalid="form.email.$invalid">
 		<input name="email" type="text" class='form-control' ng-model="ctrl.empresa.email" required  />
 	</div>
 
-	<div field-container label="Is Cliente" invalid="form.isCliente.$invalid">
-		<input name="isCliente" type="text" class='form-control' ng-model="ctrl.empresa.isCliente" required  />
+	<div field-container label="Cliente" invalid="form.isCliente.$invalid">
+    <input name="isCliente" type="checkbox" class='form-control' ng-model="ctrl.empresa.isCliente" />
 	</div>
 
-	<div field-container label="Is Fornecedor" invalid="form.isFornecedor.$invalid">
-		<input name="isFornecedor" type="text" class='form-control' ng-model="ctrl.empresa.isFornecedor" required  />
+	<div field-container label="Fornecedor" invalid="form.isFornecedor.$invalid">
+    <input name="isFornecedor" type="checkbox" class='form-control' ng-model="ctrl.empresa.isFornecedor" />
 	</div>
-
     <div>
         <button crud-button="save" item="ctrl.empresa" is-disabled="form.$invalid"></button>
         <span ng-if="ctrl.empresa.id"><button crud-button="delete" item="ctrl.empresa"></button></span>

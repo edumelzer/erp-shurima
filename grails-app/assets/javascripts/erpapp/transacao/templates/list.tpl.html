@@ -47,8 +47,8 @@
     <tbody>
         <tr class="animate-repeat" ng-repeat="item in ctrl.transacaoList">
             <td><a href="#/show/{{item.id}}">{{item.id}}</a></td>
-			<td>{{ item.data | date: 'MMM d, yyyy' }}</td>
-			<td>{{ item.valor }}</td>
+			<td>{{ item.data | date: 'dd/MM/yyyy' }}</td>
+			<td>{{ item.valor | currency }}</td>
 			<td>{{ item.empresa.toText }}</td>
 			<td>{{ item.tipo }}</td>
             <td>
