@@ -6,10 +6,10 @@
 
 <div flash-message ></div>
 
-<form name="form" class="form-horizontal" role="form" novalidate> 
+<form name="form" class="form-horizontal" role="form" novalidate>
 
 	<div field-container label="Data" invalid="form.data.$invalid">
-		<input name="data" type="text" class='form-control' date-field ng-model="ctrl.transacao.data" required  />
+		<input name="data" type="text" class='form-control' date-field="{current-text:'Hoje'}" ng-model="ctrl.transacao.data" required  />
 	</div>
 
 	<div field-container label="Valor" invalid="form.valor.$invalid">
