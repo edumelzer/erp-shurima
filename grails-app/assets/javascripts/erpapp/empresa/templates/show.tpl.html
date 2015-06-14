@@ -1,0 +1,26 @@
+<div crud-breadcrumbs="show"></div>
+<h2>Mostrar Empresa</h2>
+<div flash-message ></div>
+
+<table class="table table-bordered table-striped">
+    <tr display-field label="Nome" value="ctrl.empresa.nome"></tr>
+    <tr display-field label="Cnpj" value="ctrl.empresa.cnpj"></tr>
+    <tr display-field label="Inscricao Estadual" value="ctrl.empresa.inscricaoEstadual"></tr>
+    <tr display-field label="Endereco" value="ctrl.empresa.endereco"></tr>
+    <tr display-field label="Numero" value="ctrl.empresa.numero"></tr>
+    <tr display-field label="Complemento" value="ctrl.empresa.complemento"></tr>
+    <tr display-field label="Cidade" value="ctrl.empresa.cidade"></tr>
+    <tr display-field label="Bairro" value="ctrl.empresa.bairro"></tr>
+    <tr display-field label="U F" value="ctrl.empresa.UF"></tr>
+    <tr display-field label="C E P" value="ctrl.empresa.CEP"></tr>
+    <tr display-field label="Telefone1" value="ctrl.empresa.telefone1"></tr>
+    <tr display-field label="Telefone2" value="ctrl.empresa.telefone2"></tr>
+    <tr display-field label="Email" value="ctrl.empresa.email"></tr>
+    <tr display-field label="Is Cliente" value="ctrl.empresa.isCliente"></tr>
+    <tr display-field label="Is Fornecedor" value="ctrl.empresa.isFornecedor"></tr>
+</table>
+
+<div class="form-actions">
+    <button crud-button="edit" item="ctrl.empresa"></button>
+    <button crud-button="delete" item="ctrl.empresa" ></button>
+</div>

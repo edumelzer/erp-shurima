@@ -1,8 +1,5 @@
-# Introduction
-You have just created an Angular Grails application using lazybones.
-
-For more detailed information see:
-https://github.com/craigburke/lazybones-angular-grails
+# Shurima ERP
+Shurima ERP using AngularJS & Grails, create from Lazybones template.
 
 # Running the application
 	gradlew run
@@ -11,7 +8,7 @@ https://github.com/craigburke/lazybones-angular-grails
 	gradlew test
 
 # Generate blank application
-        lazybones generate module::blank
+lazybones generate module::blank
 
 # Generate REST application
 	* Create a domain class:

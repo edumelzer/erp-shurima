@@ -2,9 +2,9 @@ class BootStrap {
 
 	def customMarshallerRegistrar
 
-    def init = { servletContext ->
+	def init = { servletContext ->
 		customMarshallerRegistrar.registerMarshallers()
 	}
-    def destroy = {
-    }
+
+	def destroy = { }
 }

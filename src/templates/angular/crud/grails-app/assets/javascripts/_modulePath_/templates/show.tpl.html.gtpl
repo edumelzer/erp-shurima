@@ -1,5 +1,5 @@
 <div crud-breadcrumbs="show"></div>
-<h2>Mostrar ${resourceName}</h2>
+<h2>Exibir ${resourceName}</h2>
 <div flash-message ></div>
 
 <table class="table table-bordered table-striped"><% domainProperties.each { property -> %>

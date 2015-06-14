@@ -2,7 +2,9 @@ class UrlMappings {
 
 	static mappings = {
 
-        		'/cliente'(view: 'cliente')
+        				'/empresa'(view: 'empresa')
+		'/api/empresa'(resources: 'empresa')
+'/cliente'(view: 'cliente')
 		'/api/cliente'(resources: 'cliente')
 "/$controller/$action?/$id?(.$format)?"{
             constraints {

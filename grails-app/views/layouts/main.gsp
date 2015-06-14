@@ -30,12 +30,11 @@
                             class="fa fa-database"></i> ${c.logicalPropertyName.capitalize()} List</a></li>
                 </g:each>
             </ul>
-            <!--
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="https://github.com/edumelzer/controle-estoque"><i class="fa fa-github"></i> Github
                 </a></li>
             </ul>
-          -->
         </div>
     </nav>
 </div>
