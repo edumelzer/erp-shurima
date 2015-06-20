@@ -7,6 +7,7 @@ class Transacao {
   Empresa empresa
   String tipo
   Long numeroTitulo
+  String observacao
 
   static constraints = {
     empresa nullable: true

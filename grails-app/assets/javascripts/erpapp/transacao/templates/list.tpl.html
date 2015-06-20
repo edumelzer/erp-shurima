@@ -42,11 +42,12 @@
 
     <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
         <th sortable-column title="Id" property="id"></th>
-		<th sortable-column title="Data" property="data"></th>
-		<th sortable-column title="Valor" property="valor"></th>
-		<th sortable-column title="Empresa" property="empresa"></th>
-		<th sortable-column title="Tipo" property="tipo"></th>
-		<th sortable-column title="N. Título" property="tipo"></th>
+				<th sortable-column title="Data" property="data"></th>
+				<th sortable-column title="Valor" property="valor"></th>
+				<th sortable-column title="Empresa" property="empresa"></th>
+				<th sortable-column title="Tipo" property="tipo"></th>
+				<th sortable-column title="N. Título" property="numeroTitulo"></th>
+				<th sortable-column title="observacao" property="observacao"></th>
         <th>&nbsp;</th>
     </thead>
     <tbody>
@@ -57,6 +58,7 @@
 			<td>{{ item.empresa.toText }}</td>
 			<td>{{ item.tipo }}</td>
 			<td>{{ item.numeroTitulo }}</td>
+			<td>{{ item.observacao }}</td>
             <td>
                 <button crud-button="edit" item="item" ></button>
                 <button crud-button="delete" item="item" after-action="ctrl.reload()"></button>
