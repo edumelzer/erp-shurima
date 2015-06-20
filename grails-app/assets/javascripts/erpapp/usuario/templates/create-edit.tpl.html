@@ -6,10 +6,13 @@
 
 <div flash-message ></div>
 
+<div class="col-sm-6">
+  <div class="panel panel-default">
+    <div class="panel-body">
 <form name="form" class="form-horizontal" role="form" novalidate>
-
-	<div field-container label="Login" invalid="form.login.$invalid">
-		<input name="login" type="text" class='form-control' ng-model="ctrl.usuario.login" required  />
+  <fieldset class="scheduler-border">
+	<div field-container label="Login" invalid="form.login.$invalid" class="input-mini">
+		<input name="login" type="text" class='input-mini' ng-model="ctrl.usuario.login" required  />
 	</div>
 
 	<div field-container label="Password" invalid="form.password.$invalid">
@@ -29,4 +32,9 @@
         <span ng-if="ctrl.usuario.id"><button crud-button="delete" item="ctrl.usuario"></button></span>
     </div>
 
+</fieldset>
+
 </form>
+</div>
+</div>
+</div>
