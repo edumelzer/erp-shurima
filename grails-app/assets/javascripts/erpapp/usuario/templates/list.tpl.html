@@ -18,10 +18,6 @@
 		<input type="text" class='form-control' ng-model="ctrl.filter.login" ng-model-options="{ debounce: 300 }"  />
     </div>
 	<div class="form-group col-md-3">
-		<label for="filter.password">Password</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.password" ng-model-options="{ debounce: 300 }"  />
-    </div>
-	<div class="form-group col-md-3">
 		<label for="filter.nome">Nome</label>
 		<input type="text" class='form-control' ng-model="ctrl.filter.nome" ng-model-options="{ debounce: 300 }"  />
     </div>
@@ -39,7 +35,6 @@
     <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
         <th sortable-column title="Id" property="id"></th>
 		<th sortable-column title="Login" property="login"></th>
-		<th sortable-column title="Password" property="password"></th>
 		<th sortable-column title="Nome" property="nome"></th>
 		<th sortable-column title="Tipo" property="tipo"></th>
         <th>&nbsp;</th>
@@ -48,7 +43,6 @@
         <tr class="animate-repeat" ng-repeat="item in ctrl.usuarioList">
             <td><a href="#/show/{{item.id}}">{{item.id}}</a></td>
 			<td>{{ item.login }}</td>
-			<td>{{ item.password }}</td>
 			<td>{{ item.nome }}</td>
 			<td>{{ item.tipo }}</td>
             <td>
