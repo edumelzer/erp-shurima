@@ -28,7 +28,7 @@ describe('Usuario Controllers: ', function() {
 
         beforeEach(module(function($provide) {
             $provide.value('usuario', item);
-			$provide.value('tipoList', []);
+
         }));
 
         beforeEach(inject(
@@ -69,7 +69,7 @@ describe('Usuario Controllers: ', function() {
 
             $provide.value('UsuarioResource', mockCrudService);
             $provide.value('usuarioList', items);
-			$provide.value('tipoList', []);
+
             $provide.value('pageSize', PAGE_SIZE);
         }));
 

@@ -20,7 +20,7 @@ describe('Usuario Routes: ', function() {
 			function($httpBackend) {
 				$httpBackend.whenGET('list.html').respond(200, 'list page');
 				$httpBackend.whenGET('/api/usuario').respond([]);
-				$httpBackend.whenGET('/api/tipo').respond([]);
+
 			}
 		));
 		
@@ -49,7 +49,7 @@ describe('Usuario Routes: ', function() {
 			function($httpBackend) {
 				$httpBackend.whenGET('create-edit.html').respond(200, 'list page');
 				$httpBackend.whenGET('/api/usuario/create').respond([]);
-				$httpBackend.whenGET('/api/tipo').respond([]);
+
 			}
 		));
 		
@@ -66,7 +66,7 @@ describe('Usuario Routes: ', function() {
 			function($httpBackend) {
 				$httpBackend.whenGET('create-edit.html').respond(200, 'list page');
 				$httpBackend.whenGET('/api/usuario/1').respond([]);
-				$httpBackend.whenGET('/api/tipo').respond([]);
+
 			}
 		));
 		

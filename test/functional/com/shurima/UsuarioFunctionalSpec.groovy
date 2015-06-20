@@ -28,7 +28,7 @@ class UsuarioFunctionalSpec extends GebReportingSpec {
 		loginField = "Foo"
 		passwordField = "Foo"
 		nomeField = "Foo"
-		tipoField = tipoField.find('option').value()
+		tipoField = "Foo"
 			
 		and:
 		saveButton.click()
@@ -96,7 +96,7 @@ class UsuarioFunctionalSpec extends GebReportingSpec {
 		waitFor { rows.size() > 0 }
 
 		when:
-		tipoFilter = tipoFilter.find('option').value()
+		tipoFilter = "Foo"
 		
 		then:
 		waitFor { rows.size() > 0 }
@@ -117,7 +117,7 @@ class UsuarioFunctionalSpec extends GebReportingSpec {
 		loginField = "Foo!"
 		passwordField = "Foo!"
 		nomeField = "Foo!"
-		tipoField = tipoField.find('option').value()
+		tipoField = "Foo!"
 		
 		and:
 		saveButton.click()

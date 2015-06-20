@@ -5,6 +5,6 @@ class Usuario {
   String login
   String password
   String nome
-  TipoUsuario tipo
+  String tipo
 
 }

@@ -1,9 +1,9 @@
 'use strict';
 
-function ListCtrl($scope, UsuarioResource, usuarioList, tipoList, pageSize) {
+function ListCtrl($scope, UsuarioResource, usuarioList, pageSize) {
     var self = this;
     self.usuarioList = usuarioList;
-	self.tipoList = tipoList;
+	
     self.pageSize = pageSize;
     self.page = 1;
     self.filter = {};
@@ -38,9 +38,9 @@ function ShowCtrl(usuario) {
     self.usuario = usuario;
 };
 
-function CreateEditCtrl(usuario, tipoList ) {
+function CreateEditCtrl(usuario ) {
     var self = this;
-	self.tipoList = tipoList;
+	
     self.usuario = usuario;
 }
 

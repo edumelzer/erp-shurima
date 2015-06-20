@@ -27,7 +27,7 @@
     </div>
 	<div class="form-group col-md-3">
 		<label for="filter.tipo">Tipo</label>
-		<select class="form-control" ng-model="ctrl.filter.tipoId" ng-options="item.id as item.toText for item in ctrl.tipoList" ng-model-options="{ debounce: 300 }"  ><option value="">-- Select Tipo--</option></select>
+		<input type="text" class='form-control' ng-model="ctrl.filter.tipo" ng-model-options="{ debounce: 300 }"  />
     </div>
 </form>
 </div>
@@ -50,7 +50,7 @@
 			<td>{{ item.login }}</td>
 			<td>{{ item.password }}</td>
 			<td>{{ item.nome }}</td>
-			<td>{{ item.tipo.toText }}</td>
+			<td>{{ item.tipo }}</td>
             <td>
                 <button crud-button="edit" item="item" ></button>
                 <button crud-button="delete" item="item" after-action="ctrl.reload()"></button>

@@ -21,7 +21,7 @@
 	</div>
 
 	<div field-container label="Tipo" invalid="form.tipo.$invalid">
-		<select name="tipo" class="form-control" ng-model="ctrl.usuario.tipo" required  ng-options="item.toText for item in ctrl.tipoList track by item.id"  ></select>
+		<input name="tipo" type="text" class='form-control' ng-model="ctrl.usuario.tipo" required  />
 	</div>
 
     <div>

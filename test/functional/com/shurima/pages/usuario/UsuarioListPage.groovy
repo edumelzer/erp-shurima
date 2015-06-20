@@ -13,7 +13,7 @@ class UsuarioListPage extends Page {
 		loginFilter {$("input[ng-model='ctrl.filter.login']")}
 		passwordFilter {$("input[ng-model='ctrl.filter.password']")}
 		nomeFilter {$("input[ng-model='ctrl.filter.nome']")}
-		tipoFilter {$("select[ng-model='ctrl.filter.tipoId']")}
+		tipoFilter {$("input[ng-model='ctrl.filter.tipo']")}
 	
 		loginSort { $("table#list th[property='login']") }
 		passwordSort { $("table#list th[property='password']") }

@@ -13,7 +13,7 @@ class UsuarioCreatePage extends Page {
 		loginField {$("input[ng-model='ctrl.usuario.login']")}
 		passwordField {$("input[ng-model='ctrl.usuario.password']")}
 		nomeField {$("input[ng-model='ctrl.usuario.nome']")}
-		tipoField {$("select[ng-model='ctrl.usuario.tipo']")}
+		tipoField {$("input[ng-model='ctrl.usuario.tipo']")}
         saveButton { $('button[crud-button="save"]') }
     }
 

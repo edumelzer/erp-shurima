@@ -17,14 +17,12 @@ class CustomMarshallerRegistrar {
 			return map 
 		}
 
-		
-
-		JSON.registerObjectMarshaller(com.shurima.TipoUsuario) {
+    JSON.registerObjectMarshaller(com.shurima.TipoUsuario) {
 			def map = [:]
 			map['id'] = it?.id
 			map['descricao'] = it?.descricao
 	    	map['toText'] = it?.toString()
-			return map 
+			return map
 		}
 
 		
@@ -42,7 +40,7 @@ class CustomMarshallerRegistrar {
     return map
     }
 
-		
+
 
 		JSON.registerObjectMarshaller(com.shurima.Transacao) {
 			def map = [:]
