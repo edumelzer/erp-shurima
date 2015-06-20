@@ -29,6 +29,10 @@
 		<label for="filter.tipo">Tipo</label>
 		<input type="text" class='form-control' ng-model="ctrl.filter.tipo" ng-model-options="{ debounce: 300 }"  />
     </div>
+	<div class="form-group col-md-3">
+		<label for="filter.numeroTitulo">Título</label>
+		<input type="text" class='form-control' ng-model="ctrl.filter.numeroTitulo" ng-model-options="{ debounce: 300 }"  />
+		</div>
 </form>
 </div>
   </div>
@@ -42,6 +46,7 @@
 		<th sortable-column title="Valor" property="valor"></th>
 		<th sortable-column title="Empresa" property="empresa"></th>
 		<th sortable-column title="Tipo" property="tipo"></th>
+		<th sortable-column title="N. Título" property="tipo"></th>
         <th>&nbsp;</th>
     </thead>
     <tbody>
@@ -51,6 +56,7 @@
 			<td>{{ item.valor | currency }}</td>
 			<td>{{ item.empresa.toText }}</td>
 			<td>{{ item.tipo }}</td>
+			<td>{{ item.numeroTitulo }}</td>
             <td>
                 <button crud-button="edit" item="item" ></button>
                 <button crud-button="delete" item="item" after-action="ctrl.reload()"></button>

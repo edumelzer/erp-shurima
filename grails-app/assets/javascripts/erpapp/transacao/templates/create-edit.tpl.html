@@ -23,6 +23,9 @@
 	<div field-container label="Tipo" invalid="form.tipo.$invalid">
 		<input name="tipo" type="text" class='form-control' ng-model="ctrl.transacao.tipo" required  />
 	</div>
+  <div field-container label="Número Título" invalid="form.numeroTitulo.$invalid">
+    <input name="numeroTitulo" type="text" class='form-control' ng-model="ctrl.transacao.numeroTitulo" required  />
+  </div>
 
     <div>
         <button crud-button="save" item="ctrl.transacao" is-disabled="form.$invalid"></button>

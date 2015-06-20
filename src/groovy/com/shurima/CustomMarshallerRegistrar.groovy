@@ -3,7 +3,7 @@ package com.shurima
 import grails.converters.JSON
 
 class CustomMarshallerRegistrar {
-    
+
     void registerMarshallers() {
 
 		JSON.registerObjectMarshaller(com.shurima.Transacao) {
@@ -13,8 +13,9 @@ class CustomMarshallerRegistrar {
 			map['valor'] = it?.valor
 			map['empresa'] = it?.empresa
 			map['tipo'] = it?.tipo
+      map['numeroTitulo']=it?.numeroTitulo
 	    	map['toText'] = it?.toString()
-			return map 
+			return map
 		}
 
 		JSON.registerObjectMarshaller(com.shurima.Empresa) {
@@ -36,7 +37,7 @@ class CustomMarshallerRegistrar {
 			map['isCliente'] = it?.isCliente
 			map['isFornecedor'] = it?.isFornecedor
 	    	map['toText'] = it?.toString()
-			return map 
+			return map
 		}
 
 		JSON.registerObjectMarshaller(com.shurima.Cliente) {
@@ -56,8 +57,8 @@ class CustomMarshallerRegistrar {
 			map['telefone2'] = it?.telefone2
 			map['email'] = it?.email
 	    	map['toText'] = it?.toString()
-			return map 
-		} 
+			return map
+		}
 	}
 
 }
