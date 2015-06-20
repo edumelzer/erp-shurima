@@ -6,6 +6,16 @@ class CustomMarshallerRegistrar {
 
     void registerMarshallers() {
 
+		JSON.registerObjectMarshaller(com.shurima.Usuario) {
+			def map = [:]
+			map['id'] = it?.id
+			map['login'] = it?.login
+			map['password'] = it?.password
+			map['nome'] = it?.nome
+	    	map['toText'] = it?.toString()
+			return map 
+		}
+
 		JSON.registerObjectMarshaller(com.shurima.Transacao) {
 			def map = [:]
 			map['id'] = it?.id

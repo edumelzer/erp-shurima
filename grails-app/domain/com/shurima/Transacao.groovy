@@ -6,10 +6,11 @@ class Transacao {
   Double valor
   Empresa empresa
   String tipo
-  Long   numeroTitulo
+  Long numeroTitulo
 
   static constraints = {
     empresa nullable: true
+    numeroTitulo nullable: true
   }
 
 }
