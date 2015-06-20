@@ -1,7 +1,9 @@
 class UrlMappings {
 
 	static mappings = {
-        								'/item'(view: 'item')
+        										'/tipoUsuario'(view: 'tipoUsuario')
+		'/api/tipoUsuario'(resources: 'tipoUsuario')
+'/item'(view: 'item')
 		'/api/item'(resources: 'item')
         								'/usuario'(view: 'usuario')
 		'/api/usuario'(resources: 'usuario')

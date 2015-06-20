@@ -13,10 +13,12 @@ class UsuarioListPage extends Page {
 		loginFilter {$("input[ng-model='ctrl.filter.login']")}
 		passwordFilter {$("input[ng-model='ctrl.filter.password']")}
 		nomeFilter {$("input[ng-model='ctrl.filter.nome']")}
+		tipoFilter {$("select[ng-model='ctrl.filter.tipoId']")}
 	
 		loginSort { $("table#list th[property='login']") }
 		passwordSort { $("table#list th[property='password']") }
 		nomeSort { $("table#list th[property='nome']") }
+		tipoSort { $("table#list th[property='tipo']") }
     
 	    createButton { $("button[crud-button='create']") }
         successMessage { $(".alert-success") }

@@ -1,9 +1,9 @@
 'use strict';
 
-function ListCtrl($scope, UsuarioResource, usuarioList, tipoList, pageSize) {
+function ListCtrl($scope, TipoUsuarioResource, tipoUsuarioList, pageSize) {
     var self = this;
-    self.usuarioList = usuarioList;
-	self.tipoList = tipoList;
+    self.tipoUsuarioList = tipoUsuarioList;
+	
     self.pageSize = pageSize;
     self.page = 1;
     self.filter = {};
@@ -22,8 +22,8 @@ function ListCtrl($scope, UsuarioResource, usuarioList, tipoList, pageSize) {
 			params.filter = self.filter
 		}
 
-        UsuarioResource.list(params).then(function(items) {
-            self.usuarioList = items;
+        TipoUsuarioResource.list(params).then(function(items) {
+            self.tipoUsuarioList = items;
         });
     };
 
@@ -33,18 +33,18 @@ function ListCtrl($scope, UsuarioResource, usuarioList, tipoList, pageSize) {
     }
 }
 
-function ShowCtrl(usuario) {
+function ShowCtrl(tipoUsuario) {
     var self = this;
-    self.usuario = usuario;
+    self.tipoUsuario = tipoUsuario;
 };
 
-function CreateEditCtrl(usuario, tipoList ) {
+function CreateEditCtrl(tipoUsuario ) {
     var self = this;
-	self.tipoList = tipoList;
-    self.usuario = usuario;
+	
+    self.tipoUsuario = tipoUsuario;
 }
 
-angular.module('erpapp.usuario.controllers', [])
+angular.module('erpapp.tipoUsuario.controllers', [])
     .controller('ListCtrl', ListCtrl)
     .controller('ShowCtrl', ShowCtrl)
     .controller('CreateEditCtrl', CreateEditCtrl);

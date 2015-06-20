@@ -6,6 +6,29 @@ class CustomMarshallerRegistrar {
 
     void registerMarshallers() {
 
+		JSON.registerObjectMarshaller(com.shurima.Usuario) {
+			def map = [:]
+			map['id'] = it?.id
+			map['login'] = it?.login
+			map['password'] = it?.password
+			map['nome'] = it?.nome
+			map['tipo'] = it?.tipo
+	    	map['toText'] = it?.toString()
+			return map 
+		}
+
+		
+
+		JSON.registerObjectMarshaller(com.shurima.TipoUsuario) {
+			def map = [:]
+			map['id'] = it?.id
+			map['descricao'] = it?.descricao
+	    	map['toText'] = it?.toString()
+			return map 
+		}
+
+		
+
 		JSON.registerObjectMarshaller(com.shurima.Item) {
 			def map = [:]
 			map['id'] = it?.id
@@ -19,15 +42,7 @@ class CustomMarshallerRegistrar {
     return map
     }
 
-		JSON.registerObjectMarshaller(com.shurima.Usuario) {
-			def map = [:]
-			map['id'] = it?.id
-			map['login'] = it?.login
-			map['password'] = it?.password
-			map['nome'] = it?.nome
-	    	map['toText'] = it?.toString()
-			return map
-		}
+		
 
 		JSON.registerObjectMarshaller(com.shurima.Transacao) {
 			def map = [:]

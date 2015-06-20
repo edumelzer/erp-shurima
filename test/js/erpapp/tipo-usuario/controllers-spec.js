@@ -1,14 +1,14 @@
-describe('Usuario Controllers: ', function() {
+describe('TipoUsuario Controllers: ', function() {
 
     var item = {'foo': 'bar', 'count': 100};
 
-    beforeEach(module('erpapp.usuario.controllers'));
+    beforeEach(module('erpapp.tipoUsuario.controllers'));
 
     describe('ShowCtrl: ', function() {
         var ctrl, scope;
 
         beforeEach(module(function($provide) {
-            $provide.value('usuario', item);
+            $provide.value('tipoUsuario', item);
         }));
 
         beforeEach(inject(
@@ -18,8 +18,8 @@ describe('Usuario Controllers: ', function() {
             }
         ));
 
-        it('should have the usuario on the scope', function() {
-            expect(ctrl.usuario).toEqual(item);
+        it('should have the tipoUsuario on the scope', function() {
+            expect(ctrl.tipoUsuario).toEqual(item);
         });
     });
 
@@ -27,8 +27,8 @@ describe('Usuario Controllers: ', function() {
         var ctrl, scope;
 
         beforeEach(module(function($provide) {
-            $provide.value('usuario', item);
-			$provide.value('tipoList', []);
+            $provide.value('tipoUsuario', item);
+
         }));
 
         beforeEach(inject(
@@ -38,8 +38,8 @@ describe('Usuario Controllers: ', function() {
             }
         ));
 
-        it('should have the usuario on the scope', function() {
-            expect(ctrl.usuario).toEqual(item);
+        it('should have the tipoUsuario on the scope', function() {
+            expect(ctrl.tipoUsuario).toEqual(item);
         });
     });
 
@@ -67,9 +67,9 @@ describe('Usuario Controllers: ', function() {
                 }
             };
 
-            $provide.value('UsuarioResource', mockCrudService);
-            $provide.value('usuarioList', items);
-			$provide.value('tipoList', []);
+            $provide.value('TipoUsuarioResource', mockCrudService);
+            $provide.value('tipoUsuarioList', items);
+
             $provide.value('pageSize', PAGE_SIZE);
         }));
 
@@ -81,9 +81,9 @@ describe('Usuario Controllers: ', function() {
             }
         ));
 
-        it('should have the usuarioList and default values set on the scope', function() {
+        it('should have the tipoUsuarioList and default values set on the scope', function() {
             expect(ctrl.pageSize).toEqual(PAGE_SIZE);
-            expect(ctrl.usuarioList).toEqual(items);
+            expect(ctrl.tipoUsuarioList).toEqual(items);
             expect(ctrl.page).toEqual(1);
         });
 
@@ -93,7 +93,7 @@ describe('Usuario Controllers: ', function() {
             scope.$digest();
 
             expect(ctrl.page).toEqual(1);
-            expect(ctrl.usuarioList).toEqual(items2);
+            expect(ctrl.tipoUsuarioList).toEqual(items2);
         });
 
     });

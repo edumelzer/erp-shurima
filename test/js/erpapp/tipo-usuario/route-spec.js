@@ -1,5 +1,5 @@
-describe('Usuario Routes: ', function() {
-    beforeEach(module('erpapp.usuario'));
+describe('TipoUsuario Routes: ', function() {
+    beforeEach(module('erpapp.tipoUsuario'));
 	var location, route, rootScope;
 
 	beforeEach(module(function($provide) {          
@@ -19,8 +19,8 @@ describe('Usuario Routes: ', function() {
 		beforeEach(inject(
 			function($httpBackend) {
 				$httpBackend.whenGET('list.html').respond(200, 'list page');
-				$httpBackend.whenGET('/api/usuario').respond([]);
-				$httpBackend.whenGET('/api/tipo').respond([]);
+				$httpBackend.whenGET('/api/tipoUsuario').respond([]);
+
 			}
 		));
 		
@@ -48,8 +48,8 @@ describe('Usuario Routes: ', function() {
 		beforeEach(inject(
 			function($httpBackend) {
 				$httpBackend.whenGET('create-edit.html').respond(200, 'list page');
-				$httpBackend.whenGET('/api/usuario/create').respond([]);
-				$httpBackend.whenGET('/api/tipo').respond([]);
+				$httpBackend.whenGET('/api/tipoUsuario/create').respond([]);
+
 			}
 		));
 		
@@ -65,8 +65,8 @@ describe('Usuario Routes: ', function() {
 		beforeEach(inject(
 			function($httpBackend) {
 				$httpBackend.whenGET('create-edit.html').respond(200, 'list page');
-				$httpBackend.whenGET('/api/usuario/1').respond([]);
-				$httpBackend.whenGET('/api/tipo').respond([]);
+				$httpBackend.whenGET('/api/tipoUsuario/1').respond([]);
+
 			}
 		));
 		

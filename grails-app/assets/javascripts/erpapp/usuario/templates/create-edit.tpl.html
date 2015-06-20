@@ -6,18 +6,22 @@
 
 <div flash-message ></div>
 
-<form name="form" class="form-horizontal" role="form" novalidate>
+<form name="form" class="form-horizontal" role="form" novalidate> 
 
 	<div field-container label="Login" invalid="form.login.$invalid">
 		<input name="login" type="text" class='form-control' ng-model="ctrl.usuario.login" required  />
 	</div>
 
 	<div field-container label="Password" invalid="form.password.$invalid">
-		<input name="password" type="password" class='form-control' ng-model="ctrl.usuario.password" required  />
+		<input name="password" type="text" class='form-control' ng-model="ctrl.usuario.password" required  />
 	</div>
 
 	<div field-container label="Nome" invalid="form.nome.$invalid">
 		<input name="nome" type="text" class='form-control' ng-model="ctrl.usuario.nome" required  />
+	</div>
+
+	<div field-container label="Tipo" invalid="form.tipo.$invalid">
+		<select name="tipo" class="form-control" ng-model="ctrl.usuario.tipo" required  ng-options="item.toText for item in ctrl.tipoList track by item.id"  ></select>
 	</div>
 
     <div>

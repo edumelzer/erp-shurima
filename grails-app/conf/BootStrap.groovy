@@ -1,3 +1,5 @@
+import com.shurima.TipoUsuario
+
 class BootStrap {
 
 	def customMarshallerRegistrar
@@ -13,6 +15,6 @@ class BootStrap {
 	}
 
 	def destroy = {
-		
+
 	}
 }

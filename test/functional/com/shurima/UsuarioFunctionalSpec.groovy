@@ -28,6 +28,7 @@ class UsuarioFunctionalSpec extends GebReportingSpec {
 		loginField = "Foo"
 		passwordField = "Foo"
 		nomeField = "Foo"
+		tipoField = tipoField.find('option').value()
 			
 		and:
 		saveButton.click()
@@ -63,6 +64,12 @@ class UsuarioFunctionalSpec extends GebReportingSpec {
 		
 		then:
 		nomeSort.classes().contains("asc")
+
+		when:
+		tipoSort.click()
+		
+		then:
+		tipoSort.classes().contains("asc")
 	
 	}
 	
@@ -87,6 +94,12 @@ class UsuarioFunctionalSpec extends GebReportingSpec {
 		
 		then:
 		waitFor { rows.size() > 0 }
+
+		when:
+		tipoFilter = tipoFilter.find('option').value()
+		
+		then:
+		waitFor { rows.size() > 0 }
 	
 	}
 	
@@ -104,6 +117,7 @@ class UsuarioFunctionalSpec extends GebReportingSpec {
 		loginField = "Foo!"
 		passwordField = "Foo!"
 		nomeField = "Foo!"
+		tipoField = tipoField.find('option').value()
 		
 		and:
 		saveButton.click()
