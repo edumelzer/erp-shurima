@@ -1,0 +1,65 @@
+<div crud-breadcrumbs="list"></div>
+
+<div class="clearfix">
+	<h2 class="pull-left">Item List</h2>
+	<div class="pull-right"><button crud-button="create" ></button></div>
+</div>
+<div flash-message ></div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-filter"></i> Filtrar Lista</h3>
+  </div>
+  <div class="panel-body">
+<div class="row">
+<form class="form">
+	<div class="form-group col-md-3">
+		<label for="filter.nome">Nome</label>
+		<input type="text" class='form-control' ng-model="ctrl.filter.nome" ng-model-options="{ debounce: 300 }"  />
+    </div>
+	<div class="form-group col-md-3">
+		<label for="filter.quantidade">Quantidade</label>
+		<input type="text" class='form-control' ng-model="ctrl.filter.quantidade" ng-model-options="{ debounce: 300 }"  />
+    </div>
+		<!--	<div class="form-group col-md-3">
+		<label for="filter.valor1">Valor1</label>
+		<input type="text" class='form-control' ng-model="ctrl.filter.valor1" ng-model-options="{ debounce: 300 }"  />
+    </div>
+	<div class="form-group col-md-3">
+		<label for="filter.valor2">Valor2</label>
+		<input type="text" class='form-control' ng-model="ctrl.filter.valor2" ng-model-options="{ debounce: 300 }"  />
+    </div>-->
+</form>
+</div>
+  </div>
+</div>
+
+<table id="list" class="table table-striped table-bordered table-hover">
+
+    <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
+        <th sortable-column title="Id" property="id"></th>
+		<th sortable-column title="Nome" property="nome"></th>
+		<th sortable-column title="Quantidade" property="quantidade"></th>
+		<!-- <th sortable-column title="Valor1" property="valor1"></th>
+		<th sortable-column title="Valor2" property="valor2"></th> -->
+        <th>&nbsp;</th>
+    </thead>
+    <tbody>
+        <tr class="animate-repeat" ng-repeat="item in ctrl.itemList">
+            <td><a href="#/show/{{item.id}}">{{item.id}}</a></td>
+			<td>{{ item.nome }}</td>
+			<td>{{ item.quantidade }}</td>
+			<!--<td>{{ item.valor1 | currency }}</td>
+			<td>{{ item.valor2 | currency }}</td>-->
+            <td>
+                <button crud-button="edit" item="item" ></button>
+                <button crud-button="delete" item="item" after-action="ctrl.reload()"></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div pagination total-items="ctrl.itemList.getTotalCount()"
+	items-per-page="ctrl.pageSize" ng-model="ctrl.page" ng-change="ctrl.load()"
+	next-text="Próxima" previous-text="Anterior" first-text="Primeira" last-text="Última">
+</div>
