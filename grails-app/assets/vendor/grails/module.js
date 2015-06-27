@@ -14,7 +14,8 @@ angular.module('grails', [
     'ui.bootstrap',
     'grails.directives',
     'grails.services',
-    'grails.constants'
+    'grails.constants',
+    'ngMask'
 ])
 
 .config(function (datepickerConfig, datepickerPopupConfig) {

@@ -3,7 +3,7 @@
 function ListCtrl($scope, EmpresaResource, empresaList, pageSize) {
     var self = this;
     self.empresaList = empresaList;
-	
+
     self.pageSize = pageSize;
     self.page = 1;
     self.filter = {};
@@ -40,7 +40,6 @@ function ShowCtrl(empresa) {
 
 function CreateEditCtrl(empresa ) {
     var self = this;
-	
     self.empresa = empresa;
 }
 

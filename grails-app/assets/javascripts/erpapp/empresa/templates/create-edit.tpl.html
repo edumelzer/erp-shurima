@@ -8,35 +8,36 @@
 
 <form name="form" class="form-horizontal" role="form" novalidate>
 	<div field-container label="Nome" invalid="form.nome.$invalid">
-		<input name="nome" type="text" class='form-control' ng-model="ctrl.empresa.nome" required  />
+		<input name="nome" type="text" class='form-control' ng-model="ctrl.empresa.nome"   placeholder="Digite o Nome"required  />
 	</div>
 
 	<div field-container label="Cnpj" invalid="form.cnpj.$invalid">
-		<input name="cnpj" type="number" class='form-control' ng-model="ctrl.empresa.cnpj" required  />
+		<input name="cnpj" type="text" class='form-control' ng-model="ctrl.empresa.cnpj" required
+    placeholder='00.000.000/0000-00' mask='00.000.000/0000-00'/>
 	</div>
 
 	<div field-container label="Inscricao Estadual" invalid="form.inscricaoEstadual.$invalid">
-		<input name="inscricaoEstadual" type="text" class='form-control' ng-model="ctrl.empresa.inscricaoEstadual" required  />
+		<input name="inscricaoEstadual" type="text" class='form-control' ng-model="ctrl.empresa.inscricaoEstadual" placeholder="Digite a Inscrição Estatual."required  />
 	</div>
 
 	<div field-container label="Endereco" invalid="form.endereco.$invalid">
-		<input name="endereco" type="text" class='form-control' ng-model="ctrl.empresa.endereco" required  />
+		<input name="endereco" type="text" class='form-control' ng-model="ctrl.empresa.endereco" placeholder="Digite o nome da Rua" required  />
 	</div>
 
 	<div field-container label="Numero" invalid="form.numero.$invalid">
-		<input name="numero" type="number" class='form-control' ng-model="ctrl.empresa.numero" required  />
+		<input name="numero" type="number" class='form-control' ng-model="ctrl.empresa.numero" placeholder="Digite o número" required  />
 	</div>
 
 	<div field-container label="Complemento" invalid="form.complemento.$invalid">
-		<input name="complemento" type="text" class='form-control' ng-model="ctrl.empresa.complemento" required  />
+		<input name="complemento" type="text" class='form-control' ng-model="ctrl.empresa.complemento" placeholder="Digite o Complemento" required  />
 	</div>
 
 	<div field-container label="Cidade" invalid="form.cidade.$invalid">
-		<input name="cidade" type="text" class='form-control' ng-model="ctrl.empresa.cidade" required  />
+		<input name="cidade" type="text" class='form-control' ng-model="ctrl.empresa.cidade" placeholder="Digite a cidade" required  />
 	</div>
 
 	<div field-container label="Bairro" invalid="form.bairro.$invalid">
-		<input name="bairro" type="text" class='form-control' ng-model="ctrl.empresa.bairro" required  />
+		<input name="bairro" type="text" class='form-control' ng-model="ctrl.empresa.bairro" placeholder="Digite o Bairro" required  />
 	</div>
 
 	<div field-container label="UF" invalid="form.UF.$invalid">
@@ -73,19 +74,23 @@
 	</div>
 
 	<div field-container label="CEP" invalid="form.CEP.$invalid">
-		<input name="CEP" type="number" class='form-control' ng-model="ctrl.empresa.CEP" required  />
+		<input name="CEP" type="text" class='form-control' ng-model="ctrl.empresa.CEP" required
+    placeholder="00.000-000" mask="00.000-000"/>
 	</div>
 
 	<div field-container label="Telefone1" invalid="form.telefone1.$invalid">
-		<input name="telefone1" type="number" class='form-control' ng-model="ctrl.empresa.telefone1" required  />
+		<input name="telefone1" type="text" class='form-control' ng-model="ctrl.empresa.telefone1" placeholder="(000) 0000-0000"
+     mask="(000) 0000-0000" required />
 	</div>
 
 	<div field-container label="Telefone2" invalid="form.telefone2.$invalid">
-		<input name="telefone2" type="number" class='form-control' ng-model="ctrl.empresa.telefone2" required  />
+		<input name="telefone2" type="text" class='form-control' ng-model="ctrl.empresa.telefone2" required
+    placeholder="(000) 0000-0000" mask="(999) 9999-9999"/>
 	</div>
 
 	<div field-container label="Email" invalid="form.email.$invalid">
-		<input name="email" type="text" class='form-control' ng-model="ctrl.empresa.email" required  />
+		<input name="email" type="text" class='form-control' ng-model="ctrl.empresa.email" required
+    placeholder="exemplo@exemplo.com"/>
 	</div>
 
 	<div field-container label="Cliente" invalid="form.isCliente.$invalid">
