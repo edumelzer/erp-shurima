@@ -13,7 +13,7 @@
 
 	<div field-container label="Cnpj" invalid="form.cnpj.$invalid">
 		<input name="cnpj" type="text" class='form-control' ng-model="ctrl.empresa.cnpj" required
-    placeholder='00.000.000/0000-00' mask='00.000.000/0000-00'/>
+    placeholder='00.000.000/0000-00' mask='99.999.999/9999-99'/>
 	</div>
 
 	<div field-container label="Inscricao Estadual" invalid="form.inscricaoEstadual.$invalid">
@@ -73,14 +73,14 @@
     </select>
 	</div>
 
-	<div field-container label="CEP" invalid="form.CEP.$invalid">
+	<div field-container label="CEP">
 		<input name="CEP" type="text" class='form-control' ng-model="ctrl.empresa.CEP" required
-    placeholder="00.000-000" mask="00.000-000"/>
+    placeholder="00.000-000" mask="99.999-999"/>
 	</div>
 
 	<div field-container label="Telefone1" invalid="form.telefone1.$invalid">
 		<input name="telefone1" type="text" class='form-control' ng-model="ctrl.empresa.telefone1" placeholder="(000) 0000-0000"
-     mask="(000) 0000-0000" required />
+     mask="(999) 9999-9999" required />
 	</div>
 
 	<div field-container label="Telefone2" invalid="form.telefone2.$invalid">

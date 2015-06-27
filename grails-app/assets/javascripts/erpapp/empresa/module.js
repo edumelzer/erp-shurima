@@ -1,13 +1,13 @@
-//= require_self 
+//= require_self
 //= require controllers
-//= require services 
+//= require services
 //= require_tree /erpapp/empresa/templates/
 
 'use strict';
 
 angular.module('erpapp.empresa', [
-	'grails', 
-	'erpapp.empresa.controllers', 
+	'grails',
+	'erpapp.empresa.controllers',
 	'erpapp.empresa.services'
 ])
 .value('defaultCrudResource', 'EmpresaResource')
@@ -20,7 +20,7 @@ angular.module('erpapp.empresa', [
                 empresaList: function($route, EmpresaResource) {
                     var params = $route.current.params;
                     return EmpresaResource.list(params);
-                } 
+                }
             }
         })
         .when('/create', {
@@ -29,7 +29,7 @@ angular.module('erpapp.empresa', [
             resolve: {
                 empresa: function(EmpresaResource) {
                     return EmpresaResource.create();
-                } 
+                }
             }
         })
         .when('/edit/:id', {
@@ -39,7 +39,7 @@ angular.module('erpapp.empresa', [
                 empresa: function($route, EmpresaResource) {
                     var id = $route.current.params.id;
                     return EmpresaResource.get(id);
-                } 
+                }
             }
         })
         .when('/show/:id', {

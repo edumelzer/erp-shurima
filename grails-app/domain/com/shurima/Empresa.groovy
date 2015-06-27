@@ -3,7 +3,7 @@ package com.shurima
 class Empresa {
 
   String nome
-  Long cnpj
+  String cnpj
   String inscricaoEstadual
   String endereco
   Long numero
@@ -11,9 +11,9 @@ class Empresa {
   String cidade
   String bairro
   String UF
-  Long CEP
-  Long telefone1
-  Long telefone2
+  String CEP
+  String telefone1
+  String telefone2
   String email
   boolean isCliente
   boolean isFornecedor

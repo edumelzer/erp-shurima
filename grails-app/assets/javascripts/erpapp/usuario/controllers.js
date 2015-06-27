@@ -3,7 +3,7 @@
 function ListCtrl($scope, UsuarioResource, usuarioList, pageSize) {
     var self = this;
     self.usuarioList = usuarioList;
-	
+
     self.pageSize = pageSize;
     self.page = 1;
     self.filter = {};
@@ -18,9 +18,9 @@ function ListCtrl($scope, UsuarioResource, usuarioList, pageSize) {
         if (self.sort) {
             angular.extend(params, self.sort);
         }
-		if (self.filter) {
-			params.filter = self.filter
-		}
+    		if (self.filter) {
+    			params.filter = self.filter
+    		}
 
         UsuarioResource.list(params).then(function(items) {
             self.usuarioList = items;
@@ -40,7 +40,7 @@ function ShowCtrl(usuario) {
 
 function CreateEditCtrl(usuario ) {
     var self = this;
-	
+
     self.usuario = usuario;
 }
 
