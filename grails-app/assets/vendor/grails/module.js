@@ -1,6 +1,9 @@
 //= require /angular/angular
 //= require_tree /angular/modules
 //= require_tree /angular/i18n
+//= require sb-admin/js/sb-admin-2
+//= require metis-menu/metisMenu.min
+//= require jquery/jquery.min
 //= require directives/module
 //= require services/module
 //= require ui-bootstrap.min
@@ -10,7 +13,7 @@
 angular.module('grails', [
     'ngRoute',
     'ngResource',
-	'ngAnimate',
+	  'ngAnimate',
     'ui.bootstrap',
     'grails.directives',
     'grails.services',

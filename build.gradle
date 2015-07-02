@@ -67,7 +67,7 @@ tasks.withType(GrailsTask) {
 	jvmOptions {
 		minHeapSize = '1g'
 		maxHeapSize = '1g'
-		jvmArgs "-XX:MaxPermSize=512m" 
+		jvmArgs "-XX:MaxPermSize=512m"
 	}
 }
 
@@ -95,14 +95,14 @@ test.dependsOn jasmineRun
 
 dependencies {
 	springloaded 'org.springframework:springloaded:1.2.3.RELEASE@jar'
-	
+
   	String gebVersion = '0.9.2'
 	String seleniumVersion = '2.43.1'
 
 	test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
 	test "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
 	test "org.gebish:geb-spock:$gebVersion"
-	
+
     test("com.github.detro.ghostdriver:phantomjsdriver:1.1.0") {
 		transitive = false
 	}
@@ -121,9 +121,9 @@ dependencies {
 		String scope = plugin.scope ?: 'compile'
 		owner."$scope" "org.grails.plugins:${plugin.name}:${plugin.version}"
 	}
-		
+
 	runtime('org.grails.plugins:hibernate4:4.3.8.1') {
     		exclude module: 'xml-apis'
 	}
-	
+
 }
