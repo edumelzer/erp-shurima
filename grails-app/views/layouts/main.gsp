@@ -91,7 +91,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="./"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="transacao"><i class="fa fa-bar-chart-o fa-fw"></i> Transações <span class="fa arrow"></span></a>
@@ -122,19 +122,12 @@
     </nav>
 
     <div id="page-wrapper">
-      <div class="row">
-          <div class="col-md-12">
-
-              <div class="animate-view" ng-view></div>
-              <g:layoutBody/>
-          </div>
-      </div>
+      <div class="row" ng-view></div>
+      <g:layoutBody/>
       <!-- Conteudo que chegava do Grails XD
       <div class="container-fluid">
-
           <div class="row">
               <div class="col-md-12">
-
                   <div class="animate-view" ng-view></div>
                   <g:layoutBody/>
               </div>

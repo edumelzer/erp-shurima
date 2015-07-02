@@ -29,7 +29,7 @@
                 <div class="panel-heading">
                     <h2 class="panel-title">Installed Plugins</h2>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body", style="display: none;">
                     <ul>
                         <g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
                             <li>${plugin.name} - ${plugin.version}</li>
