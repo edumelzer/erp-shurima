@@ -36,7 +36,7 @@
 <asset:deferredScripts/>
 <g:pageProperty name="page.scripts" default=""/>
 
-<div id="wrapper" class="container-fluid">
+<div id="wrapper">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
