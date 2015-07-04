@@ -13,7 +13,10 @@ angular.module('erpapp.empresa', [
 .value('defaultCrudResource', 'EmpresaResource')
 .config(function($routeProvider) {
 	$routeProvider
-        .when('/', {
+        .when('/loles', {
+					redirectTo: '/list'
+				})
+				.when('/', {
             controller: 'ListCtrl as ctrl',
             templateUrl: 'list.html',
             resolve: {

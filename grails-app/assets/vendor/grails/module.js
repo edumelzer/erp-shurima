@@ -1,12 +1,13 @@
 //= require /angular/angular
 //= require_tree /angular/modules
 //= require_tree /angular/i18n
-//= require sb-admin/js/sb-admin-2
-//= require metis-menu/metisMenu.min
 //= require jquery/jquery.min
+//= require ui-bootstrap.min
+//= require bootstrap/js/bootstrap.min
+//= require metis-menu/metisMenu.min
+//= require sb-admin/js/sb-admin-2
 //= require directives/module
 //= require services/module
-//= require ui-bootstrap.min
 
 'use strict';
 

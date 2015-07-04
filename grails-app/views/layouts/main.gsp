@@ -91,28 +91,29 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="./"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <g:link uri="/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</g:link>
                     </li>
                     <li>
-                        <a href="transacao"><i class="fa fa-bar-chart-o fa-fw"></i> Transações <span class="fa arrow"></span></a>
+                        <a href="/transaction/"><i class="fa fa-bar-chart-o fa-fw"></i> Transações <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="transacao">Contas a Pagar</a>
+                                <g:link uri="/transacao#/">Contas a Pagar</g:link>
                             </li>
                             <li>
-                                <a href="transacao">Contas a Receber</a>
+                                <g:link uri="/transacao#/">Contas a Receber</g:link>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="empresa"><i class="fa fa-edit fa-fw"></i> Cadastro de Empresas</a>
+                        <!--<g:link uri="/empresa" class="navbar-brand"><i class="fa fa-edit fa-fw"></i> Cadastro de Empresas</g:link>-->
+                        <g:link uri="/empresa#/"><i class="fa fa-edit fa-fw"></i> Cadastro de Empresas</g:link>
                     </li>
                     <li>
-                        <a href="item"><i class="fa fa-edit fa-fw"></i> Cadastro de Produtos</a>
+                        <g:link uri="/item#/"><i class="fa fa-edit fa-fw"></i> Cadastro de Produtos</g:link>
                     </li>
                     <li>
-                        <a href="usuario"><i class="fa fa-wrench fa-fw"></i> Gerenciar Usuários</a>
+                        <g:link uri="/usuario#/"><i class="fa fa-wrench fa-fw"></i> Gerenciar Usuários</g:link>
                     </li>
                 </ul>
             </div>
