@@ -44,7 +44,7 @@
   join empresa e
     on e.id = t.empresa_id
  where date_trunc('day',t.data) between $P{data_inicial} and $P{data_final}
-   and t.tipo = 'P'
+   and t.tipo = 'R'
  order by t.data]]>
 	</queryString>
 	<field name="nome" class="java.lang.String"/>
@@ -68,7 +68,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="Nimbus Roman No9 L" size="42"/>
 				</textElement>
-				<text><![CDATA[Contas à Pagar]]></text>
+				<text><![CDATA[Contas à Receber]]></text>
 			</staticText>
 		</band>
 	</title>
