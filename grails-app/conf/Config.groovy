@@ -1,3 +1,5 @@
+import grails.plugin.springsecurity.SecurityConfigType
+
 grails.project.groupId = "com.shurima"
 
 grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
@@ -85,3 +87,37 @@ grails.databinding.dateFormats = ["yyyy-MM-dd'T'hh:mm:ss'Z'", "yyyy-MM-dd'T'hh:m
 
 angular.pageSize = 25
 angular.dateFormat="dd/MM/yyyy"
+
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.shurima.Usuario'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.shurima.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.shurima.Role'
+
+//grails.plugin.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
+/*grails.plugin.springsecurity.interceptUrlMap = [
+        '/screen/authenticatedPage':  ['IS_AUTHENTICATED_FULLY'],
+        '/usuario/**':  ['ROLE_ADMIN'],
+        '/transacao/**': ['ROLE_CONTASPAGAR'],
+        '/**':           ['IS_AUTHENTICATED_FULLY']
+]*/
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll'],
+  '/contact/*':                     ['permitAll'],
+  '/empresa/**':                    ['ROLE_ADMIN', 'ROLE_CONTASRECEBER', 'ROLE_CONTASPAGAR'],
+  '/relatorio/**':                  ['ROLE_ADMIN'],
+  '/jasper/**':                     ['ROLE_ADMIN'],
+  '/transacao/**':                  ['ROLE_ADMIN', 'ROLE_CONTASPAGAR'],
+  '/entrada/**':                    ['ROLE_ADMIN', 'ROLE_CONTASRECEBER'],
+  '/item/**':                       ['ROLE_ADMIN'],
+  '/usuario/**':                    ['ROLE_ADMIN']
+]
+
+grails.plugin.springsecurity.rest.login.useJsonCredentials = true
+grails.plugin.springsecurity.rest.token.storage.useGorm = true
+grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = 'com.shurima.AuthenticationToken'
+grails.plugin.springsecurity.logout.postOnly = false

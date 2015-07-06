@@ -9,6 +9,7 @@ class UrlMappings {
 		'/api/usuario'(resources: 'usuario')
 		'/transacao'(view: 'transacao')
 		'/api/transacao'(resources: 'transacao')
+		'/entrada'(view: 'transacao')
 		'/empresa'(view: 'empresa')
 		'/api/empresa'(resources: 'empresa')
 		'/cliente'(view: 'cliente')
@@ -16,6 +17,8 @@ class UrlMappings {
 		'/ordem'(view: 'ordem')
 		'/teste'(view: 'teste')
 		'/index'(view: 'index')
+		'/relatorio'(view: 'relatorio')
+		'/login'(view: 'usuario/login')
 		"/$controller/$action?/$id?(.$format)?"{
 				constraints {
                 // apply constraints here

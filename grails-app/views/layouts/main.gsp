@@ -58,20 +58,31 @@
                     <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil do Usuário</a>
+                    <sec:ifLoggedIn>
+                      <li>
+                      <a href="#"><i class="fa fa-user fa-fw"></i> Logado como ${sec.loggedInUserInfo(field: 'username')}</a>
+                      </li>
+                    </sec:ifLoggedIn>
+                    <!--<li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil do Usuário</a>
                     </li>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configurações</a>
-                    </li>
+                    </li>-->
                     <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                    <sec:ifLoggedIn>
+                      <li><g:link uri="/logout#/"><i class="fa fa-sign-out fa-fw"></i> Sair</g:link>
+                    </sec:ifLoggedIn>
+                  <sec:ifNotLoggedIn>
+                  <li><g:link uri="/login#/"><i class="fa fa-user fa-fw"></i> Login</g:link>
+                  </sec:ifNotLoggedIn>
+                    <!--<li><a href="logout.html"><i class="fa fa-sign-out fa-fw"></i> Sair</a>-->
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
             </li>
-            <ul class="nav navbar-nav navbar-right">
+            <!--<ul class="nav navbar-nav navbar-right">
                 <li><a href="https://github.com/edumelzer/erp-shurima"><i class="fa fa-github"></i> Github
                 </a></li>
-            </ul>
+            </ul>-->
             <!-- /.dropdown -->
         </ul>
         <!-- /.navbar-top-links -->
@@ -100,7 +111,7 @@
                                 <g:link uri="/transacao#/">Contas a Pagar</g:link>
                             </li>
                             <li>
-                                <g:link uri="/transacao#/">Contas a Receber</g:link>
+                                <g:link uri="/entrada#/">Contas a Receber</g:link>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -112,9 +123,23 @@
                     <li>
                         <g:link uri="/item#/"><i class="fa fa-edit fa-fw"></i> Cadastro de Produtos</g:link>
                     </li>
+                    <sec:ifAnyGranted roles="ROLE_ADMIN">
                     <li>
                         <g:link uri="/usuario#/"><i class="fa fa-wrench fa-fw"></i> Gerenciar Usuários</g:link>
                     </li>
+                    <li>
+                        <a href="/relatorio/"><i class="fa fa-bar-chart-o fa-fw"></i> Relatórios <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <g:link uri="/relatorio#/">Contas a Pagar</g:link>
+                            </li>
+                            <li>
+                                <g:link uri="/relatorio#/">Contas a Receber</g:link>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    </sec:ifAnyGranted>
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

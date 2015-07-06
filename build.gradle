@@ -3,6 +3,7 @@ import org.grails.gradle.plugin.tasks.GrailsTask
 buildscript {
 	repositories {
 		jcenter()
+
 	}
 	dependencies {
 		classpath 'org.grails:grails-gradle-plugin:2.1.2'
@@ -28,6 +29,12 @@ repositories {
     flatDir {
         dirs 'lib'
     }
+		maven {
+			url "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/"
+		}/*
+		maven {
+			url "http://jasperreports.sourceforge.net/maven2/"
+		}*/
 }
 
 task wrapper(type: Wrapper) {
@@ -103,6 +110,7 @@ dependencies {
 	test "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
 	test "org.gebish:geb-spock:$gebVersion"
   runtime "postgresql:postgresql:9.1-901.jdbc4"
+	//compile 'net.sf.jasperreports:jasperreports:6.1.0'
 
 	test("com.github.detro.ghostdriver:phantomjsdriver:1.1.0") {
 		transitive = false
@@ -115,6 +123,8 @@ dependencies {
 		[name: 'asset-pipeline', version: '2.2.0'],
 		[name: 'angular-template-asset-pipeline', version: '2.1.0'],
 		[name: 'angular-annotate-asset-pipeline', version: '2.1.0'],
+		[name: 'spring-security-core', version: '2.0-RC5'],
+		//[name: 'jasper', version: '1.11.0'],
 		[name: 'geb', version: gebVersion, scope: 'test']
 	]
 
@@ -122,6 +132,13 @@ dependencies {
 		String scope = plugin.scope ?: 'compile'
 		owner."$scope" "org.grails.plugins:${plugin.name}:${plugin.version}"
 	}
+
+	compile('org.grails.plugins:jasper:1.11.0') {
+    		exclude module: 'xml-apis'
+	}
+	/*compile('org.grails.plugins:jasper:1.11.0') {
+		exclude module: 'xml-apis'
+	}*/
 
 	runtime('org.grails.plugins:hibernate4:4.3.8.1') {
     		exclude module: 'xml-apis'

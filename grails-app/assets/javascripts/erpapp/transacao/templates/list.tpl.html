@@ -1,7 +1,7 @@
 <div crud-breadcrumbs="list"></div>
 
 <div class="clearfix">
-	<h2 class="pull-left">Transacao List</h2>
+	<h2 class="pull-left">Lista de Transações</h2>
 	<div class="pull-right"><button crud-button="create" ></button></div>
 </div>
 <div flash-message ></div>
@@ -18,16 +18,8 @@
 		<input type="text" class='form-control' date-field ng-model="ctrl.filter.data" ng-model-options="{ debounce: 300 }"  />
     </div>
 	<div class="form-group col-md-3">
-		<label for="filter.valor">Valor</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.valor" ng-model-options="{ debounce: 300 }"  />
-    </div>
-	<div class="form-group col-md-3">
 		<label for="filter.empresa">Empresa</label>
 		<select class="form-control" ng-model="ctrl.filter.empresaId" ng-options="item.id as item.toText for item in ctrl.empresaList" ng-model-options="{ debounce: 300 }"  ><option value="">-- Select Empresa--</option></select>
-    </div>
-	<div class="form-group col-md-3">
-		<label for="filter.tipo">Tipo</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.tipo" ng-model-options="{ debounce: 300 }"  />
     </div>
 	<div class="form-group col-md-3">
 		<label for="filter.numeroTitulo">Título</label>

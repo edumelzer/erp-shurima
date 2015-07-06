@@ -11,20 +11,12 @@
     <div class="panel-body">
 <form name="form" class="form-horizontal" role="form" novalidate>
   <fieldset class="scheduler-border">
-	<div field-container label="Login" invalid="form.login.$invalid" class="input-mini">
-		<input name="login" type="text" class='input-mini' ng-model="ctrl.usuario.login" required  />
+	<div field-container label="Usuário" invalid="form.username.$invalid" class="input-mini">
+		<input name="login" type="text" class='input-mini' ng-model="ctrl.usuario.username" required  />
 	</div>
 
 	<div field-container label="Password" invalid="form.password.$invalid">
 		<input name="password" type="password" class='form-control' ng-model="ctrl.usuario.password" required  />
-	</div>
-
-	<div field-container label="Nome" invalid="form.nome.$invalid">
-		<input name="nome" type="text" class='form-control' ng-model="ctrl.usuario.nome" required  />
-	</div>
-
-	<div field-container label="Tipo" invalid="form.tipo.$invalid">
-		<input name="tipo" type="text" class='form-control' ng-model="ctrl.usuario.tipo" required  />
 	</div>
 
     <div>

@@ -9,12 +9,10 @@ class CustomMarshallerRegistrar {
 		JSON.registerObjectMarshaller(com.shurima.Usuario) {
 			def map = [:]
 			map['id'] = it?.id
-			map['login'] = it?.login
+			map['username'] = it?.username
 			map['password'] = it?.password
-			map['nome'] = it?.nome
-			map['tipo'] = it?.tipo
 	    	map['toText'] = it?.toString()
-			return map 
+			return map
 		}
 
     JSON.registerObjectMarshaller(com.shurima.TipoUsuario) {
@@ -25,7 +23,7 @@ class CustomMarshallerRegistrar {
 			return map
 		}
 
-		
+
 
 		JSON.registerObjectMarshaller(com.shurima.Item) {
 			def map = [:]

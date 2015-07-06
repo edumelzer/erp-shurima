@@ -1,7 +1,7 @@
 <div crud-breadcrumbs="list"></div>
 
 <div class="clearfix">
-	<h2 class="pull-left">Usuario List</h2>
+	<h2 class="pull-left">Lista de Usuarios</h2>
 	<div class="pull-right"><button crud-button="create" ></button></div>
 </div>
 <div flash-message ></div>
@@ -14,16 +14,8 @@
 <div class="row">
 <form class="form">
 	<div class="form-group col-md-3">
-		<label for="filter.login">Login</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.login" ng-model-options="{ debounce: 300 }"  />
-    </div>
-	<div class="form-group col-md-3">
-		<label for="filter.nome">Nome</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.nome" ng-model-options="{ debounce: 300 }"  />
-    </div>
-	<div class="form-group col-md-3">
-		<label for="filter.tipo">Tipo</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.tipo" ng-model-options="{ debounce: 300 }"  />
+		<label for="filter.login">Usuário</label>
+		<input type="text" class='form-control' ng-model="ctrl.filter.username" ng-model-options="{ debounce: 300 }"  />
     </div>
 </form>
 </div>
@@ -33,18 +25,14 @@
 <table id="list" class="table table-striped table-bordered table-hover">
 
     <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
-        <th sortable-column title="Id" property="id"></th>
-		<th sortable-column title="Login" property="login"></th>
-		<th sortable-column title="Nome" property="nome"></th>
-		<th sortable-column title="Tipo" property="tipo"></th>
+    <th sortable-column title="Id" property="id"></th>
+		<th sortable-column title="Usuário" property="username"></th>
         <th>&nbsp;</th>
     </thead>
     <tbody>
         <tr class="animate-repeat" ng-repeat="item in ctrl.usuarioList">
             <td><a href="#/show/{{item.id}}">{{item.id}}</a></td>
-			<td>{{ item.login }}</td>
-			<td>{{ item.nome }}</td>
-			<td>{{ item.tipo }}</td>
+			<td>{{ item.username }}</td>
             <td>
                 <button crud-button="edit" item="item" ></button>
                 <button crud-button="delete" item="item" after-action="ctrl.reload()"></button>
