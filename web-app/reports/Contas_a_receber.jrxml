@@ -75,12 +75,8 @@
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="372" y="15" width="100" height="20" uuid="978c0706-2b75-496a-a985-b16b0966f0be"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-			<textField pattern="HH.mm">
-				<reportElement x="455" y="15" width="100" height="20" uuid="dd2ae8cf-723f-4791-971e-851d26a91265"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<reportElement x="388" y="15" width="100" height="20" uuid="978c0706-2b75-496a-a985-b16b0966f0be"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="288" y="15" width="100" height="20" uuid="1abc59e2-e2b9-4ddb-a9e7-92b22176e3f4"/>

@@ -17,7 +17,8 @@ class UrlMappings {
 		'/ordem'(view: 'ordem')
 		'/teste'(view: 'teste')
 		'/index'(view: 'index')
-		'/relatorio'(view: 'relatorio')
+		'/relatorioPagar'(view: 'relatorioPagar')
+		'/relatorioReceber'(view: 'relatorioReceber')
 		'/login'(view: 'usuario/login')
 		"/$controller/$action?/$id?(.$format)?"{
 				constraints {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -131,10 +131,10 @@
                         <a href="/relatorio/"><i class="fa fa-bar-chart-o fa-fw"></i> Relatórios <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <g:link uri="/relatorio#/">Contas a Pagar</g:link>
+                                <g:link uri="/relatorioPagar#/">Contas a Pagar</g:link>
                             </li>
                             <li>
-                                <g:link uri="/relatorio#/">Contas a Receber</g:link>
+                                <g:link uri="/relatorioReceber#/">Contas a Receber</g:link>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
