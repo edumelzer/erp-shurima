@@ -66,7 +66,7 @@
 			<staticText>
 				<reportElement x="0" y="7" width="555" height="60" uuid="0222e00e-222c-4f70-ba7c-08083fc99f5a"/>
 				<textElement textAlignment="Center">
-					<font fontName="Nimbus Roman No9 L" size="42"/>
+					<font fontName="Arial" size="42"/>
 				</textElement>
 				<text><![CDATA[Contas à Receber]]></text>
 			</staticText>
@@ -76,11 +76,16 @@
 		<band height="35" splitType="Stretch">
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="388" y="15" width="100" height="20" uuid="978c0706-2b75-496a-a985-b16b0966f0be"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="288" y="15" width="100" height="20" uuid="1abc59e2-e2b9-4ddb-a9e7-92b22176e3f4"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Data e Hora:]]></text>
 			</staticText>
 		</band>
@@ -89,27 +94,37 @@
 		<band height="26" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="138" height="20" uuid="2272787c-d089-434d-b50b-a258e2e55f68"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Empresa]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="138" y="0" width="118" height="20" uuid="7f0b4b43-aa34-4f24-8112-c442b2fcea05"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Data de Pagamento]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="256" y="0" width="84" height="20" uuid="74041fe3-240f-416f-a9e3-7ccabfda8f60"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Valor Pago]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="340" y="0" width="100" height="20" uuid="85d8c76f-1eed-405e-abc3-16fa8b979de9"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Nº Título]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="440" y="0" width="115" height="20" uuid="a3bc1445-96c7-499d-bce9-ac7c7845865e"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Observação]]></text>
 			</staticText>
 		</band>
@@ -118,27 +133,37 @@
 		<band height="23" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="138" height="20" uuid="e450d0d5-f8fe-4b01-9c8c-0c8aa6e09a3f"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="138" y="0" width="118" height="20" uuid="dff076c2-f1a5-4020-b295-6f59296bc1e8"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
 				<reportElement x="256" y="0" width="84" height="20" uuid="b8dcfa18-01fc-4c5b-807a-5858a2f5367a"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="340" y="0" width="95" height="20" uuid="81b65bb2-8c54-4a88-a08b-36b326f0b5a6"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{numero_titulo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="435" y="0" width="120" height="20" uuid="690b3efc-1a46-4c0a-8af9-1c5003f7c85d"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{observacao}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -147,11 +172,16 @@
 		<band height="45" splitType="Stretch">
 			<textField>
 				<reportElement x="435" y="1" width="80" height="20" uuid="76fc087a-c669-42dc-9735-3fba865ecb63"/>
-				<textElement textAlignment="Right"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="515" y="1" width="40" height="20" uuid="56207dea-f75e-47e4-8a59-27a93434e950"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -169,13 +199,16 @@
 				</box>
 				<staticText>
 					<reportElement x="8" y="11" width="100" height="20" uuid="a58c4d1a-6a15-44d2-954d-8a98077ea894"/>
+					<textElement>
+						<font fontName="Arial"/>
+					</textElement>
 					<text><![CDATA[Total:]]></text>
 				</staticText>
 			</frame>
 			<textField pattern="¤ #,##0.00;(¤ #,##0.00)" isBlankWhenNull="true">
 				<reportElement x="448" y="21" width="100" height="20" uuid="e20afc35-3bf4-4778-b1d9-91fdc38d5251"/>
 				<textElement>
-					<font isUnderline="true"/>
+					<font fontName="Arial" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{TotalValor}]]></textFieldExpression>
 			</textField>

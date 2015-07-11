@@ -29,8 +29,8 @@
             required placeholder='00.000.000/0000-00' mask='99.999.999/9999-99'/>
     	</div>
 
-    	<div field-container label="Inscricao Estadual" invalid="form.inscricaoEstadual.$invalid">
-    		<input name="inscricaoEstadual" type="text" class='form-control' ng-model="ctrl.empresa.inscricaoEstadual" placeholder="Digite a Inscrição Estatual."required  />
+    	<div field-container label="Inscricao Estadual" pristine="form.inscricaoEstadual.$invalid">
+    		<input name="inscricaoEstadual" type="text" class='form-control' ng-model="ctrl.empresa.inscricaoEstadual" placeholder="Digite a Inscrição Estatual." />
     	</div>
 
     	<div field-container label="Endereco" invalid="form.endereco.$invalid">
@@ -41,8 +41,8 @@
     		<input name="numero" type="number" class='form-control' ng-model="ctrl.empresa.numero" placeholder="Digite o número" required  />
     	</div>
 
-    	<div field-container label="Complemento" invalid="form.complemento.$invalid">
-    		<input name="complemento" type="text" class='form-control' ng-model="ctrl.empresa.complemento" placeholder="Digite o Complemento" required  />
+    	<div field-container label="Complemento" pristine="form.complemento.$invalid">
+    		<input name="complemento" type="text" class='form-control' ng-model="ctrl.empresa.complemento" placeholder="Digite o Complemento"/>
     	</div>
 
     	<div field-container label="Cidade" invalid="form.cidade.$invalid">
@@ -87,8 +87,8 @@
     	</div>
 
     	<div field-container label="CEP">
-    		<input name="CEP" type="text" class='form-control' ng-model="ctrl.empresa.CEP" required
-        placeholder="00.000-000" mask="99.999-999"/>
+    		<input name="CEP" type="text" class='form-control' ng-model="ctrl.empresa.CEP"
+        placeholder="00.000-000" mask="99.999-999" required/>
     	</div>
 
     	<div field-container label="Telefone1" invalid="form.telefone1.$invalid">
@@ -96,13 +96,13 @@
          mask="(999) 9999-9999" required />
     	</div>
 
-    	<div field-container label="Telefone2" invalid="form.telefone2.$invalid">
-    		<input name="telefone2" type="text" class='form-control' ng-model="ctrl.empresa.telefone2" required
+    	<div field-container label="Telefone2" pristine="form.telefone2.$invalid">
+    		<input name="telefone2" type="text" class='form-control' ng-model="ctrl.empresa.telefone2"
         placeholder="(000) 0000-0000" mask="(999) 9999-9999"/>
     	</div>
 
-    	<div field-container label="Email" invalid="form.email.$invalid">
-    		<input name="email" type="text" class='form-control' ng-model="ctrl.empresa.email" required
+    	<div field-container label="Email" pristine="form.email.$invalid">
+    		<input name="email" type="text" class='form-control' ng-model="ctrl.empresa.email"
         placeholder="exemplo@exemplo.com"/>
     	</div>
 
