@@ -3,6 +3,11 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<title>Shurima ERP</title>
+
+		<style>
+
+		</style>
+
 	</head>
 	<body>
 		<br/>

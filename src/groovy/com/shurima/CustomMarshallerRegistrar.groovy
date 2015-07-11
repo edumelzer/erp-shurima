@@ -49,7 +49,7 @@ class CustomMarshallerRegistrar {
 			map['tipo'] = it?.tipo
       map['numeroTitulo']=it?.numeroTitulo
       map['observacao']=it?.numeroTitulo
-	    	map['toText'] = it?.toString()
+	    map['toText'] = it?.toString()
 			return map
 		}
 

@@ -42,7 +42,7 @@
         <th>&nbsp;</th>
     </thead>
     <tbody>
-        <tr class="animate-repeat" ng-repeat="item in ctrl.transacaoList">
+        <tr class="animate-repeat" ng-repeat="item in ctrl.entradaList">
             <td><a href="#/show/{{item.id}}">{{item.id}}</a></td>
 			<td>{{ item.data | date: 'dd/MM/yyyy' }}</td>
 			<td>{{ item.valor | currency }}</td>
@@ -57,7 +57,7 @@
     </tbody>
 </table>
 
-<div pagination total-items="ctrl.transacaoList.getTotalCount()"
+<div pagination total-items="ctrl.entradaList.getTotalCount()"
 	items-per-page="ctrl.pageSize" ng-model="ctrl.page" ng-change="ctrl.load()"
 	next-text="Próxima" previous-text="Anterior" first-text="Primeira" last-text="Última">
 </div>

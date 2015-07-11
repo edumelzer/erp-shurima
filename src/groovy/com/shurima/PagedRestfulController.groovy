@@ -23,17 +23,16 @@ class PagedRestfulController<T> extends RestfulController<T> {
 		respond results, formats: ['json', 'html']
 	}
 
-	protected PagedResultList loadPagedResults(params) {
-        resource.createCriteria().list(max: params.max, offset: params.offset) {
+  public PagedResultList loadPagedResults(params) {
+		resource.createCriteria().list(max: params.max, offset: params.offset) {
+				params.filter?.each { String name, String value ->
+						setDefaultCriteria(delegate, name, value)
+					}
 
-			params.filter?.each { String name, String value ->
-               setDefaultCriteria(delegate, name, value)
-            }
-
-            if (params.sort) {
-              	order(params.sort, params.order == "asc" ? "asc" : "desc")
-            }
-        }
+					if (params.sort) {
+						order(params.sort, params.order == "asc" ? "asc" : "desc")
+					}
+				}
     }
 
     protected void setDefaultCriteria(criteria, String propertyName, String propertyValue) {
