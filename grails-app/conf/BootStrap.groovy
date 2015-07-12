@@ -7,29 +7,31 @@ class BootStrap {
 	def init = { servletContext ->
 		customMarshallerRegistrar.registerMarshallers()
 
-		new TipoUsuario(id: 1, descricao: 'Admin').save(flush: true)
-		new TipoUsuario(id: 2, descricao: 'Contas a Pagar').save(flush: true)
-		new TipoUsuario(id: 3, descricao: 'Contas a Receber').save(flush: true)
-		new TipoUsuario(id: 4, descricao: 'Estoque').save(flush: true)
-
 		Usuario admin = new Usuario(username:'admin', nome: 'Admin', password:'admin', enabled:true)
-		Usuario eduardo = new Usuario(username:'eduardo', nome: 'Eduardo', password:'eduardo', enabled:true)
 		Usuario recebimento = new Usuario(username:'recebimento', nome: 'Recebimento', password:'recebimento', enabled:true)
+    Usuario pagamento = new Usuario(username:'pagamento', nome: 'Pagamento', password:'pagamento', enabled:true)
 
-		admin.save()
-		eduardo.save()
+		if (!admin.save()) return
+		pagamento.save()
 		recebimento.save()
-
-		println "Vai se fuder"
-		println admin.errors
-		println eduardo.errors
 
 		Role adminRole = new Role(authority: 'ROLE_ADMIN').save()
 		Role contasPagar = new Role(authority: 'ROLE_CONTASPAGAR').save()
-		UserRole.create(admin, adminRole)
-		UserRole.create(admin, contasPagar)
-		UserRole.create(eduardo, contasPagar)
-		UserRole.create(recebimento, contasPagar)
+		Role contasReceber = new Role(authority: 'ROLE_CONTASRECEBER').save()
+
+		if (adminRole) {
+			UserRole.create(admin, adminRole)
+		}
+
+		if (contasPagar) {
+			UserRole.create(admin, contasPagar)
+			UserRole.create(pagamento, contasPagar)
+		}
+
+		if (contasReceber) {
+			UserRole.create(admin, contasReceber)
+			UserRole.create(recebimento, contasReceber)
+		}
 
 	}
 

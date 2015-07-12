@@ -12,7 +12,7 @@
 	<body>
 		<br/>
         <div class="col-md-3">
-            <div class="panel panel-default">
+            <div class="panel panel-default", style="display: none;">
                 <div class="panel-heading">
                     <h2 class="panel-title">Status da Aplicação</h2>
                 </div>
