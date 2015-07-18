@@ -1,7 +1,7 @@
 <div crud-breadcrumbs="list"></div>
 
 <div class="clearfix">
-	<h2 class="pull-left">Lista de Transações</h2>
+	<h2 class="pull-left">Lista de Saídas</h2>
 	<div class="pull-right"><button crud-button="create" ></button></div>
 </div>
 <div flash-message ></div>
@@ -14,7 +14,7 @@
 <div class="row">
 <form class="form">
 	<div class="form-group col-md-3">
-		<label for="filter.data">Data</label>
+		<label for="filter.data">Data Vencimento</label>
 		<input type="text" class='form-control' date-field ng-model="ctrl.filter.data" ng-model-options="{ debounce: 300 }"  />
     </div>
 	<div class="form-group col-md-3">
@@ -34,11 +34,11 @@
 
     <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
         <th sortable-column title="Id" property="id"></th>
-				<th sortable-column title="Data" property="data"></th>
+				<th sortable-column title="Data Vencimento" property="data"></th>
 				<th sortable-column title="Valor" property="valor"></th>
 				<th sortable-column title="Empresa" property="empresa"></th>
-				<th sortable-column title="N. Título" property="numeroTitulo"></th>
-				<th sortable-column title="observacao" property="observacao"></th>
+				<th sortable-column title="Nº. Título" property="numeroTitulo"></th>
+				<th sortable-column title="observação" property="observacao"></th>
         <th>&nbsp;</th>
     </thead>
     <tbody>

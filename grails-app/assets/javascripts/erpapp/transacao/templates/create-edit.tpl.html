@@ -1,14 +1,14 @@
 <div crud-breadcrumbs="{{ctrl.transacao.id ? 'edit' : 'create'}}"></div>
 <h2>
-    <span ng-hide="ctrl.transacao.id">Criar Transacao</span>
-    <span ng-show="ctrl.transacao.id">Editar Transacao</span>
+    <span ng-hide="ctrl.transacao.id">Criar Saídas</span>
+    <span ng-show="ctrl.transacao.id">Editar Saídas</span>
 </h2>
 
 <div flash-message ></div>
 
 <form name="form" class="form-horizontal" role="form" novalidate>
 
-	<div field-container label="Data" invalid="form.data.$invalid">
+	<div field-container label="Data Vencimento" invalid="form.data.$invalid">
 		<input name="data" type="text" class='form-control' date-field="{current-text:'Hoje'}" ng-model="ctrl.transacao.data" required  />
 	</div>
 
@@ -20,11 +20,11 @@
 		<select name="empresa" class="form-control" ng-model="ctrl.transacao.empresa" required  ng-options="item.toText for item in ctrl.empresaList track by item.id"  ></select>
 	</div>
 
-  <div field-container label="Número Título" invalid="form.numeroTitulo.$invalid">
-    <input name="numeroTitulo" type="text" class='form-control' ng-model="ctrl.transacao.numeroTitulo" required  />
+  <div field-container label="Número Título" pristine="form.numeroTitulo.$invalid">
+    <input name="numeroTitulo" type="text" class='form-control' ng-model="ctrl.transacao.numeroTitulo"   />
   </div>
-  <div field-container label="Observação" invalid="form.observacao.$invalid">
-    <input name="observacao" type="text" class='form-control' ng-model="ctrl.transacao.observacao" required  />
+  <div field-container label="Observação" pristine="form.observacao.$invalid">
+    <input name="observacao" type="text" class='form-control' ng-model="ctrl.transacao.observacao"   />
   </div>
   <input type="hidden" name="tipo" ng-model="ctrl.transacao.tipo" value="P" />
     <div>

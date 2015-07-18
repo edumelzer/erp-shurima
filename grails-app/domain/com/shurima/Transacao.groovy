@@ -10,8 +10,8 @@ class Transacao {
   String observacao
 
   static constraints = {
-    empresa nullable: true
     numeroTitulo nullable: true
+    observacao nullable: true
   }
 
 }
