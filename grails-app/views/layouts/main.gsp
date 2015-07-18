@@ -136,6 +136,9 @@
                             <li>
                                 <g:link uri="/relatorioReceber#/">Contas a Receber</g:link>
                             </li>
+                            <li>
+                                <g:link uri="/relatorioEmpresa#/">Empresas</g:link>
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
