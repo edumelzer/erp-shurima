@@ -1,1 +1,1 @@
-//= require grails/module
+//= require grails/module2
