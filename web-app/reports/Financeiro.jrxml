@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="finaceiro" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9a4b2332-eaf9-4517-8c66-f716e48979dc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="data_inicial" class="java.util.Date"/>
+	<parameter name="data_final" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select e.nome
+     , t.data
+     , (t.valor * -1) valor
+     , t.numero_titulo
+     , t.tipo
+  from transacao t
+  join empresa e
+    on e.id = t.empresa_id
+ where date_trunc('day',t.data) between $P{data_inicial} and $P{data_final}
+   and t.tipo = 'P'
+UNION
+ select e.nome
+     , t.data
+     , t.valor
+     , t.numero_titulo
+     , t.tipo
+  from transacao t
+  join empresa e
+    on e.id = t.empresa_id
+ where date_trunc('day',t.data) between $P{data_inicial} and $P{data_final}
+   and t.tipo = 'R']]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<field name="data" class="java.sql.Timestamp"/>
+	<field name="valor" class="java.lang.Double"/>
+	<field name="numero_titulo" class="java.lang.Long"/>
+	<field name="tipo" class="java.lang.String"/>
+	<variable name="TotalValor" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="67" uuid="0f62753e-bbe8-476e-a121-c59835b8e26f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="10" width="555" height="60" uuid="99d977c3-8bec-412b-8057-274f627915a4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Nimbus Roman No9 L" size="42" pdfEncoding="Cp1252"/>
+				</textElement>
+				<text><![CDATA[Relatório Financeiro]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="349" y="0" width="100" height="20" uuid="a4682917-6058-49ef-a6cf-857a63e13561"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<text><![CDATA[Data e Hora:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="449" y="0" width="100" height="20" uuid="870bde1f-7513-4a5a-abe4-770c2c270159"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="7" width="90" height="19" uuid="6cc786e5-3c3c-4da1-bc72-ddedf6ac8550"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="7" width="90" height="19" uuid="df3cb7f9-1b43-476b-b7ad-9a101653f4c8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<text><![CDATA[Data de vencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="7" width="114" height="19" uuid="e2804d7f-8add-4e19-bf0b-3390f452bef8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="7" width="123" height="19" uuid="96965674-475e-445b-8732-ff95a1d84040"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<text><![CDATA[Valor Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="7" width="134" height="19" uuid="e99d4dba-ee58-4d66-bec3-de8ab26ff8a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<text><![CDATA[Nº Título]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="0" y="7" width="555" height="19" uuid="ad7fa73e-f80c-4f02-9047-d00c8cb41cc8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="90" height="18" uuid="408fa901-d300-4776-8b85-90bff3ae45e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="314" y="0" width="116" height="19" uuid="8d7338c6-74a8-457e-8422-d308fdee5947"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" size="10" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}.equals("R")  ? "Entrada" : "Saída"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="90" y="0" width="90" height="19" uuid="c16dc3af-ead8-4592-88f4-f6c0d96fd0d3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="180" y="1" width="134" height="18" uuid="e0d53dea-419e-4cb1-a841-7fa34ccc3d15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero_titulo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00;(¤ #,##0.00)">
+				<reportElement x="428" y="0" width="123" height="19" uuid="136de7ce-c660-4c1e-b403-22928d4a8d8f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="25" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="511" y="5" width="40" height="20" uuid="367fe294-7464-4e19-a1fc-37ab5cf8cb79"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="5" width="80" height="20" uuid="fa7bfa5b-0010-4cc6-a716-4cfdfda67fa0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<summary>
+		<band height="31" splitType="Stretch">
+			<frame>
+				<reportElement x="353" y="11" width="202" height="20" uuid="fcdffbdb-c92a-49a9-b934-d005f42cf210"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" uuid="00e3c7ae-f83d-4ce6-99b3-bacfc07bb9d9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+					</textElement>
+					<text><![CDATA[Total:]]></text>
+				</staticText>
+			</frame>
+			<textField pattern="¤ #,##0.00;(¤ #,##0.00)" isBlankWhenNull="true">
+				<reportElement x="450" y="11" width="100" height="20" uuid="ccb3581a-2a42-4b04-a805-f9790d270f6e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" isUnderline="false" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalValor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

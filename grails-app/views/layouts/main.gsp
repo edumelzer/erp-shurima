@@ -267,6 +267,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <li>
                       <g:link uri="/relatorioEmpresa#/">Empresas</g:link>
                   </li>
+                  <li>
+                      <g:link uri="/relatorioFinanceiro#/">Financeiro</g:link>
+                  </li>
                 </ul>
               </li>
 
