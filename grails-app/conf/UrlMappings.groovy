@@ -16,6 +16,7 @@ class UrlMappings {
 		'/cliente'(view: 'cliente')
 		'/api/cliente'(resources: 'cliente')
 		'/ordem'(view: 'ordem')
+		//'/grupo'(view: 'grupo')
 		'/teste'(view: 'teste')
 		'/index'(view: 'index')
 		'/relatorioPagar'(view: 'relatorioPagar')

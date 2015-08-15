@@ -285,15 +285,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-
-        <!-- Your Page Content Here -->
-        <section class="content">
-        <div class="row" ng-view></div>
-        <g:layoutBody/>
-        </section>
-
-      </div><!-- /.content-wrapper -->
+      <g:layoutBody/>
 
       <!-- Main Footer -->
       <footer class="main-footer">
