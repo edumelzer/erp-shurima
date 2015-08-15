@@ -6,7 +6,7 @@
 
 <body>
   <br/>
-<h1> Relatório de contas a receber. </h1>
+<h1> Relatório de Contas. </h1>
 <g:jasperReport
           jasper="Financeiro"
           format="PDF"

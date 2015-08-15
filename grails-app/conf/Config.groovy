@@ -112,6 +112,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
   '/relatorioReceber/**':           ['ROLE_ADMIN'],
   '/relatorioPagar/**':           ['ROLE_ADMIN'],
   '/relatorioEmpresa/**':           ['ROLE_ADMIN'],
+  '/relatorioFinanceiro/**':           ['ROLE_ADMIN'],
   '/jasper/**':                     ['ROLE_ADMIN'],
   '/transacao/**':                  ['ROLE_ADMIN', 'ROLE_CONTASPAGAR'],
   '/entrada/**':                    ['ROLE_ADMIN', 'ROLE_CONTASRECEBER'],
