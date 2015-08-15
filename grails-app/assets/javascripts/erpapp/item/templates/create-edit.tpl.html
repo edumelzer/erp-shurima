@@ -1,40 +1,58 @@
-<div crud-breadcrumbs="{{ctrl.item.id ? 'edit' : 'create'}}"></div>
-<h2>
-    <span ng-hide="ctrl.item.id">Criar Item</span>
-    <span ng-show="ctrl.item.id">Editar Item</span>
-</h2>
+<!--<div crud-breadcrumbs="{{ctrl.item.id ? 'edit' : 'create'}}"></div>-->
+<section class="content-header">
+	<h1>
+		Produtos
+		<small>
+			<span ng-hide="ctrl.empresa.id">Cadastrar um novo Produtos</span>
+			<span ng-show="ctrl.empresa.id">Editar Produtos</span>
+		</small>
+	</h1>
+	<div crud-breadcrumbs="{{ctrl.empresa.id ? 'edit' : 'create'}}"></div>
+</section>
 
-<div flash-message ></div>
+<section class="content">
+	<div flash-message></div>
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Cadastro de produtos
+				</div>
+				<form name="form" class="form-horizontal" role="form" novalidate>
+					<div class="panel-body">
+						<div field-container label="Nome" invalid="form.nome.$invalid">
+							<input name="nome" type="text" class='form-control' ng-model="ctrl.item.nome" required />
+						</div>
 
-<form name="form" class="form-horizontal" role="form" novalidate> 
+						<div field-container label="Quantidade" invalid="form.quantidade.$invalid">
+							<input name="quantidade" type="number" class='form-control' ng-model="ctrl.item.quantidade" required />
+						</div>
 
-	<div field-container label="Nome" invalid="form.nome.$invalid">
-		<input name="nome" type="text" class='form-control' ng-model="ctrl.item.nome" required  />
+						<div field-container label="Valor1" invalid="form.valor1.$invalid">
+							<input name="valor1" type="number" class='form-control' ng-model="ctrl.item.valor1" required />
+						</div>
+
+						<div field-container label="Valor2" invalid="form.valor2.$invalid">
+							<input name="valor2" type="number" class='form-control' ng-model="ctrl.item.valor2" required />
+						</div>
+
+						<div field-container label="Valor3" invalid="form.valor3.$invalid">
+							<input name="valor3" type="number" class='form-control' ng-model="ctrl.item.valor3" required />
+						</div>
+
+						<div field-container label="Unidade" invalid="form.unidade.$invalid">
+							<input name="unidade" type="text" class='form-control' ng-model="ctrl.item.unidade" required />
+						</div>
+
+						<div class="panel-footer">
+							<button crud-button="save" item="ctrl.item" is-disabled="form.$invalid"></button>
+							<span ng-if="ctrl.item.id">
+								<button crud-button="delete" item="ctrl.item"></button>
+							</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
-
-	<div field-container label="Quantidade" invalid="form.quantidade.$invalid">
-		<input name="quantidade" type="number" class='form-control' ng-model="ctrl.item.quantidade" required  />
-	</div>
-
-	<div field-container label="Valor1" invalid="form.valor1.$invalid">
-		<input name="valor1" type="number" class='form-control' ng-model="ctrl.item.valor1" required  />
-	</div>
-
-	<div field-container label="Valor2" invalid="form.valor2.$invalid">
-		<input name="valor2" type="number" class='form-control' ng-model="ctrl.item.valor2" required  />
-	</div>
-
-	<div field-container label="Valor3" invalid="form.valor3.$invalid">
-		<input name="valor3" type="number" class='form-control' ng-model="ctrl.item.valor3" required  />
-	</div>
-
-	<div field-container label="Unidade" invalid="form.unidade.$invalid">
-		<input name="unidade" type="text" class='form-control' ng-model="ctrl.item.unidade" required  />
-	</div>
-
-    <div>
-        <button crud-button="save" item="ctrl.item" is-disabled="form.$invalid"></button>
-        <span ng-if="ctrl.item.id"><button crud-button="delete" item="ctrl.item"></button></span>
-    </div>
-
-</form>
+</section>

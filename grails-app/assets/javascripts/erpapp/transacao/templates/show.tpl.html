@@ -1,16 +1,36 @@
-<div crud-breadcrumbs="show"></div>
-<h2>Exibir Transacao</h2>
-<div flash-message ></div>
+<section class="content-header">
+  <h1>
+    Transações
+    <small>
+      <span ng-hide="ctrl.empresa.id">Exibir Transação</span>
+    </small>
+  </h1>
+  <div crud-breadcrumbs="show"></div>
+</section>
 
-<table class="table table-bordered table-striped">
-    <tr display-field label="Data Vencimento" value="ctrl.transacao.data | date: 'dd/MM/yyyy'"></tr>
-    <tr display-field label="Valor" value="ctrl.transacao.valor | currency"></tr>
-    <tr display-field label="Empresa" value="ctrl.transacao.empresa.toText"></tr>
-    <tr display-field label="Número Título" value="ctrl.transacao.numeroTitulo"></tr>
-    <tr display-field label="Observação" value="ctrl.transacao.observacao"></tr>
-</table>
+<section class="content">
+  <div flash-message></div>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Transação
+        </div>
 
-<div class="form-actions">
-    <button crud-button="edit" item="ctrl.transacao"></button>
-    <button crud-button="delete" item="ctrl.transacao" ></button>
-</div>
+        <table class="table table-bordered table-striped">
+          <tr display-field label="Data Vencimento" value="ctrl.transacao.data | date: 'dd/MM/yyyy'"></tr>
+          <tr display-field label="Valor" value="ctrl.transacao.valor | currency"></tr>
+          <tr display-field label="Empresa" value="ctrl.transacao.empresa.toText"></tr>
+          <tr display-field label="Número Título" value="ctrl.transacao.numeroTitulo"></tr>
+          <tr display-field label="Observação" value="ctrl.transacao.observacao"></tr>
+        </table>
+
+        <div class="panel-footer">
+          <button crud-button="edit" item="ctrl.transacao"></button>
+          <button crud-button="delete" item="ctrl.transacao"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>

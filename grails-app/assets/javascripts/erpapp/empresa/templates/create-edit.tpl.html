@@ -1,125 +1,121 @@
-<!-- <div crud-breadcrumbs="{{ctrl.empresa.id ? 'edit' : 'create'}}"></div> -->
-<!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
 		Empresas
 		<small>
-      <span ng-hide="ctrl.empresa.id">Cadastrar Empresa</span>
-      <span ng-show="ctrl.empresa.id">Editar Empresa</span>
-    </small>
+			<span ng-hide="ctrl.empresa.id">Cadastrar Empresa</span>
+			<span ng-show="ctrl.empresa.id">Editar Empresa</span>
+		</small>
 	</h1>
 	<div crud-breadcrumbs="{{ctrl.empresa.id ? 'edit' : 'create'}}"></div>
 </section>
 
 <section class="content">
-<div flash-message ></div>
-<div class="row">
-    <div class="col-lg-8">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Cadastro de empresa
-  </div>
+	<div flash-message></div>
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Cadastro de empresa
+				</div>
 
-  <form name="form" class="form-horizontal" role="form" novalidate>
-    <div class="panel-body">
-    	<div field-container label="Nome" invalid="form.nome.$invalid" class="form-group">
-    		<input name="nome" type="text" class='form-control' ng-model="ctrl.empresa.nome"
-            placeholder="Digite o "text" class='form-control' ng-model="ctrl.empresa.cnpj"
-            required placeholder='00.000.000/0000-00' mask='99.999.999/9999-99'/>
-    	</div>
+				<form name="form" class="form-horizontal" role="form" novalidate>
+					<div class="panel-body">
+						<div field-container label="Nome" invalid="form.nome.$invalid" class="form-group">
+							<input name="nome" type="text" class='form-control' ng-model="ctrl.empresa.nome" placeholder="Digite o text" />
+						</div>
+						<div field-container label="Cnpj" invalid="form.nome.$invalid" class="form-group">
+							<input name="cnpj" type="text" class='form-control' ng-model="ctrl.empresa.cnpj" required placeholder='00.000.000/0000-00' mask='99.999.999/9999-99' />
+						</div>
+						<div field-container label="Inscrição Estadual" pristine="form.inscricaoEstadual.$invalid">
+							<input name="inscricaoEstadual" type="text" class='form-control' ng-model="ctrl.empresa.inscricaoEstadual" placeholder="Digite a Inscrição Estatual." />
+						</div>
 
-    	<div field-container label="Inscrição Estadual" pristine="form.inscricaoEstadual.$invalid">
-    		<input name="inscricaoEstadual" type="text" class='form-control' ng-model="ctrl.empresa.inscricaoEstadual" placeholder="Digite a Inscrição Estatual." />
-    	</div>
+						<div field-container label="Endereço" invalid="form.endereco.$invalid">
+							<input name="endereco" type="text" class='form-control' ng-model="ctrl.empresa.endereco" placeholder="Digite o nome da Rua" required />
+						</div>
 
-    	<div field-container label="Endereço" invalid="form.endereco.$invalid">
-    		<input name="endereco" type="text" class='form-control' ng-model="ctrl.empresa.endereco" placeholder="Digite o nome da Rua" required  />
-    	</div>
+						<div field-container label="Número" invalid="form.numero.$invalid">
+							<input name="numero" type="number" class='form-control' ng-model="ctrl.empresa.numero" placeholder="Digite o número" required />
+						</div>
 
-    	<div field-container label="Número" invalid="form.numero.$invalid">
-    		<input name="numero" type="number" class='form-control' ng-model="ctrl.empresa.numero" placeholder="Digite o número" required  />
-    	</div>
+						<div field-container label="Complemento" pristine="form.complemento.$invalid">
+							<input name="complemento" type="text" class='form-control' ng-model="ctrl.empresa.complemento" placeholder="Digite o Complemento" />
+						</div>
 
-    	<div field-container label="Complemento" pristine="form.complemento.$invalid">
-    		<input name="complemento" type="text" class='form-control' ng-model="ctrl.empresa.complemento" placeholder="Digite o Complemento"/>
-    	</div>
+						<div field-container label="Cidade" invalid="form.cidade.$invalid">
+							<input name="cidade" type="text" class='form-control' ng-model="ctrl.empresa.cidade" placeholder="Digite a cidade" required />
+						</div>
 
-    	<div field-container label="Cidade" invalid="form.cidade.$invalid">
-    		<input name="cidade" type="text" class='form-control' ng-model="ctrl.empresa.cidade" placeholder="Digite a cidade" required  />
-    	</div>
+						<div field-container label="Bairro" invalid="form.bairro.$invalid">
+							<input name="bairro" type="text" class='form-control' ng-model="ctrl.empresa.bairro" placeholder="Digite o Bairro" required />
+						</div>
 
-    	<div field-container label="Bairro" invalid="form.bairro.$invalid">
-    		<input name="bairro" type="text" class='form-control' ng-model="ctrl.empresa.bairro" placeholder="Digite o Bairro" required  />
-    	</div>
+						<div field-container label="UF" invalid="form.UF.$invalid">
+							<select name="UF" class='form-control' ng-model="ctrl.empresa.UF" required>
+								<option value="">Selecione</option>
+								<option value="AC">AC</option>
+								<option value="AL">AL</option>
+								<option value="AM">AM</option>
+								<option value="AP">AP</option>
+								<option value="BA">BA</option>
+								<option value="CE">CE</option>
+								<option value="DF">DF</option>
+								<option value="ES">ES</option>
+								<option value="GO">GO</option>
+								<option value="MA">MA</option>
+								<option value="MG">MG</option>
+								<option value="MS">MS</option>
+								<option value="MT">MT</option>
+								<option value="PA">PA</option>
+								<option value="PB">PB</option>
+								<option value="PE">PE</option>
+								<option value="PI">PI</option>
+								<option value="PR">PR</option>
+								<option value="RJ">RJ</option>
+								<option value="RN">RN</option>
+								<option value="RS">RS</option>
+								<option value="RO">RO</option>
+								<option value="RR">RR</option>
+								<option value="SC">SC</option>
+								<option value="SE">SE</option>
+								<option value="SP">SP</option>
+								<option value="TO">TO</option>
+							</select>
+						</div>
 
-    	<div field-container label="UF" invalid="form.UF.$invalid">
-        <select name="UF" class='form-control' ng-model="ctrl.empresa.UF" required>
-          <option value="">Selecione</option>
-        	<option value="AC">AC</option>
-        	<option value="AL">AL</option>
-        	<option value="AM">AM</option>
-        	<option value="AP">AP</option>
-        	<option value="BA">BA</option>
-        	<option value="CE">CE</option>
-        	<option value="DF">DF</option>
-        	<option value="ES">ES</option>
-        	<option value="GO">GO</option>
-        	<option value="MA">MA</option>
-        	<option value="MG">MG</option>
-        	<option value="MS">MS</option>
-        	<option value="MT">MT</option>
-        	<option value="PA">PA</option>
-        	<option value="PB">PB</option>
-        	<option value="PE">PE</option>
-        	<option value="PI">PI</option>
-        	<option value="PR">PR</option>
-        	<option value="RJ">RJ</option>
-        	<option value="RN">RN</option>
-        	<option value="RS">RS</option>
-        	<option value="RO">RO</option>
-        	<option value="RR">RR</option>
-        	<option value="SC">SC</option>
-        	<option value="SE">SE</option>
-        	<option value="SP">SP</option>
-        	<option value="TO">TO</option>
-        </select>
-    	</div>
+						<div field-container label="CEP" invalid="form.CEP.$invalid">
+							<input name="CEP" type="text" class='form-control' ng-model="ctrl.empresa.CEP" placeholder="00.000-000" mask="99.999-999" required/>
+						</div>
 
-    	<div field-container label="CEP" invalid="form.CEP.$invalid">
-    		<input name="CEP" type="text" class='form-control' ng-model="ctrl.empresa.CEP"
-        placeholder="00.000-000" mask="99.999-999" required/>
-    	</div>
+						<div field-container label="Telefone 1" invalid="form.telefone1.$invalid">
+							<input name="telefone1" type="text" class='form-control' ng-model="ctrl.empresa.telefone1" placeholder="(000) 0000-0000" mask="(999) 9999-9999" required />
+						</div>
 
-    	<div field-container label="Telefone 1" invalid="form.telefone1.$invalid">
-    		<input name="telefone1" type="text" class='form-control' ng-model="ctrl.empresa.telefone1" placeholder="(000) 0000-0000"
-         mask="(999) 9999-9999" required />
-    	</div>
+						<div field-container label="Telefone 2" pristine="form.telefone2.$invalid">
+							<input name="telefone2" type="text" class='form-control' ng-model="ctrl.empresa.telefone2" placeholder="(000) 0000-0000" mask="(999) 9999-9999" />
+						</div>
 
-    	<div field-container label="Telefone 2" pristine="form.telefone2.$invalid">
-    		<input name="telefone2" type="text" class='form-control' ng-model="ctrl.empresa.telefone2"
-        placeholder="(000) 0000-0000" mask="(999) 9999-9999"/>
-    	</div>
+						<div field-container label="E-mail" pristine="form.email.$invalid">
+							<input name="email" type="text" class='form-control' ng-model="ctrl.empresa.email" placeholder="exemplo@exemplo.com" />
+						</div>
 
-    	<div field-container label="E-mail" pristine="form.email.$invalid">
-    		<input name="email" type="text" class='form-control' ng-model="ctrl.empresa.email"
-        placeholder="exemplo@exemplo.com"/>
-    	</div>
+						<div field-container label="Cliente" invalid="form.isCliente.$invalid">
+							<input name="isCliente" type="checkbox" class='form-control' ng-model="ctrl.empresa.isCliente" />
+						</div>
 
-    	<div field-container label="Cliente" invalid="form.isCliente.$invalid">
-        <input name="isCliente" type="checkbox" class='form-control' ng-model="ctrl.empresa.isCliente" />
-    	</div>
+						<div field-container label="Fornecedor" invalid="form.isFornecedor.$invalid">
+							<input name="isFornecedor" type="checkbox" class='form-control' ng-model="ctrl.empresa.isFornecedor" />
+						</div>
 
-    	<div field-container label="Fornecedor" invalid="form.isFornecedor.$invalid">
-        <input name="isFornecedor" type="checkbox" class='form-control' ng-model="ctrl.empresa.isFornecedor" />
-    	</div>
-
-      </div>
-      <div class="panel-footer">
-          <button crud-button="save" item="ctrl.empresa" is-disabled="form.$invalid"></button>
-          <span ng-if="ctrl.empresa.id"><button crud-button="delete" item="ctrl.empresa"></button></span>
-      </div>
-  </form>
-</div>
-</div>
-</div>
+					</div>
+					<div class="panel-footer">
+						<button crud-button="save" item="ctrl.empresa" is-disabled="form.$invalid"></button>
+						<span ng-if="ctrl.empresa.id">
+							<button crud-button="delete" item="ctrl.empresa"></button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </section>
