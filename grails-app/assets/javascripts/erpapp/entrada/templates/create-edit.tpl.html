@@ -1,35 +1,53 @@
-<div crud-breadcrumbs="{{ctrl.entrada.id ? 'edit' : 'create'}}"></div>
-<h2>
-    <span ng-hide="ctrl.entrada.id">Criar Entrada</span>
-    <span ng-show="ctrl.entrada.id">Editar Entrada</span>
-</h2>
+<section class="content-header">
+  <h1>
+    Produtos
+    <small>
+      <span ng-hide="ctrl.empresa.id">Criar transação de Entrada</span>
+      <span ng-show="ctrl.empresa.id">Editar transação de Entrada</span>
+    </small>
+  </h1>
+  <div crud-breadcrumbs="{{ctrl.entrada.id ? 'edit' : 'create'}}"></div>
+</section>
 
-<div flash-message ></div>
+<section class="content">
+  <div flash-message></div>
+  <div class="row">
+    <div class="col-lg-10">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Cadastro de transação de Entrada
+        </div>
+        <form name="form" class="form-horizontal" role="form" novalidate>
+          <div class="panel-body">
+            <div field-container label="Data Vencimento" invalid="form.data.$invalid">
+              <input name="data" type="text" class='form-control' date-field="{current-text:'Hoje'}" ng-model="ctrl.entrada.data" required />
+            </div>
 
-<form name="form" class="form-horizontal" role="form" novalidate>
+            <div field-container label="Valor" invalid="form.valor.$invalid">
+              <input name="valor" type="number" class='form-control' ng-model="ctrl.entrada.valor" required />
+            </div>
 
-	<div field-container label="Data Vencimento" invalid="form.data.$invalid">
-		<input name="data" type="text" class='form-control' date-field="{current-text:'Hoje'}" ng-model="ctrl.entrada.data" required  />
-	</div>
+            <div field-container label="Empresa" invalid="form.empresa.$invalid">
+              <select name="empresa" class="form-control" ng-model="ctrl.entrada.empresa" required ng-options="item.toText for item in ctrl.empresaList track by item.id"></select>
+            </div>
 
-	<div field-container label="Valor" invalid="form.valor.$invalid">
-		<input name="valor" type="number" class='form-control' ng-model="ctrl.entrada.valor" required  />
-	</div>
+            <div field-container label="Número Título" pristine="form.numeroTitulo.$invalid">
+              <input name="numeroTitulo" type="text" class='form-control' ng-model="ctrl.entrada.numeroTitulo" />
+            </div>
+            <div field-container label="Observação" pristine="form.observacao.$invalid">
+              <input name="observacao" type="text" class='form-control' ng-model="ctrl.entrada.observacao" />
+            </div>
+            <input type="hidden" name="tipo" ng-model="ctrl.entrada.tipo" value="R" />
 
-	<div field-container label="Empresa" invalid="form.empresa.$invalid">
-		<select name="empresa" class="form-control" ng-model="ctrl.entrada.empresa" required  ng-options="item.toText for item in ctrl.empresaList track by item.id"  ></select>
-	</div>
+            <div class="panel-footer">
+              <button crud-button="save" item="ctrl.entrada" is-disabled="form.$invalid"></button>
+              <span ng-if="ctrl.entrada.id">
+                <button crud-button="delete" item="ctrl.entrada"></button>
+              </span>
+            </div>
 
-  <div field-container label="Número Título" pristine="form.numeroTitulo.$invalid">
-    <input name="numeroTitulo" type="text" class='form-control' ng-model="ctrl.entrada.numeroTitulo" />
-  </div>
-  <div field-container label="Observação" pristine="form.observacao.$invalid">
-    <input name="observacao" type="text" class='form-control' ng-model="ctrl.entrada.observacao"/>
-  </div>
-  <input type="hidden" name="tipo" ng-model="ctrl.entrada.tipo" value="R" />
-    <div>
-        <button crud-button="save" item="ctrl.entrada" is-disabled="form.$invalid"></button>
-        <span ng-if="ctrl.entrada.id"><button crud-button="delete" item="ctrl.entrada"></button></span>
+        </form>
+        </div>
+      </div>
     </div>
-
-</form>
+</section>

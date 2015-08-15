@@ -1,26 +1,43 @@
-<div crud-breadcrumbs="show"></div>
-<h2>Exibir Empresa</h2>
-<div flash-message ></div>
+<section class="content-header">
+  <h1>
+    Empresas
+    <small>
+      <span ng-hide="ctrl.empresa.id">Exibir Empresa</span>
+    </small>
+  </h1>
+  <div crud-breadcrumbs="show"></div>
+</section>
 
-<table class="table table-bordered table-striped">
-    <tr display-field label="Nome" value="ctrl.empresa.nome"></tr>
-    <tr display-field label="Cnpj" value="ctrl.empresa.cnpj"></tr>
-    <tr display-field label="Inscrição Estadual" value="ctrl.empresa.inscricaoEstadual"></tr>
-    <tr display-field label="Endereço" value="ctrl.empresa.endereco"></tr>
-    <tr display-field label="Número" value="ctrl.empresa.numero"></tr>
-    <tr display-field label="Complemento" value="ctrl.empresa.complemento"></tr>
-    <tr display-field label="Cidade" value="ctrl.empresa.cidade"></tr>
-    <tr display-field label="Bairro" value="ctrl.empresa.bairro"></tr>
-    <tr display-field label="UF" value="ctrl.empresa.UF"></tr>
-    <tr display-field label="CEP" value="ctrl.empresa.CEP"></tr>
-    <tr display-field label="Telefone 1" value="ctrl.empresa.telefone1"></tr>
-    <tr display-field label="Telefone 2" value="ctrl.empresa.telefone2"></tr>
-    <tr display-field label="Email" value="ctrl.empresa.email"></tr>
-    <tr display-field label="Cliente" value="ctrl.empresa.isCliente"></tr>
-    <tr display-field label="Fornecedor" value="ctrl.empresa.isFornecedor"></tr>
-</table>
-
-<div class="form-actions">
-    <button crud-button="edit" item="ctrl.empresa"></button>
-    <button crud-button="delete" item="ctrl.empresa" ></button>
-</div>
+<section class="content">
+  <div flash-message></div>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Empresa: {{ctrl.empresa.nome}}
+        </div>
+        <table class="table table-bordered table-striped">
+          <tr display-field label="Nome" value="ctrl.empresa.nome"></tr>
+          <tr display-field label="Cnpj" value="ctrl.empresa.cnpj"></tr>
+          <tr display-field label="Inscrição Estadual" value="ctrl.empresa.inscricaoEstadual"></tr>
+          <tr display-field label="Endereço" value="ctrl.empresa.endereco"></tr>
+          <tr display-field label="Número" value="ctrl.empresa.numero"></tr>
+          <tr display-field label="Complemento" value="ctrl.empresa.complemento"></tr>
+          <tr display-field label="Cidade" value="ctrl.empresa.cidade"></tr>
+          <tr display-field label="Bairro" value="ctrl.empresa.bairro"></tr>
+          <tr display-field label="UF" value="ctrl.empresa.UF"></tr>
+          <tr display-field label="CEP" value="ctrl.empresa.CEP"></tr>
+          <tr display-field label="Telefone 1" value="ctrl.empresa.telefone1"></tr>
+          <tr display-field label="Telefone 2" value="ctrl.empresa.telefone2"></tr>
+          <tr display-field label="Email" value="ctrl.empresa.email"></tr>
+          <tr display-field label="Cliente" value="ctrl.empresa.isCliente"></tr>
+          <tr display-field label="Fornecedor" value="ctrl.empresa.isFornecedor"></tr>
+        </table>
+        <div class="panel-footer">
+          <button crud-button="edit" item="ctrl.empresa"></button>
+          <button crud-button="delete" item="ctrl.empresa"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

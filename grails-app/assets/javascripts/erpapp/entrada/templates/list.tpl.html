@@ -1,63 +1,74 @@
-<div crud-breadcrumbs="list"></div>
+<section class="content-header">
+	<h1>
+		Transações
+		<small>Lista de Entradas.</small>
+	</h1>
+	<div crud-breadcrumbs="list"></div>
+</section>
 
-<div class="clearfix">
-	<h2 class="pull-left">Lista de Saídas</h2>
-	<div class="pull-right"><button crud-button="create" ></button></div>
-</div>
-<div flash-message ></div>
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><i class="fa fa-filter"></i> Filtrar Lista</h3>
-  </div>
-  <div class="panel-body">
-<div class="row">
-<form class="form">
-	<div class="form-group col-md-3">
-		<label for="filter.data">Data Vencimento</label>
-		<input type="text" class='form-control' date-field ng-model="ctrl.filter.data" ng-model-options="{ debounce: 300 }"  />
-    </div>
-	<div class="form-group col-md-3">
-		<label for="filter.empresa">Empresa</label>
-		<select class="form-control" ng-model="ctrl.filter.empresaId" ng-options="item.id as item.toText for item in ctrl.empresaList" ng-model-options="{ debounce: 300 }"  ><option value="">-- Select Empresa--</option></select>
-    </div>
-	<div class="form-group col-md-3">
-		<label for="filter.numeroTitulo">Título</label>
-		<input type="text" class='form-control' ng-model="ctrl.filter.numeroTitulo" ng-model-options="{ debounce: 300 }"  />
+<section class="content">
+	<div class="clearfix">
+			<div class="pull-right">
+				<button crud-button="create"></button>
+			</div>
+	</div>
+	<div flash-message></div>
+	<br />
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="fa fa-filter"></i> Filtrar Lista</h3>
 		</div>
-</form>
-</div>
-  </div>
-</div>
+		<div class="panel-body">
+			<div class="row">
+				<form class="form">
+					<div class="form-group col-md-3">
+						<label for="filter.data">Data Vencimento</label>
+						<input type="text" class='form-control' date-field ng-model="ctrl.filter.data" ng-model-options="{ debounce: 300 }" />
+					</div>
+					<div class="form-group col-md-3">
+						<label for="filter.empresa">Empresa</label>
+						<select class="form-control" ng-model="ctrl.filter.empresaId" ng-options="item.id as item.toText for item in ctrl.empresaList" ng-model-options="{ debounce: 300 }">
+							<option value="">-- Select Empresa--</option>
+						</select>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="filter.numeroTitulo">Título</label>
+						<input type="text" class='form-control' ng-model="ctrl.filter.numeroTitulo" ng-model-options="{ debounce: 300 }" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-<table id="list" class="table table-striped table-bordered table-hover">
+	<div class="panel-footer">
+		<table id="list" class="table table-striped table-bordered table-hover">
 
-    <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
-        <th sortable-column title="Id" property="id"></th>
+			<thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
+				<th sortable-column title="Id" property="id"></th>
 				<th sortable-column title="Data Vencimento" property="data"></th>
 				<th sortable-column title="Valor" property="valor"></th>
 				<th sortable-column title="Empresa" property="empresa"></th>
 				<th sortable-column title="Nº. Título" property="numeroTitulo"></th>
 				<th sortable-column title="observação" property="observacao"></th>
-        <th>&nbsp;</th>
-    </thead>
-    <tbody>
-        <tr class="animate-repeat" ng-repeat="item in ctrl.entradaList">
-            <td><a href="#/show/{{item.id}}">{{item.id}}</a></td>
-			<td>{{ item.data | date: 'dd/MM/yyyy' }}</td>
-			<td>{{ item.valor | currency }}</td>
-			<td>{{ item.empresa.toText }}</td>
-			<td>{{ item.numeroTitulo }}</td>
-			<td>{{ item.observacao }}</td>
-            <td>
-                <button crud-button="edit" item="item" ></button>
-                <button crud-button="delete" item="item" after-action="ctrl.reload()"></button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+				<th>&nbsp;</th>
+			</thead>
+			<tbody>
+				<tr class="animate-repeat" ng-repeat="item in ctrl.entradaList">
+					<td><a href="#/show/{{item.id}}">{{item.id}}</a></td>
+					<td>{{ item.data | date: 'dd/MM/yyyy' }}</td>
+					<td>{{ item.valor | currency }}</td>
+					<td>{{ item.empresa.toText }}</td>
+					<td>{{ item.numeroTitulo }}</td>
+					<td>{{ item.observacao }}</td>
+					<td>
+						<button crud-button="edit" item="item"></button>
+						<button crud-button="delete" item="item" after-action="ctrl.reload()"></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 
-<div pagination total-items="ctrl.entradaList.getTotalCount()"
-	items-per-page="ctrl.pageSize" ng-model="ctrl.page" ng-change="ctrl.load()"
-	next-text="Próxima" previous-text="Anterior" first-text="Primeira" last-text="Última">
-</div>
+		<div pagination total-items="ctrl.entradaList.getTotalCount()" items-per-page="ctrl.pageSize" ng-model="ctrl.page" ng-change="ctrl.load()" next-text="Próxima" previous-text="Anterior" first-text="Primeira" last-text="Última">
+		</div>
+	</div>
+</section>

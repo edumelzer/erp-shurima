@@ -1,16 +1,34 @@
-<div crud-breadcrumbs="show"></div>
-<h2>Exibir Transacao</h2>
-<div flash-message ></div>
+<section class="content-header">
+  <h1>
+    Transações
+    <small>
+      <span ng-hide="ctrl.empresa.id">Exibir Transação</span>
+    </small>
+  </h1>
+  <div crud-breadcrumbs="show"></div>
+</section>
 
-<table class="table table-bordered table-striped">
-    <tr display-field label="Data" value="ctrl.entrada.data | date: 'dd/MM/yyyy'"></tr>
-    <tr display-field label="Valor" value="ctrl.entrada.valor | currency"></tr>
-    <tr display-field label="Empresa" value="ctrl.entrada.empresa.toText"></tr>
-    <tr display-field label="Número Título" value="ctrl.entrada.numeroTitulo"></tr>
-    <tr display-field label="Observação" value="ctrl.entrada.observacao"></tr>
-</table>
+<section class="content">
+  <div flash-message></div>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Transação
+        </div>
+        <table class="table table-bordered table-striped">
+          <tr display-field label="Data" value="ctrl.entrada.data | date: 'dd/MM/yyyy'"></tr>
+          <tr display-field label="Valor" value="ctrl.entrada.valor | currency"></tr>
+          <tr display-field label="Empresa" value="ctrl.entrada.empresa.toText"></tr>
+          <tr display-field label="Número Título" value="ctrl.entrada.numeroTitulo"></tr>
+          <tr display-field label="Observação" value="ctrl.entrada.observacao"></tr>
+        </table>
 
-<div class="form-actions">
-    <button crud-button="edit" item="ctrl.entrada"></button>
-    <button crud-button="delete" item="ctrl.entrada" ></button>
-</div>
+        <div class="panel-footer">
+          <button crud-button="edit" item="ctrl.entrada"></button>
+          <button crud-button="delete" item="ctrl.entrada"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
