@@ -38,15 +38,14 @@
               <input name="observacao" type="text" class='form-control' ng-model="ctrl.transacao.observacao" />
             </div>
             <input type="hidden" name="tipo" ng-model="ctrl.transacao.tipo" value="P" />
-
-            <div class="panel-footer">
-              <button crud-button="save" item="ctrl.transacao" is-disabled="form.$invalid"></button>
-              <span ng-if="ctrl.transacao.id">
-                <button crud-button="delete" item="ctrl.transacao"></button>
-              </span>
-            </div>
           </div>
         </form>
+        <div class="panel-footer">
+          <button crud-button="save" item="ctrl.transacao" is-disabled="form.$invalid"></button>
+          <span ng-if="ctrl.transacao.id">
+            <button crud-button="delete" item="ctrl.transacao"></button>
+          </span>
+        </div>
       </div>
     </div>
   </div>

@@ -8,9 +8,9 @@
   <br/>
 <h1> Relatório de contas a receber. </h1>
 <g:jasperReport
-          jasper="Financeiro"
+          jasper="Contas_a_receber"
           format="PDF"
-          name="Financeiro"> <br/>
+          name="Contas a receber"> <br/>
     Data Inicial: <g:datePicker name="data_inicial" value="${new Date()}"precision="day" years="${1930..2018}"/>
     Data Final: <g:datePicker name="data_final" value="${new Date()}"precision="day" years="${1930..2018}"/>
 </g:jasperReport>

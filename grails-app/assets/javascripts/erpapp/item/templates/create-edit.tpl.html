@@ -44,14 +44,14 @@
 							<input name="unidade" type="text" class='form-control' ng-model="ctrl.item.unidade" required />
 						</div>
 
-						<div class="panel-footer">
-							<button crud-button="save" item="ctrl.item" is-disabled="form.$invalid"></button>
-							<span ng-if="ctrl.item.id">
-								<button crud-button="delete" item="ctrl.item"></button>
-							</span>
-						</div>
 					</div>
 				</form>
+				<div class="panel-footer">
+					<button crud-button="save" item="ctrl.item" is-disabled="form.$invalid"></button>
+					<span ng-if="ctrl.item.id">
+						<button crud-button="delete" item="ctrl.item"></button>
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>

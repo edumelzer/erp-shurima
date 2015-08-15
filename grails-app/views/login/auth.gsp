@@ -12,11 +12,6 @@
 		ShurimaERP
 		<small>Efetue login para continuar utilizando o sistema.</small>
 	</h1>
-	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Login</a></li>
-		<li >Sub-Nível</li>
-		<li class="active">Também vou arrumar depois</li>
-	</ol>
 </section>
 
 <!-- Main content -->
