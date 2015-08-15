@@ -18,9 +18,9 @@ function ListCtrl($scope, EmpresaResource, empresaList, pageSize) {
         if (self.sort) {
             angular.extend(params, self.sort);
         }
-		if (self.filter) {
-			params.filter = self.filter
-		}
+  		if (self.filter) {
+  			params.filter = self.filter
+  		}
 
         EmpresaResource.list(params).then(function(items) {
             self.empresaList = items;

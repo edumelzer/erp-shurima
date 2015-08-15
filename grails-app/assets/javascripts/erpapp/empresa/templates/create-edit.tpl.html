@@ -1,14 +1,17 @@
 <!-- <div crud-breadcrumbs="{{ctrl.empresa.id ? 'edit' : 'create'}}"></div> -->
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-          <span ng-hide="ctrl.empresa.id">Criar Empresa</span>
-          <span ng-show="ctrl.empresa.id">Editar Empresa</span>
-        </h1>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Empresas
+		<small>
+      <span ng-hide="ctrl.empresa.id">Cadastrar Empresa</span>
+      <span ng-show="ctrl.empresa.id">Editar Empresa</span>
+    </small>
+	</h1>
+	<div crud-breadcrumbs="{{ctrl.empresa.id ? 'edit' : 'create'}}"></div>
+</section>
 
+<section class="content">
 <div flash-message ></div>
 <div class="row">
     <div class="col-lg-8">
@@ -21,11 +24,7 @@
     <div class="panel-body">
     	<div field-container label="Nome" invalid="form.nome.$invalid" class="form-group">
     		<input name="nome" type="text" class='form-control' ng-model="ctrl.empresa.nome"
-            placeholder="Digite o Nome" required  />
-    	</div>
-
-    	<div field-container label="Cnpj" invalid="form.cnpj.$invalid">
-    		<input name="cnpj" type="text" class='form-control' ng-model="ctrl.empresa.cnpj"
+            placeholder="Digite o "text" class='form-control' ng-model="ctrl.empresa.cnpj"
             required placeholder='00.000.000/0000-00' mask='99.999.999/9999-99'/>
     	</div>
 
@@ -123,3 +122,4 @@
 </div>
 </div>
 </div>
+</section>

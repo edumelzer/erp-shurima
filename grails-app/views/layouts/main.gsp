@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-md-12">
 
                 <div class="animate-view" ng-view></div>
-                <g:layoutBody/>
+                <grailsx:layoutBody/>
             </div>
         </div>
     </div>
@@ -279,26 +279,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Título da Página
-            <small>Não reclama que vou arrumar depois.</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Nível</a></li>
-            <li >Sub-Nível</li>
-            <li class="active">Também vou arrumar depois</li>
-          </ol>
+
+        <!-- Your Page Content Here -->
+        <section class="content">
+        <div class="row" ng-view></div>
+        <g:layoutBody/>
         </section>
 
-        <!-- Main content -->
-        <section class="content">
-
-          <!-- Your Page Content Here -->
-          <div class="row" ng-view></div>
-          <g:layoutBody/>
-        </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
       <!-- Main Footer -->

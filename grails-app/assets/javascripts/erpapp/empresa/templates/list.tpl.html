@@ -1,9 +1,24 @@
-<div crud-breadcrumbs="list"></div>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Empresas
+		<small>Relação de Empresas cadastradas.</small>
+	</h1>
+	<!--<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Login</a></li>
+		<li >Sub-Nível</li>
+		<li class="active">Também vou arrumar depois</li>
+	</ol>-->
+	<div crud-breadcrumbs="list"></div>
+</section>
+
+<section class="content">
 
 <div class="clearfix">
-	<h2 class="pull-left">Lista de Empresas</h2>
+	<!--<h2 class="pull-left">Lista de Empresas</h2>-->
 	<div class="pull-right"><button crud-button="create" ></button></div>
 </div>
+
 <div flash-message ></div>
 
 <div class="panel panel-default">
@@ -63,3 +78,4 @@
 	items-per-page="ctrl.pageSize" ng-model="ctrl.page" ng-change="ctrl.load()"
 	next-text="Próxima" previous-text="Anterior" first-text="Primeira" last-text="Última">
 </div>
+</section>
