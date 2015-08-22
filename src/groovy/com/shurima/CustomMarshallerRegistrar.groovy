@@ -11,6 +11,7 @@ class CustomMarshallerRegistrar {
 			map['id'] = it?.id
 			map['username'] = it?.username
 			map['password'] = it?.password
+      map['tipoUsuario'] = it?.tipoUsuario
 	    	map['toText'] = it?.toString()
 			return map
 		}
@@ -34,7 +35,7 @@ class CustomMarshallerRegistrar {
 			map['valor2'] = it?.valor2
 			map['valor3'] = it?.valor3
 			map['unidade'] = it?.unidade
-      map['toText'] = it?.toString()
+        map['toText'] = it?.toString()
     return map
     }
 
@@ -49,7 +50,7 @@ class CustomMarshallerRegistrar {
 			map['tipo'] = it?.tipo
       map['numeroTitulo']=it?.numeroTitulo
       map['observacao']=it?.observacao
-	    map['toText'] = it?.toString()
+	     map['toText'] = it?.toString()
 			return map
 		}
 

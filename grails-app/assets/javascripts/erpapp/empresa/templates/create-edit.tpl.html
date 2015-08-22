@@ -99,12 +99,21 @@
 							<input name="email" type="text" class='form-control' ng-model="ctrl.empresa.email" placeholder="exemplo@exemplo.com" />
 						</div>
 
-						<div field-container label="Cliente" invalid="form.isCliente.$invalid">
-							<input name="isCliente" type="checkbox" class='form-control' ng-model="ctrl.empresa.isCliente" />
-						</div>
-
-						<div field-container label="Fornecedor" invalid="form.isFornecedor.$invalid">
-							<input name="isFornecedor" type="checkbox" class='form-control' ng-model="ctrl.empresa.isFornecedor" />
+						<div class="form-inline">
+							<div class="col-sm-offset-2 col-sm-20 col-md-6">
+								<div class="form-group">
+									<label>
+										<input name="isCliente" type="checkbox" ng-model="ctrl.empresa.isCliente" /> Cliente
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-offset-2 ol-sm-10 col-md-6">
+								<div class="form-group">
+									<label>
+										<input name="isFornecedor" type="checkbox" ng-model="ctrl.empresa.isFornecedor" /> Fornecedor
+									</label>
+								</div>
+							</div>
 						</div>
 
 					</div>

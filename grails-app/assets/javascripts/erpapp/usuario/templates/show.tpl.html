@@ -1,12 +1,34 @@
-<div crud-breadcrumbs="show"></div>
-<h2>Exibir Usuario</h2>
-<div flash-message ></div>
+<section class="content-header">
+  <h1>
+    Empresas
+    <small>
+      <span ng-hide="ctrl.empresa.id">Exibir Usuário</span>
+    </small>
+  </h1>
+  <div crud-breadcrumbs="show"></div>
+</section>
 
-<table class="table table-bordered table-striped">
-    <tr display-field label="Usuário" value="ctrl.usuario.username"></tr>
-</table>
+<section class="content">
+  <div flash-message></div>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <table class="table table-bordered table-striped">
+            <tr display-field label="Usuário" value="ctrl.usuario.username"></tr>
+            <tr display-field label="Tipo Usuário" value="ctrl.usuario.tipoUsuario == 'E' ? 'Estoque'
+                                                        : ctrl.usuario.tipoUsuario == 'R' ? 'Contas à receber'
+                                                        : ctrl.usuario.tipoUsuario == 'P' ? 'Contas à Pagar'
+                                                        : ctrl.usuario.tipoUsuario == 'A' ? 'Administrador'
+                                                        : null;">
+            </tr>
+          </table>
 
-<div class="form-actions">
-    <button crud-button="edit" item="ctrl.usuario"></button>
-    <button crud-button="delete" item="ctrl.usuario" ></button>
-</div>
+          <div class="panel-footer">
+            <button crud-button="edit" item="ctrl.usuario"></button>
+            <button crud-button="delete" item="ctrl.usuario"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
