@@ -241,12 +241,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <g:link uri="/empresa#/"><i class="fa fa-edit"></i> Cadastro de Empresas</g:link>
             </li>
 
-            <li>
-              <g:link uri="/item#/"><i class="fa fa-edit"></i> Cadastro de Produtos</g:link>
-            </li>
-
-            <li>
-              <g:link uri="/grupo/"><i class="fa fa-edit"></i> Grupos de Produtos</g:link>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-edit"></i>
+                <span>Produtos</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li>
+                    <g:link uri="/item#/">Cadastro de Produtos</g:link>
+                </li>
+                <li>
+                    <g:link uri="/grupo/">Cadastrod e Grupos</g:link>
+                </li>
+              </ul>
             </li>
 
             <sec:ifAnyGranted roles="ROLE_ADMIN">
