@@ -26,4 +26,17 @@ class GrupoController {
     redirect(action: 'index')
   }
 
+  def getItems(Long id) {
+    println "Recuperando itens associados ao Grupo"
+
+    List items = Item.createCriteria().list {
+
+    }
+
+    render(contentType: "text/json") {
+      [success: true, items: items]
+    }
+
+  }
+
 }
