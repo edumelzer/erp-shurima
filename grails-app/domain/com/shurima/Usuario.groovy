@@ -2,37 +2,37 @@ package com.shurima
 
 class Usuario {
 
-  transient springSecurityService
+    transient springSecurityService
 
-  String username
-  String password
-  String tipoUsuario
-  boolean enabled
-	boolean accountExpired
-	boolean accountLocked
-	boolean passwordExpired
+    String username
+    String password
+    String tipoUsuario
+    boolean enabled
+    boolean accountExpired
+    boolean accountLocked
+    boolean passwordExpired
 
   static constraints = {
     username blank: false, unique: true
-		password blank: false
+        password blank: false
     enabled defaultValue: true
   }
 
   Set<Role> getAuthorities() {
-		UserRole.findAllByUser(this).collect { it.role } as Set
-	}
+        UserRole.findAllByUser(this).collect { it.role } as Set
+    }
 
   def beforeInsert() {
-		encodePassword()
+        encodePassword()
     enabled = true
-	}
-	def beforeUpdate() {
-		if (isDirty('password')) {
-			encodePassword()
-		}
-	}
-	protected void encodePassword() {
-		password = springSecurityService.encodePassword(password)
-	}
+    }
+    def beforeUpdate() {
+        if (isDirty('password')) {
+            encodePassword()
+        }
+    }
+    protected void encodePassword() {
+        password = springSecurityService.encodePassword(password)
+    }
 
 }

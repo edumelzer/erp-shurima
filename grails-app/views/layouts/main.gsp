@@ -252,7 +252,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <g:link uri="/item#/">Cadastro de Produtos</g:link>
                 </li>
                 <li>
-                    <g:link uri="/grupo/">Cadastrod e Grupos</g:link>
+                    <g:link uri="/grupo/">Cadastro de Grupos</g:link>
                 </li>
               </ul>
             </li>
