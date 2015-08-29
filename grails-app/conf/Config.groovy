@@ -118,7 +118,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
   '/entrada/**':                    ['ROLE_ADMIN', 'ROLE_CONTASRECEBER'],
   '/item/**':                       ['ROLE_ADMIN'],
   '/usuario/**':                    ['ROLE_ADMIN'],
-  '/grupo/**':                      ['ROLE_ADMIN']
+  '/grupo/**':                      ['ROLE_ADMIN'],
+  '/ordem/**':                      ['ROLE_ADMIN']
 ]
 
 grails.plugin.springsecurity.rest.login.useJsonCredentials = true
