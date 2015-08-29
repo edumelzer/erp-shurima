@@ -100,9 +100,9 @@ grails.plugin.springsecurity.authority.className = 'com.shurima.Role'
         '/**':           ['IS_AUTHENTICATED_FULLY']
 ]*/
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
+	'/':                              ['IS_AUTHENTICATED_FULLY'],
+	'/index':                         ['IS_AUTHENTICATED_FULLY'],
+	'/index.gsp':                     ['IS_AUTHENTICATED_FULLY'],
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
@@ -116,9 +116,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
   '/jasper/**':                     ['ROLE_ADMIN'],
   '/transacao/**':                  ['ROLE_ADMIN', 'ROLE_CONTASPAGAR'], //ROLE_ESTOQUE
   '/entrada/**':                    ['ROLE_ADMIN', 'ROLE_CONTASRECEBER'],
-  '/item/**':                       ['ROLE_ADMIN'],
+  '/item/**':                       ['ROLE_ADMIN', 'ROLE_ESTOQUE'],
   '/usuario/**':                    ['ROLE_ADMIN'],
-  '/grupo/**':                      ['ROLE_ADMIN'],
+  '/grupo/**':                      ['ROLE_ADMIN', 'ROLE_ESTOQUE'],
   '/ordem/**':                      ['ROLE_ADMIN']
 ]
 
