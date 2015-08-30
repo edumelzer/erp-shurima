@@ -1,21 +1,20 @@
 import org.grails.gradle.plugin.tasks.GrailsTask
 
 buildscript {
-	repositories {
-		jcenter()
-
-	}
-	dependencies {
-		classpath 'org.grails:grails-gradle-plugin:2.1.2'
-		classpath 'com.moowork.gradle:gradle-node-plugin:0.6'
-	}
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.grails:grails-gradle-plugin:2.1.2'
+        classpath 'com.moowork.gradle:gradle-node-plugin:0.6'
+    }
 }
 
 project.ext {
-	warFile = file("target/${project.warName}")
-	jasmineDependencies = ['karma', 'karma-jasmine@2_0', 'karma-phantomjs-launcher']
-	karmaExec = file('node_modules/karma/bin/karma')
-	karmaConfig = 'test/js/karma.conf.js'
+    warFile = file("target/${project.warName}")
+    jasmineDependencies = ['karma', 'karma-jasmine@2_0', 'karma-phantomjs-launcher']
+    karmaExec = file('node_modules/karma/bin/karma')
+    karmaConfig = 'test/js/karma.conf.js'
 }
 
 apply plugin: 'grails'
@@ -25,16 +24,14 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 repositories {
-	grails.central()
+    grails.central()
     flatDir {
         dirs 'lib'
     }
-		maven {
-			url "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/"
-		}/*
-		maven {
-			url "http://jasperreports.sourceforge.net/maven2/"
-		}*/
+    maven {
+        url "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/"
+    }
+    //maven { url "http://jasperreports.sourceforge.net/maven2/" }
 }
 
 task wrapper(type: Wrapper) {
@@ -42,106 +39,106 @@ task wrapper(type: Wrapper) {
 }
 
 grails {
-	grailsVersion = '2.5.0'
-	groovyVersion = '2.4.3'
+    grailsVersion = '2.5.0'
+    groovyVersion = '2.4.3'
 }
 
 node {
-	version = '0.11.13'
-	distBaseUrl = 'http://nodejs.org/dist'
-	download = true
-	workDir = file("${project.buildDir}/nodejs")
+    version = '0.11.13'
+    distBaseUrl = 'http://nodejs.org/dist'
+    download = true
+    workDir = file("${project.buildDir}/nodejs")
 }
 
 clean {
-	delete warFile
-	delete file('node_modules')
+    delete warFile
+    delete file('node_modules')
 }
 
 war {
-	outputFile = warFile
-	env = 'production'
+    outputFile = warFile
+    env = 'production'
 }
 
 task debug(type: GrailsTask) {
-        command = 'run-app'
-        jvmOptions {
-                jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,address=5005'
-        }
+    command = 'run-app'
+    jvmOptions {
+        jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,address=5005'
+    }
 }
 
 tasks.withType(GrailsTask) {
-	jvmOptions {
-		minHeapSize = '1g'
-		maxHeapSize = '1g'
-		jvmArgs "-XX:MaxPermSize=512m"
-	}
+    jvmOptions {
+        minHeapSize = '1g'
+        maxHeapSize = '1g'
+        jvmArgs '-Ddisable.auto.recompile=true', '-XX:MaxPermSize=512m'
+    }
 }
 
 task setupPhantomJS(type: NpmTask) {
-	outputs.dir file('node_modules')
-	args = ['install', 'phantomjs', '--loglevel', 'error']
+    outputs.dir file('node_modules')
+    args = ['install', 'phantomjs', '--loglevel', 'error']
 }
 
 task setupJasmine(type: NpmTask) {
-	outputs.dir file('node_modules')
-	args = ['install'] + jasmineDependencies + ['--loglevel', 'error']
+    outputs.dir file('node_modules')
+    args = ['install'] + jasmineDependencies + ['--loglevel', 'error']
 }
 
 task jasmineRun(type: NodeTask, dependsOn: ['setupPhantomJS', 'setupJasmine']) {
-	script = karmaExec
-	args = ['start', karmaConfig, '--single-run']
+    script = karmaExec
+    args = ['start', karmaConfig, '--single-run']
 }
 
 task jasmineWatch(type: NodeTask, dependsOn: 'setupJasmine') {
-        script = karmaExec
-        args = ['start', karmaConfig]
+    script = karmaExec
+    args = ['start', karmaConfig]
 }
 
 test.dependsOn jasmineRun
 
 dependencies {
-	springloaded 'org.springframework:springloaded:1.2.3.RELEASE@jar'
+    springloaded 'org.springframework:springloaded:1.2.3.RELEASE@jar'
 
-  	String gebVersion = '0.9.2'
-	String seleniumVersion = '2.43.1'
+      String gebVersion = '0.9.2'
+    String seleniumVersion = '2.43.1'
 
-	test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
-	test "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
-	test "org.gebish:geb-spock:$gebVersion"
-  runtime "postgresql:postgresql:9.1-901.jdbc4"
-	//compile 'net.sf.jasperreports:jasperreports:6.1.0'
+    test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
+    test "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
+    test "org.gebish:geb-spock:$gebVersion"
+      runtime "postgresql:postgresql:9.1-901.jdbc4"
+    //compile 'net.sf.jasperreports:jasperreports:6.1.0'
 
-	test("com.github.detro.ghostdriver:phantomjsdriver:1.1.0") {
-		transitive = false
-	}
+    test("com.github.detro.ghostdriver:phantomjsdriver:1.1.0") {
+        transitive = false
+    }
 
-	def plugins = [
-		[name: 'tomcat', version: '7.0.55.2', scope: 'bootstrap'],
-		[name: 'scaffolding', version: '2.1.2'],
-		[name: 'cache', version: '1.1.8'],
-		[name: 'asset-pipeline', version: '2.2.0'],
-		[name: 'angular-template-asset-pipeline', version: '2.1.0'],
-		[name: 'angular-annotate-asset-pipeline', version: '2.1.0'],
-		[name: 'spring-security-core', version: '2.0-RC5'],
-		//[name: 'jasper', version: '1.11.0'],
-		[name: 'geb', version: gebVersion, scope: 'test']
-	]
+    def plugins = [
+        [name: 'tomcat', version: '7.0.55.2', scope: 'bootstrap'],
+        [name: 'scaffolding', version: '2.1.2'],
+        [name: 'cache', version: '1.1.8'],
+        [name: 'asset-pipeline', version: '2.2.0'],
+        [name: 'angular-template-asset-pipeline', version: '2.1.0'],
+        [name: 'angular-annotate-asset-pipeline', version: '2.1.0'],
+        [name: 'spring-security-core', version: '2.0-RC5'],
+        //[name: 'jasper', version: '1.11.0'],
+        [name: 'geb', version: gebVersion, scope: 'test']
+    ]
 
-	plugins.each { plugin ->
-		String scope = plugin.scope ?: 'compile'
-		owner."$scope" "org.grails.plugins:${plugin.name}:${plugin.version}"
-	}
+    plugins.each { plugin ->
+        String scope = plugin.scope ?: 'compile'
+        owner."$scope" "org.grails.plugins:${plugin.name}:${plugin.version}"
+    }
 
-	compile('org.grails.plugins:jasper:1.11.0') {
-    		exclude module: 'xml-apis'
-	}
-	/*compile('org.grails.plugins:jasper:1.11.0') {
-		exclude module: 'xml-apis'
-	}*/
+    compile('org.grails.plugins:jasper:1.11.0') {
+        exclude module: 'xml-apis'
+    }
+    /*compile('org.grails.plugins:jasper:1.11.0') {
+        exclude module: 'xml-apis'
+    }*/
 
-	runtime('org.grails.plugins:hibernate4:4.3.8.1') {
-    		exclude module: 'xml-apis'
-	}
+    runtime('org.grails.plugins:hibernate4:4.3.8.1') {
+        exclude module: 'xml-apis'
+    }
 
 }

@@ -64,26 +64,40 @@
                             <div class="form-group">
                               <label class="col-sm-2 control-label" for="inputDescricao">Descrição</label>
                               <div class="col-sm-10">
-                                <g:textField class="form-control" id="inputDescricao" name="descricao" placeholder="Descrição do grupo"/>
+
+                                <g:textField class="form-control"
+                                    value="${grupin?.descricao}"
+                                    name="descricao"
+                                    placeholder="Descrição do grupo"/>
+
                               </div>
                             </div>
                             <div class="form-group">
                               <label class="col-sm-2 control-label" for="inputValor1">Valor 1</label>
                               <div class="col-sm-10">
-                                <g:textField class="form-control" id="inputValor1" name="valor1" placeholder="Valor 1"/>
+                                <g:textField class="form-control"
+                                    value="${grupin?.valor1}"
+                                    name="valor1"
+                                    placeholder="Valor 1"/>
                               </div>
                             </div>
 
                             <div class="form-group">
                               <label class="col-sm-2 control-label" for="inputValor2">Valor 2</label>
                               <div class="col-sm-10">
-                                <g:textField class="form-control" id="inputValor2" name="valor2" placeholder="Valor 2"/>
+                                <g:textField class="form-control"
+                                    value="${grupin?.valor2}"
+                                    name="valor2"
+                                    placeholder="Valor 2"/>
                               </div>
                             </div>
                             <div class="form-group">
                               <label class="col-sm-2 control-label" for="inputValor1">Valor 3</label>
                               <div class="col-sm-10">
-                                <g:textField class="form-control" id="inputValor3" name="valor3" placeholder="Valor 3"/>
+                                <g:textField class="form-control"
+                                    value="${grupin?.valor3}"
+                                    name="valor3"
+                                    placeholder="Valor 3"/>
                               </div>
                             </div>
 
@@ -102,7 +116,69 @@
 
                       </div><!-- /.tab-pane -->
                       <div class="tab-pane" id="tab_2">
-                        Listinha dos produtos adicionados, e opção pro cara poder adicionar mais. u.u
+
+                          <div class="box-header">
+                            <h3 class="box-title">Lista de Produtos associados ao grupo</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="items" class="table table-bordered table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Produto</th>
+                                  <th>Quantidade</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                                <tr>
+                                  <td>Vasinho de cagar</td>
+                                  <td>10</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div><!-- /.box-body -->
+
+
+
                       </div><!-- /.tab-pane -->
                     </div><!-- /.tab-content -->
                   </div><!-- nav-tabs-custom -->
