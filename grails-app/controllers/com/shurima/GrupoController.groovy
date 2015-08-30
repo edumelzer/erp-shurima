@@ -13,16 +13,26 @@ class GrupoController {
     def create() {
         println "mimis"
         println "loles"
+        println params
         Grupo grupin = new Grupo()
         grupin.properties = params
-        def gitem = new GrupoItem(grupo: grupin, item: Item.list()[0])
 
-        grupin.items = [gitem]
+        /*def gitem = new GrupoItem(grupo: grupin, item: Item.list()[0])
+
+        grupin.items = [gitem]*/
 
         println "mimis?"
         println grupin.items
 
-        return [grupin: grupin]
+        List items = GrupoItem.createCriteria().list {
+            'grupo' {
+                'eq' 'id', grupin?.id
+            }
+        }
+
+        List produtosList = Item.list()
+
+        return [grupin: grupin, items: items, produtosList: produtosList]
     }
 
     def save() {
