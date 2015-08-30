@@ -11,7 +11,7 @@ class GrupoController {
     }
 
     def create() {
-        println "mimis"
+        println "mimisx"
         println "loles"
         println params
         Grupo grupin = new Grupo()

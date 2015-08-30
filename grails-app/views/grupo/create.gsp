@@ -4,48 +4,10 @@
   <head>
     <meta content="maingrails" name="layout"/>
     <title>Shurima ERP</title>
-
-    <script type="text/javascript">
-        function addProduto() {
-            console.log("ADIONA ISSO AE OU TA DIFICIL?");
-        }
-    </script>
-
+    <script type="text/javascript" src="${resource(dir: 'plugin', file: 'datatables/dataTables.bootstrap.min.js')}" ></script>
   </head>
 
   <body>
-
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Selecione o Produto e a quantidade</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                  <label>Produto</label>
-
-                  <select class="form-control" id="inputProduto">
-                    <g:each in="${produtosList}" var="prod">
-                     <option value="${prod.id}">${prod.nome}</option>
-                    </g:each>
-                  </select>
-
-                </div>
-                <div class="form-group">
-                  <label for="inputQuantidade">Quantidade</label>
-                  <input type="text" class="form-control" id="inputQuantidade" value="1" placeholder="Digite a quantidade">
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-save-produto">Adicionar</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -70,6 +32,39 @@
 <!-- Main content -->
       <section class="content">
 
+
+          <!-- Modal -->
+          <div class="modal modal-primary" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modaml-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Selecione o Produto e a quantidade</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                      <label>Produto</label>
+
+                      <select class="form-control" id="inputProduto">
+                        <g:each in="${produtosList}" var="prod">
+                         <option value="${prod.id}">${prod.nome}</option>
+                        </g:each>
+                      </select>
+
+                    </div>
+                    <div class="form-group">
+                      <label for="inputQuantidade">Quantidade</label>
+                      <input type="text" class="form-control" id="inputQuantidade" value="1" placeholder="Digite a quantidade">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                  <button type="button" class="btn btn-primary" id="btn-save-produto">Adicionar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
 <!-- Horizontal Form -->
         <div class="box box-info">
           <div class="box-header with-border">
@@ -81,22 +76,11 @@
           <g:form action="save" class="form-horizontal">
             <div class="box-body">
 
-
               <div class="col-md-12">
                   <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                       <li class="active"><a href="#tab_1" data-toggle="tab">Informações Báscias</a></li>
                       <li><a href="#tab_2" data-toggle="tab">Produtos</a></li>
-                      <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                          Opções <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li role="presentation"><a role="menuitem" tabindex="-1" >Adicionar Produto</a></li>
-                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Remover Produto</a></li>
-                        </ul>
-                      </li>
-                      <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -212,30 +196,36 @@
 <!-- /.content -->
     </div>
 <!-- /.content-wrapper -->
-
     <script type="text/javascript">
 
         $(function () {
 
-            $("#btn-add-produto").click(function(){
-                console.log("Esse choro aqui é livre!")
+            var t = $('#items').DataTable({
+                bFilter: false,
+                bPaginate: false,
+                bInfo: false,
+                oLanguage: {
+                    sZeroRecords: "Sem registros a serem exibidos"
+                }
             });
 
             $("#btn-save-produto").click(function() {
-                console.log("Não vai subir ninguém!");
-                console.log($("#inputProduto").val());
-                console.log($("#inputQuantidade").val());
-                console.log($("#inputProduto").find(":selected").text());
-            });
+                var inputProduto = $("#inputProduto"),
+                    inputQuantidade = $("#inputQuantidade");
 
-            $('#myModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget); // Button that triggered the modal
-                var recipient = button.data('whatever'); // Extract info from data-* attributes
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                //var modal = $(this)
-                //modal.find('.modal-title').text('New message to ' + recipient)
-                //modal.find('.modal-body input').val(recipient)
+                if (isNaN(inputQuantidade.val())) {
+                    alert("Quantidade não é um número válido!");
+                } else {
+                    t.row.add([
+                        $("#inputProduto").val(),
+                        $("#inputProduto").find(":selected").text(),
+                        $("#inputQuantidade").val(),
+                        '<input type="checkbox"> Marcar para Remover</input>'
+                    ]).draw();
+
+                    $("#myModal").modal('hide');
+                }
+
             });
 
             //$("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});

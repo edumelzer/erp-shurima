@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-This is a starter template page. Use this page to start your new project from
+This is a starterXX template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="pt_BR">
@@ -19,7 +19,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />-->
 
     <!-- Theme style -->
-    <asset:stylesheet src="application2.css"/>
+
+    <g:each in="[
+        'bootstrap/css/bootstrap.min.css',
+        'font-awesome/css/font-awesome.min.css',
+        'ionicons/css/ionicons.min.css',
+        'adminlte/css/AdminLTE.min.css',
+        'adminlte/css/skins/_all-skins.min.css']"
+        var="fileToLoad">
+        <link rel="stylesheet" href="${resource(dir: 'plugin', file: fileToLoad)}" />
+    </g:each>
+
+    <!--<script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.dataTables.min.js')}" ></script>-->
+    <g:each in="[
+        'jquery/jquery.min.js',
+        'bootstrap/js/bootstrap.min.js',
+        'fastclick/fastclick.min.js',
+        'adminlte/js/app.min.js',
+        'datatables/jquery.dataTables.min.js'
+        ]"
+        var="fileToLoad">
+        <script type="text/javascript" src="${resource(dir: 'plugin', file: fileToLoad)}" ></script>
+    </g:each>
+
     <!--<link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />-->
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
@@ -57,26 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!--<body class="skin-blue sidebar-mini">-->
   <body class="skin-blue sidebar-mini" id="ng-app" ng-app="${pageProperty(name: 'body.ng-app') ?: 'grails'}">
 
-    <!-- Conteudo que chegava do Grails XD
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-md-12">
-
-                <div class="animate-view" ng-view></div>
-                <grailsx:layoutBody/>
-            </div>
-        </div>
-    </div>
-    -->
-  <asset:script type="text/javascript">
-      angular.module('grails.constants')
-          .constant('rootUrl', '${request.contextPath}')
-          .constant('pageSize', ${grailsApplication.config.angular.pageSize})
-          .constant('dateFormat', '${grailsApplication.config.angular.dateFormat}');
-  </asset:script>
-
-  <asset:javascript src="application.js"/>
+  <!--<asset:javascript src="application.js"/>-->
   <asset:deferredScripts/>
   <g:pageProperty name="page.scripts" default=""/>
 
