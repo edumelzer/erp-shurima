@@ -44,7 +44,14 @@ class GrupoController {
         grupo.save(flush: true)
 
         //render(view:"index")
-        redirect(action: 'index')
+        //redirect(action: 'index')
+
+        Map resp = [
+            success: true,
+            message: "Juuura que tá salvando já, né HUAHAUHA (mas tá quase)"
+        ]
+
+        render(contentType: 'text/json') {resp}
     }
 
     def getItems(Long id) {

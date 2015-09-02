@@ -6,6 +6,8 @@ grails.project.work.dir = "target/work"
 grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 
+grails.server.port.http = 8090
+
 grails.project.fork = [
     test: false,
     run: false,

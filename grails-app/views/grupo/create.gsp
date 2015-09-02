@@ -58,8 +58,25 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                  <button type="button" class="btn btn-primary" id="btn-save-produto">Adicionar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="btn-save-produto">Adicionar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal modal-primary" id="modalResponse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modaml-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="modalResponseTitle">TEXTO QUE VAI MUDAR</h4>
+                </div>
+                <div class="modal-body">
+                    <span id="modalResponseText">Outro texto que vai mudar.</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Beleza</button>
                 </div>
               </div>
             </div>
@@ -73,7 +90,7 @@
 <!-- /.box-header -->
 <!-- form start -->
 
-          <g:form action="save" class="form-horizontal">
+          <form method="post" action="save" class="form-horizontal" id="grupo-form">
             <div class="box-body">
 
               <div class="col-md-12">
@@ -184,11 +201,11 @@
 <!-- /.box-body -->
 
             <div class="box-footer">
-              <button class="btn btn-default" type="submit">Cancelar</button>
-              <button class="btn btn-info pull-right" type="submit">Salvar</button>
+              <button class="btn btn-default" type="button" id="btn-cancel">Cancelar</button>
+              <button class="btn btn-primary pull-right" type="submit">Salvar</button>
             </div>
 <!-- /.box-footer -->
-          </g:form>
+          </form>
         </div>
 <!-- /.box -->
 
@@ -226,6 +243,44 @@
                     $("#myModal").modal('hide');
                 }
 
+            });
+
+            //Dá pra fazer no grails também e pá...
+            $("#btn-cancel").click(function() {
+                console.log("A malandragem acontecerá aqui dentro!");
+                history.go(-1);
+            });
+
+            // Attach a submit handler to the form
+            $("#grupo-form").submit(function( event ) {
+
+                console.log("Submit em ajax! Wuuuuuuu");
+
+                // Stop form from submitting normally
+                event.preventDefault();
+
+                // Get some values from elements on the page:
+                var $form = $( this ),
+                    term = $form.find( "input[name='s']" ).val(),
+                    url = $form.attr( "action" );
+
+                // Send the data using post
+                var posting = $.post( url, { s: term } );
+
+                // Put the results in a div
+                posting.done(function( data ) {
+                    console.log("Done!");
+                    console.log(data);
+                    var content = $( data ).find( "#content" );
+                    $( "#result" ).empty().append( content );
+                    //var loles = mimis;
+
+                    $("#modalResponseTitle").text(data.success ? "Sucesso!" : "Falhou!");
+                    $("#modalResponseText").html(data.message);
+                    $('#modalResponse').modal('show');
+                });
+
+                return false;
             });
 
             //$("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});

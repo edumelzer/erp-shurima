@@ -70,6 +70,7 @@
                         </select>
                       </div>
                     </div>
+
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="inputDataSaida">Data Saída</label>
                         <div class="col-sm-10">
@@ -78,16 +79,44 @@
                     </div>
 
                     <div class="form-group">
-                      <label class="col-sm-2 control-label" for="inputValor2">Valor 2</label>
-                      <div class="col-sm-10">
-                        <g:textField class="form-control" id="inputValor2" name="valor2" placeholder="Valor 2" />
+                      <label class="col-sm-2 control-label" for="inputDataRetorno">Data Retorno</label>
+                        <div class="col-sm-10">
+                          <g:textField class="form-control" type="text" id="inputDataRetorno" name="dataRetorno" placeholder="Data Retorno" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="inputQuantidadeDias"> Dias</label>
+                      <div class="cols-sm-10">
+                        <g:textField class="form-control" id="inputQuantidadeDias" name="quantidadeDias" placeholder="Dias"/>
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label class="col-sm-2 control-label" for="inputValor1">Valor 3</label>
-                      <div class="col-sm-10">
-                        <g:textField class="form-control" id="inputValor3" name="valor3" placeholder="Valor 3" />
+                      <label class="col-sm-2 control-label" for ="inputMotorista"> Motorista</lavel>
+                      <div class="cols-sm-10">
+                        <g:textField class="form-control" type="text" id="inputMotorista" name="motorista" placeholder="Nome do Motorista"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for ="inputVeiculo">Veículos </lavel>
+                      <div class="cols-sm-10">
+                        <g:textField class="form-control" type="text" id="inputVeiculo" name="veiculo" placeholder="Veículo utilizado para transporte da carga"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for ="inputPlaca">Placa do Veículo</lavel>
+                      <div class="cols-sm-10">
+                        <g:textField class="form-control" type="text" id="inputPlaca" name="placa" placeholder="Placa do Veículo"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for ="inputObservacao">Observação</lavel>
+                      <div class="cols-sm-10">
+                        <g:textField class="form-control" type="text" id="inputObservacao" name="observacao" placeholder="Placa do Veículo"/>
                       </div>
                     </div>
 
@@ -108,15 +137,11 @@
                   <div class="tab-pane" id="tab_2">
                     Listinha dos produtos adicionados, e opção pro cara poder adicionar mais. u.u
                   </div>
-                  <!-- /.tab-pane -->
                 </div>
-                <!-- /.tab-content -->
               </div>
-              <!-- nav-tabs-custom -->
             </div>
 
           </div>
-          <!-- /.box-body -->
 
 
 
@@ -124,15 +149,10 @@
             <button class="btn btn-default" type="submit">Cancelar</button>
             <button class="btn btn-info pull-right" type="submit">Salvar</button>
           </div>
-          <!-- /.box-footer -->
         </g:form>
       </div>
-      <!-- /.box -->
-
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
 </body>
 
