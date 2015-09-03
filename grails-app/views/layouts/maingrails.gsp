@@ -36,7 +36,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         'bootstrap/js/bootstrap.min.js',
         'fastclick/fastclick.min.js',
         'adminlte/js/app.min.js',
-        'datatables/jquery.dataTables.min.js'
+        'datatables/jquery.dataTables.min.js',
+        'input-mask/jquery.inputmask.js',
+        'input-mask/jquery.inputmask.date.extensions.js',
+        'input-mask/jquery.inputmask.extensions.js'
         ]"
         var="fileToLoad">
         <script type="text/javascript" src="${resource(dir: 'plugin', file: fileToLoad)}" ></script>

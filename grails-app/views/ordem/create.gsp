@@ -73,60 +73,50 @@
 
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="inputDataSaida">Data Saída</label>
-                        <div class="col-sm-10">
-                          <g:textField class="form-control" type="text" id="inputDataSaida" name="dataSaida" placeholder="Data Saída" />
-                        </div>
+                      <div class="col-sm-10">
+                        <g:textField class="form-control" type="text" id="inputDataSaida" name="dataSaida" placeholder="Data Saída"/>
+                      </div>
                     </div>
 
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="inputDataRetorno">Data Retorno</label>
-                        <div class="col-sm-10">
-                          <g:textField class="form-control" type="text" id="inputDataRetorno" name="dataRetorno" placeholder="Data Retorno" />
-                        </div>
+                      <div class="col-sm-10">
+                        <g:textField class="form-control" type="text" id="inputDataRetorno" name="dataRetorno" placeholder="Data Retorno" />
+                      </div>
                     </div>
 
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="inputQuantidadeDias"> Dias</label>
-                      <div class="cols-sm-10">
-                        <g:textField class="form-control" id="inputQuantidadeDias" name="quantidadeDias" placeholder="Dias"/>
+                      <div class="col-sm-10">
+                        <g:textField class="form-control" id="inputQuantidadeDias" name="quantidadeDias" placeholder="Dias" />
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label class="col-sm-2 control-label" for ="inputMotorista"> Motorista</lavel>
-                      <div class="cols-sm-10">
-                        <g:textField class="form-control" type="text" id="inputMotorista" name="motorista" placeholder="Nome do Motorista"/>
+                      <label class="col-sm-2 control-label" for="inputMotorista"> Motorista</label>
+                      <div class="col-sm-10">
+                        <g:textField class="form-control" type="text" id="inputMotorista" name="motorista" placeholder="Nome do Motorista" />
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label class="col-sm-2 control-label" for ="inputVeiculo">Veículos </lavel>
-                      <div class="cols-sm-10">
-                        <g:textField class="form-control" type="text" id="inputVeiculo" name="veiculo" placeholder="Veículo utilizado para transporte da carga"/>
+                      <label class="col-sm-2 control-label" for="inputVeiculo">Veículos </label>
+                      <div class="col-sm-10">
+                        <g:textField class="form-control" type="text" id="inputVeiculo" name="veiculo" placeholder="Veículo utilizado para transporte da carga" />
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label class="col-sm-2 control-label" for ="inputPlaca">Placa do Veículo</lavel>
-                      <div class="cols-sm-10">
-                        <g:textField class="form-control" type="text" id="inputPlaca" name="placa" placeholder="Placa do Veículo"/>
+                      <label class="col-sm-2 control-label" for="inputPlaca">Placa do Veículo</label>
+                      <div class="col-sm-10">
+                        <g:textField class="form-control" type="text" id="inputPlaca" name="placa" placeholder="Placa do Veículo" />
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label class="col-sm-2 control-label" for ="inputObservacao">Observação</lavel>
-                      <div class="cols-sm-10">
-                        <g:textField class="form-control" type="text" id="inputObservacao" name="observacao" placeholder="Placa do Veículo"/>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-7">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> Grupo Ativo
-                          </label>
-                        </div>
+                      <label class="col-sm-2 control-label" for="inputObservacao">Observação</label>
+                      <div class="col-sm-10">
+                        <g:textField class="form-control" type="text" id="inputObservacao" name="observacao" placeholder="Placa do Veículo" />
                       </div>
                     </div>
 
@@ -153,6 +143,19 @@
       </div>
     </section>
   </div>
+
+
+  <script type="text/javascript">
+
+      $(function () {
+
+          $("#inputDataRetorno").inputmask("dd/mm/yyyy", {"placeholder": "__/__/____"});
+
+          $("#inputDataSaida").inputmask("dd/mm/yyyy", {"placeholder": "__/__/____"});
+
+      });
+
+  </script>
 
 </body>
 
