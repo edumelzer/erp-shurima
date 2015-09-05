@@ -8,9 +8,13 @@ class OrdemController {
       println "mimis";
       println "loles";
 
-      List empresas = Empresa.createCriteria().list {
+      List gruposList = Grupo.list()
+      List produtosList = Item.list()
+
+      List empresasList = Empresa.createCriteria().list {
         'eq' 'isCliente', true
       }
-      [empresas: empresas]
+
+      [empresasList: empresasList, gruposList: gruposList, produtosList: produtosList]
     }
 }
