@@ -65,7 +65,7 @@
             </div>
           </div>
 
-          <div class="modal modal-primary" id="modalResponse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal modal-success" id="modalResponse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modaml-content">
                 <div class="modal-header">
@@ -76,7 +76,7 @@
                     <span id="modalResponseText">Outro texto que vai mudar.</span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Beleza</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
                 </div>
               </div>
             </div>
@@ -107,6 +107,7 @@
                                     <g:textField class="form-control"
                                         value="${grupin?.descricao}"
                                         name="descricao"
+                                        itemId="descricao"
                                         placeholder="Descrição do grupo"/>
                                 </div>
                             </div>
@@ -116,6 +117,7 @@
                                     <g:textField class="form-control"
                                         value="${grupin?.valor1}"
                                         name="valor1"
+                                        itemId="valor1"
                                         placeholder="Valor 1"/>
                                 </div>
                             </div>
@@ -126,6 +128,7 @@
                                     <g:textField class="form-control"
                                         value="${grupin?.valor2}"
                                         name="valor2"
+                                        itemId="valor2"
                                         placeholder="Valor 2"/>
                                 </div>
                             </div>
@@ -135,6 +138,7 @@
                                     <g:textField class="form-control"
                                         value="${grupin?.valor3}"
                                         name="valor3"
+                                        itemId="valor3"
                                         placeholder="Valor 3"/>
                                 </div>
                             </div>
@@ -213,6 +217,7 @@
 <!-- /.content -->
     </div>
 <!-- /.content-wrapper -->
+    <script type="text/javascript" src="${resource(dir: 'plugin', file: 'tabletojson/jquery.tabletojson.min.js')}" ></script>
     <script type="text/javascript">
 
         $(function () {
@@ -237,6 +242,7 @@
                         $("#inputProduto").val(),
                         $("#inputProduto").find(":selected").text(),
                         $("#inputQuantidade").val(),
+                        //'<input type="checkbox"> Marcar para Remover</input>'
                         '<input type="checkbox"> Marcar para Remover</input>'
                     ]).draw();
 
@@ -248,7 +254,7 @@
             //Dá pra fazer no grails também e pá...
             $("#btn-cancel").click(function() {
                 console.log("A malandragem acontecerá aqui dentro!");
-                history.go(-1);
+                console.log("Redireciona aqui!");
             });
 
             // Attach a submit handler to the form
@@ -260,7 +266,7 @@
                 event.preventDefault();
 
                 // Get some values from elements on the page:
-                var $form = $( this ),
+                /*var $form = $( this ),
                     term = $form.find( "input[name='s']" ).val(),
                     url = $form.attr( "action" );
 
@@ -277,6 +283,49 @@
 
                     $("#modalResponseTitle").text(data.success ? "Sucesso!" : "Falhou!");
                     $("#modalResponseText").html(data.message);
+                    $('#modalResponse').modal('show');
+                });*/
+
+
+                var produtos = []
+                var table = $('#items').tableToJSON();
+
+                $('#items').find('tr').each(function (indexArray, indexObject) {
+                    var row = $(this),
+                        curRecord = table[indexArray -1];
+
+                    if (row.find('input[type="checkbox"]').is(':checked')) {
+                        if (curRecord) {
+                            curRecord.removed = true;
+                        }
+                    }
+
+                    if (curRecord) {
+                        produtos.push({
+                            id: curRecord.Id,
+                            qtd: curRecord.Quantidade,
+                            removed: !!curRecord.removed
+                        });
+                    }
+                });
+
+                var commitParams = {
+                    descricao: $('#descricao').val(),
+                    valor1: $('#valor1').val(),
+                    valor2: $('#valor2').val(),
+                    valor3: $('#valor3').val(),
+                    produtos: produtos
+                }
+
+
+                $.ajax({
+                  type: "POST",
+                  url : "save",
+                  data: JSON.stringify(commitParams),
+                  contentType: 'application/json'
+                }).done(function( msg ) {
+                    $("#modalResponseTitle").text(msg.success ? "Sucesso!" : "Falhou!");
+                    $("#modalResponseText").html(msg.message);
                     $('#modalResponse').modal('show');
                 });
 

@@ -37,26 +37,32 @@ class GrupoController {
 
     def save() {
         println "SAVING WOW"
-        println params
+        def json = request.JSON
 
         Grupo grupo = new Grupo()
-        bindData(grupo, params)
-        grupo.save(flush: true)
+        bindData(grupo, json)
 
-        //render(view:"index")
-        //redirect(action: 'index')
+        int qtdItensAdicionados = 0
+
+        if (grupo.save(flush: true)) {
+            json.produtos.each {
+                if (!it.removed) {
+                    if (saveItem(grupo, it)) {
+                        qtdItensAdicionados++
+                    }
+                }
+            }
+        }
 
         Map resp = [
             success: true,
-            message: "Juuura que tá salvando já, né HUAHAUHA (mas tá quase)"
+            message: "Registro salvo com successo com $qtdItensAdicionados itens!"
         ]
 
         render(contentType: 'text/json') {resp}
     }
 
     def getItems(Long id) {
-        println "Recuperando itens associados ao Grupo"
-
         List items = Item.createCriteria().list {
 
         }
@@ -64,7 +70,24 @@ class GrupoController {
         render(contentType: "text/json") {
             [success: true, items: items]
         }
+    }
 
+    private boolean saveItem(Grupo grupo, Map pars) {
+
+        Item item = Item.get(pars.id)
+        GrupoItem grupoItem = GrupoItem.findByGrupoAndItem(grupo, item)
+
+        if (!grupoItem) {
+            grupoItem = new GrupoItem(grupo: grupo, item: item, quantidade: pars.qtd)
+        } else {
+            grupoItem.setQuantidade(pars.qtd)
+        }
+
+        try {
+            return grupoItem.save(flush:true)
+        } catch (Exception e) {
+            return false
+        }
     }
 
 }

@@ -123,7 +123,7 @@
                     </button>
 
                     <div class="box-header">
-                      <h3 class="box-title">Lista de Produtos associados ao grupo</h3>
+                      <h3 class="box-title">Lista de Produtos </h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -160,6 +160,48 @@
                   </div>
 
                   <div class="tab-pane" id="tab_3">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+                      Adicionar Grupos
+                    </button>
+
+                    <div class="box-header">
+                      <h3 class="box-title">Lista de Grupos. </h3>
+                    </div>
+
+                    <div class="box-body">
+                      <table id="grupos" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>Id</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Remover</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <g:each in="${grupos}" status="i" var="grupo">
+                            <tr>
+                              <td>
+                                <g:link action="show" id="${grupo.id}">${grupo.encodeAsHTML()}</g:link>
+                              </td>
+
+                              <td>${fieldValue(bean: grupo, field: "grupo.nome")}</td>
+
+                              <td>${fieldValue(bean: grupo, field: "quantidade")}</td>
+
+                              <td>
+                                <div class="btn btn-danger" id='btn-add-grupo'>
+                                  Remover
+                                </div>
+                              </td>
+                            </tr>
+                          </g:each>
+                        </tbody>
+                      </table>
+                    </div>
+
+
+
                   </div>
                 </div>
               </div>
@@ -209,6 +251,39 @@
     </div>
   </div>
 
+  <div class="modal modal-primary" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modaml-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Selecione o Grupo e a quantidade</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Grupo</label>
+
+            <select class="form-control" id="inputGrupo">
+              <g:each in="${gruposList}" var="group">
+                <option value="${group.id}">${group.descricao}</option>
+              </g:each>
+            </select>
+
+          </div>
+          <div class="form-group">
+            <label for="inputQuantidadeGrupo">Quantidade</label>
+            <input type="text" class="form-control" id="inputQuantidadeGrupo" value="1" placeholder="Digite a quantidade">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary" id="btn-save-grupo">Adicionar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script type="text/javascript">
     $(function() {
 
@@ -227,6 +302,33 @@
         oLanguage: {
           sZeroRecords: "Sem registros a serem exibidos"
         }
+      });
+      var g = $('#grupos').DataTable({
+        bFilter: false,
+        bPaginate: false,
+        bInfo: false,
+        oLanguage: {
+          sZeroRecords: "Sem registros a serem exibidos"
+        }
+      });
+
+      $("#btn-save-grupo").click(function() {
+        var inputGrupo = $("#inputGrupo"),
+          inputQuantidadeGrupo = $("#inputQuantidadeGrupo");
+
+        if (isNaN(inputQuantidadeGrupo.val())) {
+          alert("Quantidade não é um número válido!");
+        } else {
+          g.row.add([
+            $("#inputGrupo").val(),
+            $("#inputGrupo").find(":selected").text(),
+            $("#inputQuantidadeGrupo").val(),
+            '<input type="checkbox"> Marcar para Remover</input>'
+          ]).draw();
+
+          $("#myModal2").modal('hide');
+        }
+
       });
 
       $("#btn-save-produto").click(function() {
