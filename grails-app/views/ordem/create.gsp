@@ -36,7 +36,7 @@
         <div class="box-header with-border">
           <h3 class="box-title">Formulário de Cadastro</h3>
         </div>
-        <g:form action="save" class="form-horizontal">
+        <form method="post" action="save" class="form-horizontal" id="grupo-form">
           <div class="box-body">
 
 
@@ -46,6 +46,7 @@
                   <li class="active"><a href="#tab_1" data-toggle="tab">Informações Báscias</a></li>
                   <li><a href="#tab_2" data-toggle="tab">Produtos</a></li>
                   <li><a href="#tab_3" data-toggle="tab">Grupo de Produtos</a></li>
+                  <li><a href="#tab_4" data-toggle="tab">Valor Total</a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane active" id="tab_1">
@@ -53,9 +54,9 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="inputDescricao">Cliente</label>
                       <div class="col-sm-10">
-                        <select name="empresa" class="form-control" required>
+                        <select name="empresa" class="form-control" required id="empresa">
                           <option value="" var="Escolha uma Empresa">
-                            <g:each in="${empresas}" var="emp">
+                            <g:each in="${empresasList}" var="emp">
                               <option value="${emp.id}">${emp.nome}</option>
                             </g:each>
                         </select>
@@ -111,13 +112,9 @@
                       </div>
                     </div>
 
-                    <!--</div>-->
-
                   </div>
-                  <!-- /.tab-pane -->
                   <div class="tab-pane" id="tab_2">
 
-                    <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                       Adicionar Produto
                     </button>
@@ -125,7 +122,6 @@
                     <div class="box-header">
                       <h3 class="box-title">Lista de Produtos </h3>
                     </div>
-                    <!-- /.box-header -->
                     <div class="box-body">
                       <table id="items" class="table table-bordered table-striped">
                         <thead>
@@ -199,23 +195,66 @@
                         </tbody>
                       </table>
                     </div>
+                  </div>
+                  <div class="tab-pane" id="tab_4">
 
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="TotalOrdem">Soma total</label>
+                      <div class="col-sm-10">
+                        <g:textField class="form-control" type="text" id="TotalOrdem" name="TotalOrdem" placeholder="Soma total" />
+                      </div>
+                    </div>
 
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="Desconto">Desconto</label>
+                      <div class="col-sm-10">
+                        <g:textField class="form-control" type="text" id="Desconto" name="Desconto" placeholder="Desconto" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="ValorTotal">Valor total</label>
+                      <div class="col-sm-10">
+                        <g:textField class="form-control" type="text" id="ValorTotal" name="ValorTotal" placeholder="Valor total  " />
+                      </div>
+                    </div>
 
                   </div>
                 </div>
               </div>
             </div>
           </div>
+      </div>
 
-      </div>
-      <div class="box-footer">
-        <button class="btn btn-default" type="submit">Cancelar</button>
-        <button class="btn btn-info pull-right" type="submit">Salvar</button>
-      </div>
-      </g:form>
+  </div>
+
+
+  <div class="box-footer">
+    <button class="btn btn-default" type="submit">Cancelar</button>
+    <button class="btn btn-info pull-right" type="submit">Salvar</button>
+  </div>
+  </form>
   </div>
   </section>
+  </div>
+
+  <div class="modal modal-success" id="modalResponse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modaml-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="modalResponseTitle">TEXTO QUE VAI MUDAR</h4>
+        </div>
+        <div class="modal-body">
+          <span id="modalResponseText">Outro texto que vai mudar.</span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="modal modal-primary" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -242,7 +281,19 @@
             <label for="inputQuantidade">Quantidade</label>
             <input type="text" class="form-control" id="inputQuantidade" value="1" placeholder="Digite a quantidade">
           </div>
+
+          <div class="form-group">
+            <label for="inputValor">Valor</label>
+            <select class="form-control" id="inputProdutoValor">
+              <option intemId="valor1" value="${produtosList[0].valor1}">${produtosList[0].valor1}</option>
+              <option intemId="valor2" value="${produtosList[0].valor2}">${produtosList[0].valor2}</option>
+              <option intemId="valor3" value="${produtosList[0].valor3}">${produtosList[0].valor3}</option>
+            </select>
+          </div>
+
         </div>
+      </div>
+      <div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
           <button type="button" class="btn btn-primary" id="btn-save-produto">Adicionar</button>
@@ -283,8 +334,84 @@
       </div>
     </div>
   </div>
-
+  <script type="text/javascript" src="${resource(dir: 'plugin', file: 'tabletojson/jquery.tabletojson.min.js')}"></script>
   <script type="text/javascript">
+    $("#grupo-form").submit(function(event) {
+
+      console.log("Submit em ajax! Wuuuuuuu");
+      event.preventDefault();
+      var produtos = []
+      var grupos = []
+      var table = $('#items').tableToJSON();
+
+      $('#items').find('tr').each(function(indexArray, indexObject) {
+        var row = $(this),
+          curRecord = table[indexArray - 1];
+        console.log(curRecord)
+        if (row.find('input[type="checkbox"]').is(':checked')) {
+          if (curRecord) {
+            curRecord.removed = true;
+          }
+        }
+
+        if (curRecord) {
+          produtos.push({
+            id: curRecord.Id,
+            qtd: curRecord.Quantidade,
+            removed: !!curRecord.removed
+          });
+        }
+      });
+      $('#grupos').find('tr').each(function(indexArray, indexObject) {
+        var row = $(this),
+          curRecord = table[indexArray - 1];
+
+        if (row.find('input[type="checkbox"]').is(':checked')) {
+          if (curRecord) {
+            curRecord.removed = true;
+          }
+        }
+
+        if (curRecord) {
+          grupos.push({
+            id: curRecord.Id,
+            qtd: curRecord.Quantidade,
+            removed: !!curRecord.removed
+          });
+        }
+      });
+
+      var commitParams = {
+        empresa: $('#empresa').val(),
+        dataRetorno: $('#inputDataRetorno').val(),
+        dataSaida: $('#inputDataSaida').val(),
+        quantidadeDias: $('#inputQuantidadeDias').val(),
+        motorista: $('#inputMotorista').val(),
+        veiculo: $('#inputVeiculo').val(),
+        placa: $('#inputPlaca').val(),
+        observacao: $('#inputObservacao').val(),
+        produtos: produtos,
+        grupos: grupos
+      }
+
+
+      $.ajax({
+        type: "POST",
+        url: "save",
+        data: JSON.stringify(commitParams),
+        contentType: 'application/json'
+      }).done(function(msg) {
+        $("#modalResponseTitle").text(msg.success ? "Sucesso!" : "Falhou!");
+        $("#modalResponseText").html(msg.message);
+        $('#modalResponse').modal('show');
+      });
+
+      return false;
+    });
+
+    //$("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+
+
     $(function() {
 
       $("#inputDataRetorno").inputmask("dd/mm/yyyy", {
@@ -347,6 +474,25 @@
 
           $("#myModal").modal('hide');
         }
+
+      });
+
+      $("#inputProduto").change(function() {
+        var produto = $(this),
+          valor = produto.val(),
+          valores = $("#inputProdutoValor");
+
+        valores.empty();
+
+        < g: each in = "${produtosList}"
+        var = "prod" >
+        if (valor == $ {
+            prod.id
+          }) {
+          valores.append('<option itemId="valor1" value="${prod.valor1}">${prod.valor1}</option>');
+          valores.append('<option itemId="valor2" value="${prod.valor2}">${prod.valor2}</option>');
+          valores.append('<option itemId="valor3" value="${prod.valor3}">${prod.valor3}</option>');
+        } < /g:each>
 
       });
 
