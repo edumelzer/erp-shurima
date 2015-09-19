@@ -47,12 +47,12 @@
                         <div class="box-body">
                             <table id="list" class="table table-striped table-bordered table-hover">
                                 <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
-                                    <th sortable-column title="Id" property="id"></th>
-                                    <th sortable-column title="Descrição" property="descricao"></th>
-                                    <th sortable-column title="Valor 1" property="valor1"></th>
-                                    <th sortable-column title="Valor 2" property="valor2"></th>
-                                    <th sortable-column title="Valor 3" property="valor3"></th>
-                                    <th>&nbsp;</th>
+                                    <th sortable-column title="Id" property="id">Código</th>
+                                    <th sortable-column title="Descrição" property="descricao">Descrição</th>
+                                    <th sortable-column title="Valor 1" property="valor1">Valor 1</th>
+                                    <th sortable-column title="Valor 2" property="valor2">Valor 2</th>
+                                    <th sortable-column title="Valor 3" property="valor3">Valor 3</th>
+                                    <th>Editar</th>
                                 </thead>
                                 <tbody>
                                     <ol>

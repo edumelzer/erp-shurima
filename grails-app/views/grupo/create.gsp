@@ -143,7 +143,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" >
                               <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                   <label>
@@ -172,7 +172,7 @@
                                   <th>Id</th>
                                   <th>Produto</th>
                                   <th>Quantidade</th>
-                                  <th>Remover</th>
+                                  <th>Comando</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -243,12 +243,20 @@
                         $("#inputProduto").find(":selected").text(),
                         $("#inputQuantidade").val(),
                         //'<input type="checkbox"> Marcar para Remover</input>'
-                        '<input type="checkbox"> Marcar para Remover</input>'
+                        //'<input type="button"> Marcar para Remover</input>'
+                        '<button class="btn btn-default btn-edit-prod" type="button">Editar</button> ' +
+                        '<button class="btn btn-danger btn-rem-prod" type="button">Remover</button>'
                     ]).draw();
 
                     $("#myModal").modal('hide');
                 }
 
+            });
+
+            $('.btn-rem-prod').click(function() {
+                console.log("Chorus livris");
+                var tr = $(this).closest('tr');
+                console.log(tr);
             });
 
             //Dá pra fazer no grails também e pá...
@@ -261,31 +269,8 @@
             $("#grupo-form").submit(function( event ) {
 
                 console.log("Submit em ajax! Wuuuuuuu");
-
                 // Stop form from submitting normally
                 event.preventDefault();
-
-                // Get some values from elements on the page:
-                /*var $form = $( this ),
-                    term = $form.find( "input[name='s']" ).val(),
-                    url = $form.attr( "action" );
-
-                // Send the data using post
-                var posting = $.post( url, { s: term } );
-
-                // Put the results in a div
-                posting.done(function( data ) {
-                    console.log("Done!");
-                    console.log(data);
-                    var content = $( data ).find( "#content" );
-                    $( "#result" ).empty().append( content );
-                    //var loles = mimis;
-
-                    $("#modalResponseTitle").text(data.success ? "Sucesso!" : "Falhou!");
-                    $("#modalResponseText").html(data.message);
-                    $('#modalResponse').modal('show');
-                });*/
-
 
                 var produtos = []
                 var table = $('#items').tableToJSON();
