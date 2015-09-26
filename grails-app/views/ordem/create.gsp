@@ -336,6 +336,7 @@
   </div>
   <script type="text/javascript" src="${resource(dir: 'plugin', file: 'tabletojson/jquery.tabletojson.min.js')}"></script>
   <script type="text/javascript">
+    var somaTotal;
     $("#grupo-form").submit(function(event) {
 
       console.log("Submit em ajax! Wuuuuuuu");
@@ -452,7 +453,6 @@
             $("#inputQuantidadeGrupo").val(),
             '<input type="checkbox"> Marcar para Remover</input>'
           ]).draw();
-
           $("#myModal2").modal('hide');
         }
 
@@ -471,6 +471,10 @@
             $("#inputQuantidade").val(),
             '<input type="checkbox"> Marcar para Remover</input>'
           ]).draw();
+          console.log ($("#TotalOrdem").val(), "ValorTotal");
+
+          somaTotal = Number($("#TotalOrdem").val())+(Number($("#inputQuantidade").val()) *Number($("#inputProdutoValor").val()));
+          $("#TotalOrdem").val(somaTotal);
 
           $("#myModal").modal('hide');
         }
@@ -484,15 +488,13 @@
 
         valores.empty();
 
-        < g: each in = "${produtosList}"
-        var = "prod" >
-        if (valor == $ {
-            prod.id
-          }) {
+        <g:each in="${produtosList}" var="prod">
+        if (valor == ${prod.id}) {
           valores.append('<option itemId="valor1" value="${prod.valor1}">${prod.valor1}</option>');
           valores.append('<option itemId="valor2" value="${prod.valor2}">${prod.valor2}</option>');
           valores.append('<option itemId="valor3" value="${prod.valor3}">${prod.valor3}</option>');
-        } < /g:each>
+        }
+        </g:each>
 
       });
 
