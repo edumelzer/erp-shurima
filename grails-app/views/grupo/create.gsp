@@ -244,19 +244,20 @@
                         $("#inputQuantidade").val(),
                         //'<input type="checkbox"> Marcar para Remover</input>'
                         //'<input type="button"> Marcar para Remover</input>'
-                        '<button class="btn btn-default btn-edit-prod" type="button">Editar</button> ' +
+                        //'<button class="btn btn-default btn-edit-prod" type="button">Editar</button> ' +
                         '<button class="btn btn-danger btn-rem-prod" type="button">Remover</button>'
                     ]).draw();
+
+                    $('.btn-rem-prod').bind( "click", function(event) {
+                        var row = $(this).closest('tr');
+                        var nRow = row[0];
+                        $('#items').dataTable().fnDeleteRow(nRow);
+
+                    });
 
                     $("#myModal").modal('hide');
                 }
 
-            });
-
-            $('.btn-rem-prod').click(function() {
-                console.log("Chorus livris");
-                var tr = $(this).closest('tr');
-                console.log(tr);
             });
 
             //Dá pra fazer no grails também e pá...
