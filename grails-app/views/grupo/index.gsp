@@ -58,7 +58,7 @@
                                     <ol>
                                         <g:each in="${grupos}" var="p">
                                             <tr class="animate-repeat">
-                                                <td><a href="#/show/${p.id}">${p.id}</a></td>
+                                                <td><a href="show/${p.id}">${p.id}</a></td>
                                                 <td>${p.descricao}</td>
                                                 <td>${p.valor1}</td>
                                                 <td>${p.valor2}</td>

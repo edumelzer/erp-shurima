@@ -3,26 +3,14 @@ package com.shurima
 class GrupoController {
 
     def index() {
-        println "CHOLA MAIS"
-        println "Pq o choro é livre"
         List grupos = Grupo.list()
         List transacoes = Transacao.list()
         [grupos:grupos, transacoes: transacoes]
     }
 
     def create() {
-        println "mimisx"
-        println "loles"
-        println params
         Grupo grupin = new Grupo()
         grupin.properties = params
-
-        /*def gitem = new GrupoItem(grupo: grupin, item: Item.list()[0])
-
-        grupin.items = [gitem]*/
-
-        println "mimis?"
-        println grupin.items
 
         List items = GrupoItem.createCriteria().list {
             'grupo' {
@@ -36,7 +24,6 @@ class GrupoController {
     }
 
     def save() {
-        println "SAVING WOW"
         def json = request.JSON
 
         Grupo grupo = new Grupo()
@@ -63,13 +50,9 @@ class GrupoController {
     }
 
     def show(Long id) {
-        println "Show $id"
-
-        render(contentType: 'text/json') {[
-            success: true,
-            message: 'Oquei!',
-            registro: Grupo.get(id)
-        ]}
+        return [
+            grupo: Grupo.get(id)
+        ]
     }
 
     def getItems(Long id) {
