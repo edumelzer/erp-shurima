@@ -62,6 +62,16 @@ class GrupoController {
         render(contentType: 'text/json') {resp}
     }
 
+    def show(Long id) {
+        println "Show $id"
+
+        render(contentType: 'text/json') {[
+            success: true,
+            message: 'Oquei!',
+            registro: Grupo.get(id)
+        ]}
+    }
+
     def getItems(Long id) {
         List items = Item.createCriteria().list {
 

@@ -4,5 +4,6 @@ class GrupoItem {
 
   Item item
   Grupo grupo
+  Long quantidade
 
 }
