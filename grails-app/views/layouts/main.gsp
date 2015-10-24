@@ -269,6 +269,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </ul>
               </li>
 
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-edit"></i>
+                  <span>Movimentações</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li>
+                      <g:link uri="/ordem/">Ordens de Serviço</g:link>
+                  </li>
+                  <li>
+                      <g:link uri="/orcamento/">Orçamento</g:link>
+                  </li>
+                </ul>
+              </li>
+
             </sec:ifAnyGranted>
 
           </sec:ifLoggedIn>

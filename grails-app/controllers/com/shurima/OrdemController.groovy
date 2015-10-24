@@ -1,7 +1,10 @@
 package com.shurima
 
 class OrdemController {
+
     def index() {
+        List ordens = Ordem.list()
+        [ordens:ordens]
     }
 
     def create() {
@@ -17,8 +20,11 @@ class OrdemController {
 
       println "Listinha"
       println empresasList
+      
       [empresasList: empresasList, gruposList: gruposList, produtosList: produtosList]
+
     }
+
     def save() {
         println "SAVING WOW"
         def json = request.JSON
@@ -28,7 +34,8 @@ class OrdemController {
 
         int qtdItensAdicionados = 0
 
-        println json.produtos
+        println json.
+
         println "--------------------"
         println json
         println "--------------------"

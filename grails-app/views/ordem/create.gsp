@@ -451,8 +451,17 @@
             $("#inputGrupo").val(),
             $("#inputGrupo").find(":selected").text(),
             $("#inputQuantidadeGrupo").val(),
-            '<input type="checkbox"> Marcar para Remover</input>'
+            //'<input type="checkbox"> Marcar para Remover</input>'
+            '<button class="btn btn-danger btn-rem-grupo" type="button">Remover</button>'
           ]).draw();
+
+          $('.btn-rem-grupo').bind( "click", function(event) {
+              var row = $(this).closest('tr');
+              var nRow = row[0];
+              $('#grupos').dataTable().fnDeleteRow(nRow);
+
+          });
+
           $("#myModal2").modal('hide');
         }
 
@@ -469,12 +478,19 @@
             $("#inputProduto").val(),
             $("#inputProduto").find(":selected").text(),
             $("#inputQuantidade").val(),
-            '<input type="checkbox"> Marcar para Remover</input>'
+            '<button class="btn btn-danger btn-rem-prod" type="button">Remover</button>'
           ]).draw();
           console.log ($("#TotalOrdem").val(), "ValorTotal");
 
           somaTotal = Number($("#TotalOrdem").val())+(Number($("#inputQuantidade").val()) *Number($("#inputProdutoValor").val()));
           $("#TotalOrdem").val(somaTotal);
+
+          $('.btn-rem-prod').bind( "click", function(event) {
+              var row = $(this).closest('tr');
+              var nRow = row[0];
+              $('#items').dataTable().fnDeleteRow(nRow);
+
+          });
 
           $("#myModal").modal('hide');
         }

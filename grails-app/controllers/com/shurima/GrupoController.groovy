@@ -4,8 +4,9 @@ class GrupoController {
 
     def index() {
         List grupos = Grupo.list()
-        List transacoes = Transacao.list()
-        [grupos:grupos, transacoes: transacoes]
+        //List transacoes = Transacao.list()
+        //[grupos:grupos, transacoes: transacoes]
+        [grupos:grupos]
     }
 
     def create() {

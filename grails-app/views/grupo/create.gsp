@@ -303,7 +303,6 @@
                     produtos: produtos
                 }
 
-
                 $.ajax({
                   type: "POST",
                   url : "save",

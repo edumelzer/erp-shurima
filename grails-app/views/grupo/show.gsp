@@ -59,7 +59,7 @@
 
                   <g:each status="i" in="${grupo.items}" var="item">
                     <tr>
-                      <td>${i}</td>
+                      <td>${i + 1}</td>
                       <td>${item.item}</td>
                       <td>${item.quantidade}</td>
                     </tr>

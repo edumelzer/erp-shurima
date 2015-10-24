@@ -100,13 +100,13 @@ grails.plugin.springsecurity.authority.className = 'com.shurima.Role'
         '/**':           ['IS_AUTHENTICATED_FULLY']
 ]*/
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['IS_AUTHENTICATED_FULLY'],
-	'/index':                         ['IS_AUTHENTICATED_FULLY'],
-	'/index.gsp':                     ['IS_AUTHENTICATED_FULLY'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll'],
+    '/':                              ['IS_AUTHENTICATED_FULLY'],
+    '/index':                         ['IS_AUTHENTICATED_FULLY'],
+    '/index.gsp':                     ['IS_AUTHENTICATED_FULLY'],
+    '/**/js/**':                      ['permitAll'],
+    '/**/css/**':                     ['permitAll'],
+    '/**/images/**':                  ['permitAll'],
+    '/**/favicon.ico':                ['permitAll'],
   '/contact/*':                     ['permitAll'],
   '/empresa/**':                    ['ROLE_ADMIN', 'ROLE_CONTASRECEBER', 'ROLE_CONTASPAGAR'],
   '/relatorioReceber/**':           ['ROLE_ADMIN'],
@@ -119,7 +119,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
   '/item/**':                       ['ROLE_ADMIN', 'ROLE_ESTOQUE'],
   '/usuario/**':                    ['ROLE_ADMIN'],
   '/grupo/**':                      ['ROLE_ADMIN', 'ROLE_ESTOQUE'],
-  '/ordem/**':                      ['ROLE_ADMIN']
+  '/ordem/**':                      ['ROLE_ADMIN', 'ROLE_ESTOQUE']
 ]
 
 grails.plugin.springsecurity.rest.login.useJsonCredentials = true
