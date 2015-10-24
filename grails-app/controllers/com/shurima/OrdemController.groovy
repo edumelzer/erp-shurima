@@ -7,6 +7,12 @@ class OrdemController {
         [ordens:ordens]
     }
 
+    def show(Long id) {
+        return [
+            ordem: Ordem.get(id)
+        ]
+    }
+
     def create() {
       println "mimis";
       println "loles";
@@ -20,7 +26,7 @@ class OrdemController {
 
       println "Listinha"
       println empresasList
-      
+
       [empresasList: empresasList, gruposList: gruposList, produtosList: produtosList]
 
     }
@@ -32,21 +38,30 @@ class OrdemController {
         Ordem ordem = new Ordem()
         bindData(ordem, json)
 
+        ordem.cliente = Empresa.get(json.empresa)
+
         int qtdItensAdicionados = 0
 
-        println json.
+        println "Buscando Empresa"
+        println json.empresa
+        println Empresa.get(json.empresa)
 
         println "--------------------"
         println json
         println "--------------------"
+        println json.produtos
 
         if (ordem.save(flush: true)) {
 
             json.produtos.each { def produto ->
-                if (!produto.removed) {
-                    if (saveItem(ordem, produto)) {
-                        qtdItensAdicionados++
-                    }
+                if (saveItem(ordem, produto)) {
+                    qtdItensAdicionados++
+                }
+            }
+
+            json.grupos.each { def grupo ->
+                if (saveGrupo(ordem, grupo)) {
+                    qtdItensAdicionados++
                 }
             }
         }
@@ -74,21 +89,64 @@ class OrdemController {
     private boolean saveItem(Ordem ordem, Map pars) {
 
         Item item = Item.get(pars.id)
-        OrdemItem ordemItem = OrdemItem.findByGrupoAndItem(ordem, item)
+        OrdemItem ordemItem = OrdemItem.findByOrdemAndItem(ordem, item)
+
+        println "Tentando salvar ITEM!"
+        println item
+        println ordemItem
 
         if (!ordemItem) {
-            ordemItem = new OrdemItem(ordem: ordem, item: item, quantidade: pars.qtd)
+            ordemItem = new OrdemItem(
+                ordem: ordem,
+                item: item,
+                quantidadeItens: pars.qtd,
+                valorItem: pars.valor)
         } else {
             ordemItem.setQuantidade(pars.qtd)
         }
 
         try {
-            return ordemItem.save(flush:true)
+            boolean saved = ordemItem.save(flush:true)
+
+            println "FOI MAL NEM DEU"
+            println ordemItem.errors
+
+            return saved
         } catch (Exception e) {
+            println "Erro ao salvar item:"
+            println ordemItem.errors
             return false
         }
     }
 
+    private boolean saveGrupo(Ordem ordem, Map pars) {
+
+        Grupo grupo = Grupo.get(pars.id)
+        OrdemItem ordemItem = OrdemItem.findByOrdemAndGrupo(ordem, grupo)
+
+        if (!ordemItem) {
+            ordemItem = new OrdemItem(
+                ordem: ordem,
+                grupo: grupo,
+                quantidadeItens: pars.qtd,
+                valorItem: pars.valor)
+        } else {
+            ordemItem.setQuantidade(pars.qtd)
+        }
+
+        try {
+            boolean saved = ordemItem.save(flush:true)
+
+            println "FOI MAL NEM DEU"
+            println ordemItem.errors
+
+            return saved
+        } catch (Exception e) {
+            println "Erro ao salvar Grupo:"
+            println ordemItem.errors
+            return false
+        }
+    }
 
 
 }

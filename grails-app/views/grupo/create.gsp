@@ -274,23 +274,18 @@
                 event.preventDefault();
 
                 var produtos = []
-                var table = $('#items').tableToJSON();
+                var table = $('#items').tableToJSON({
+                    ignoreHiddenRows: false
+                });
 
                 $('#items').find('tr').each(function (indexArray, indexObject) {
                     var row = $(this),
                         curRecord = table[indexArray -1];
 
-                    if (row.find('input[type="checkbox"]').is(':checked')) {
-                        if (curRecord) {
-                            curRecord.removed = true;
-                        }
-                    }
-
                     if (curRecord) {
                         produtos.push({
                             id: curRecord.Id,
-                            qtd: curRecord.Quantidade,
-                            removed: !!curRecord.removed
+                            qtd: curRecord.Quantidade
                         });
                     }
                 });

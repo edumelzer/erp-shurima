@@ -83,7 +83,11 @@ log4j.main = {
            'net.sf.ehcache.hibernate'
 }
 
-grails.databinding.dateFormats = ["yyyy-MM-dd'T'hh:mm:ss'Z'", "yyyy-MM-dd'T'hh:mm:ss.SSS'Z'"]
+grails.databinding.dateFormats = [
+    "yyyy-MM-dd'T'hh:mm:ss'Z'",
+    "yyyy-MM-dd'T'hh:mm:ss.SSS'Z'",
+    "dd/MM/yyyy"
+]
 
 angular.pageSize = 25
 angular.dateFormat="dd/MM/yyyy"

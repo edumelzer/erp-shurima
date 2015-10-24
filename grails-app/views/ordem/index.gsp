@@ -48,7 +48,7 @@
                             <table id="list" class="table table-striped table-bordered table-hover">
                                 <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
                                     <th sortable-column title="Id" property="id">Código</th>
-                                    <th sortable-column title="Descrição" property="descricao">Descrição</th>
+                                    <th sortable-column title="Descrição" property="descricao">Cliente</th>
                                     <th sortable-column title="Data Saída" property="valor1">Data Saída</th>
                                     <th sortable-column title="Data Retorno" property="valor2">Data Retorno</th>
                                     <th>Editar</th>
@@ -58,10 +58,9 @@
                                         <g:each in="${ordens}" var="p">
                                             <tr class="animate-repeat">
                                                 <td><a href="show/${p.id}">${p.id}</a></td>
-                                                <td>${p.descricao}</td>
-                                                <td>${p.valor1}</td>
-                                                <td>${p.valor2}</td>
-                                                <td>${p.valor3}</td>
+                                                <td>${p.cliente.nome}</td>
+                                                <td><g:formatDate format="dd/MM/yyyy" date="${p.dataSaida}"/></td>
+                                                <td><g:formatDate format="dd/MM/yyyy" date="${p.dataRetorno}"/></td>
                                                 <td>
                                                     <button type="submit" class="btn btn-primary">Editar</button>
                                                 </td>

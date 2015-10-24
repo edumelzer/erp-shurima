@@ -10,6 +10,7 @@ class OrdemItem {
 
   static constraints = {
     grupo nullable: true
+    item nullable: true
   }
 
 

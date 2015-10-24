@@ -129,6 +129,7 @@
                             <th>Id</th>
                             <th>Produto</th>
                             <th>Quantidade</th>
+                            <th>Valor</th>
                             <th>Remover</th>
                           </tr>
                         </thead>
@@ -171,6 +172,7 @@
                             <th>Id</th>
                             <th>Produto</th>
                             <th>Quantidade</th>
+                            <th>Valor</th>
                             <th>Remover</th>
                           </tr>
                         </thead>
@@ -337,79 +339,6 @@
   <script type="text/javascript" src="${resource(dir: 'plugin', file: 'tabletojson/jquery.tabletojson.min.js')}"></script>
   <script type="text/javascript">
     var somaTotal;
-    $("#grupo-form").submit(function(event) {
-
-      console.log("Submit em ajax! Wuuuuuuu");
-      event.preventDefault();
-      var produtos = []
-      var grupos = []
-      var table = $('#items').tableToJSON();
-
-      $('#items').find('tr').each(function(indexArray, indexObject) {
-        var row = $(this),
-          curRecord = table[indexArray - 1];
-        console.log(curRecord)
-        if (row.find('input[type="checkbox"]').is(':checked')) {
-          if (curRecord) {
-            curRecord.removed = true;
-          }
-        }
-
-        if (curRecord) {
-          produtos.push({
-            id: curRecord.Id,
-            qtd: curRecord.Quantidade,
-            removed: !!curRecord.removed
-          });
-        }
-      });
-      $('#grupos').find('tr').each(function(indexArray, indexObject) {
-        var row = $(this),
-          curRecord = table[indexArray - 1];
-
-        if (row.find('input[type="checkbox"]').is(':checked')) {
-          if (curRecord) {
-            curRecord.removed = true;
-          }
-        }
-
-        if (curRecord) {
-          grupos.push({
-            id: curRecord.Id,
-            qtd: curRecord.Quantidade,
-            removed: !!curRecord.removed
-          });
-        }
-      });
-
-      var commitParams = {
-        empresa: $('#empresa').val(),
-        dataRetorno: $('#inputDataRetorno').val(),
-        dataSaida: $('#inputDataSaida').val(),
-        quantidadeDias: $('#inputQuantidadeDias').val(),
-        motorista: $('#inputMotorista').val(),
-        veiculo: $('#inputVeiculo').val(),
-        placa: $('#inputPlaca').val(),
-        observacao: $('#inputObservacao').val(),
-        produtos: produtos,
-        grupos: grupos
-      }
-
-
-      $.ajax({
-        type: "POST",
-        url: "save",
-        data: JSON.stringify(commitParams),
-        contentType: 'application/json'
-      }).done(function(msg) {
-        $("#modalResponseTitle").text(msg.success ? "Sucesso!" : "Falhou!");
-        $("#modalResponseText").html(msg.message);
-        $('#modalResponse').modal('show');
-      });
-
-      return false;
-    });
-
     //$("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 
 
@@ -451,6 +380,7 @@
             $("#inputGrupo").val(),
             $("#inputGrupo").find(":selected").text(),
             $("#inputQuantidadeGrupo").val(),
+            '0',
             //'<input type="checkbox"> Marcar para Remover</input>'
             '<button class="btn btn-danger btn-rem-grupo" type="button">Remover</button>'
           ]).draw();
@@ -478,6 +408,7 @@
             $("#inputProduto").val(),
             $("#inputProduto").find(":selected").text(),
             $("#inputQuantidade").val(),
+            $("#inputProdutoValor").val(),
             '<button class="btn btn-danger btn-rem-prod" type="button">Remover</button>'
           ]).draw();
           console.log ($("#TotalOrdem").val(), "ValorTotal");
@@ -512,6 +443,87 @@
         }
         </g:each>
 
+      });
+
+      $("#grupo-form").submit(function(event) {
+
+        console.log("Submit em ajax! Wuuuuuuu");
+        event.preventDefault();
+        var produtos = []
+        var grupos = []
+        var tableItems = $('#items').tableToJSON({
+            ignoreHiddenRows: false
+        });
+        var tableGrupos = $('#grupos').tableToJSON({
+            ignoreHiddenRows: false
+        });
+
+        console.log('Testando tabs');
+        console.log($('#items'));
+        console.log($('#grupos'));
+        console.log(tableItems);
+        console.log(tableGrupos);
+
+        $('#items').find('tr').each(function (indexArray, indexObject) {
+            var row = $(this),
+                curRecord = tableItems[indexArray -1];
+
+            console.log("Da cur record");
+            console.log(curRecord);
+
+            if (curRecord) {
+                produtos.push({
+                    id: curRecord.Id,
+                    qtd: curRecord.Quantidade,
+                    valor: curRecord.Valor
+                });
+            }
+        });
+
+        $('#grupos').find('tr').each(function(indexArray, indexObject) {
+          var row = $(this),
+            curRecord = tableGrupos[indexArray - 1];
+
+          if (curRecord) {
+            grupos.push({
+              id: curRecord.Id,
+              qtd: curRecord.Quantidade,
+              valor: curRecord.Valor
+            });
+          }
+        });
+
+        console.log("Commit");
+        console.log(produtos);
+        console.log(grupos);
+
+        var commitParams = {
+          empresa: $('#empresa').val(),
+          dataRetorno: $('#inputDataRetorno').val(),
+          dataSaida: $('#inputDataSaida').val(),
+          quantidadeDias: $('#inputQuantidadeDias').val(),
+          motorista: $('#inputMotorista').val(),
+          veiculo: $('#inputVeiculo').val(),
+          placa: $('#inputPlaca').val(),
+          observacao: $('#inputObservacao').val(),
+          total: $("#TotalOrdem").val(),
+          produtos: produtos,
+          grupos: grupos
+        }
+
+
+        $.ajax({
+          type: "POST",
+          url: "save",
+          data: JSON.stringify(commitParams),
+          contentType: 'application/json'
+        }).done(function(msg) {
+          $("#modalResponseTitle").text(msg.success ? "Sucesso!" : "Falhou!");
+          $("#modalResponseText").html(msg.message);
+          $('#modalResponse').modal('show');
+        });
+
+        return false;
       });
 
     });

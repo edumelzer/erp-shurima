@@ -13,6 +13,8 @@
    String observacao
    Double total
 
+   static hasMany = [items: OrdemItem]
+
    static constraints = {
      veiculo nullable: true
      placa nullable: true
