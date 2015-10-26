@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contas_a_pagar" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc696743-66e8-4d82-8052-ad0e4c593d71">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#808080">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<subDataset name="Table Dataset 1" uuid="fc479277-d7bf-44d3-a248-bd1d38fabe98"/>
+	<subDataset name="dataset1" uuid="e77c54a0-fb67-4fbc-8238-d3501b2ab589"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/lucas/Develoment/erp-shurima/relatorios/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cod_grupo" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select g.descricao
+     , it.nome
+     , it.unidade
+     , gi.quantidade
+     , g.id
+     , g.valor1
+     , g.valor2
+     , g.valor3
+  from grupo g
+  join grupo_item gi
+  on gi.grupo_id = g.id
+  join item it
+  on it.id = gi.item_id
+ where g.id  = $P{cod_grupo}]]>
+	</queryString>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="unidade" class="java.lang.String"/>
+	<field name="quantidade" class="java.lang.Long"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="valor1" class="java.lang.Double"/>
+	<field name="valor2" class="java.lang.Double"/>
+	<field name="valor3" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="67" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="67" uuid="d6a02fbd-fbb9-40db-8406-373fac190d15"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="7" width="555" height="60" uuid="0222e00e-222c-4f70-ba7c-08083fc99f5a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Nimbus Roman No9 L" size="42"/>
+				</textElement>
+				<text><![CDATA[Grupo de itens]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="454" y="0" width="100" height="20" uuid="978c0706-2b75-496a-a985-b16b0966f0be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="354" y="0" width="100" height="20" uuid="1abc59e2-e2b9-4ddb-a9e7-92b22176e3f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L"/>
+				</textElement>
+				<text><![CDATA[Data e Hora:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="48" splitType="Stretch">
+			<rectangle>
+				<reportElement x="472" y="29" width="77" height="19" uuid="4b56edd2-9f6d-4645-9b3a-a9b4cc527416"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="396" y="29" width="76" height="19" uuid="7418e35f-3068-4f2f-a5a2-e41d184639a2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="196" y="29" width="200" height="19" uuid="ad633d7e-c41f-4829-b0bd-45b8918d2b51"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="552" height="20" uuid="9cd62a7c-c345-4110-9dfd-1cdd6822dadd"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="26" y="0" width="51" height="20" uuid="2272787c-d089-434d-b50b-a258e2e55f68"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L"/>
+				</textElement>
+				<text><![CDATA[Grupo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="196" y="28" width="200" height="20" uuid="668549bb-d028-4b5b-b9bb-2c3bf239a6a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L"/>
+				</textElement>
+				<text><![CDATA[Item]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="472" y="29" width="77" height="19" uuid="5f4d0d55-6dac-442e-958c-3c990db5352c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L"/>
+				</textElement>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="28" width="76" height="20" uuid="c0a4393b-65a5-47e3-b66e-957da52cd486"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L"/>
+				</textElement>
+				<text><![CDATA[Unidade]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="77" y="0" width="200" height="20" uuid="4a6eae03-cf30-46e0-a54d-c790e4144432"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" isStrikeThrough="false" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<rectangle>
+				<reportElement x="396" y="0" width="76" height="19" uuid="6c5dafab-a973-42a3-8a26-b5f5941a4b2e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="472" y="0" width="77" height="19" uuid="00d26617-a00d-4d0d-a535-9148ada15c00"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="196" y="0" width="200" height="19" uuid="1381c4d1-04fa-4d04-86e0-a7e6bcdf1eae"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="196" y="0" width="200" height="19" uuid="3e174b5d-2497-4290-b0d1-1e0543edf930"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="396" y="0" width="76" height="19" uuid="6001ebb0-3eb4-448d-ab8f-cbc405b49cbe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unidade}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="472" y="0" width="77" height="19" uuid="d5e7e70c-19bf-4aec-a01c-cc68d9e0417e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="50">
+			<rectangle>
+				<reportElement x="458" y="12" width="91" height="19" uuid="8ae2ff78-65ad-46ea-92bf-b316c4717208"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="367" y="12" width="91" height="19" uuid="791e4c56-57e8-4fca-b105-aed6f5ff9a2c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="276" y="12" width="91" height="19" uuid="6a8a14af-62cc-4cb5-9c76-1718e7673b0f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="458" y="31" width="91" height="19" uuid="5a0b5b6b-4498-4e42-866d-f9e8c37b1656"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="367" y="31" width="91" height="19" uuid="e33f0e8a-ea91-4d87-b111-9429f050efd6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="276" y="31" width="91" height="19" uuid="09669ef5-9a77-4045-89d9-fa6c7ff1ecf1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="171" y="31" width="105" height="19" uuid="085e5269-4497-40fc-b29b-6c8e987e6ba7"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true" pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="458" y="31" width="91" height="19" uuid="ae94fd03-1328-44c6-91f2-07c8069547dc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="367" y="31" width="91" height="19" uuid="767bb9b8-8f76-48ef-a9b3-01ee2cade682"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="276" y="31" width="91" height="19" uuid="1ff26972-3576-4011-be5c-bf8971565ae7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="171" y="30" width="105" height="20" uuid="08f471ce-c416-4e27-b43e-e07860a5212c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L"/>
+				</textElement>
+				<text><![CDATA[Valor de Aluguel: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="11" width="91" height="20" uuid="81efdfdc-cee1-4ffd-8652-5e0b3a3ac737"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L"/>
+				</textElement>
+				<text><![CDATA[Valor Minimo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="11" width="91" height="20" uuid="92a9608a-dae2-490f-a01f-7be21bf71e60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L"/>
+				</textElement>
+				<text><![CDATA[Valor Médio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="11" width="91" height="20" uuid="0b9093d8-81e1-41f3-8d1a-3f57ffe5a27e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nimbus Roman No9 L"/>
+				</textElement>
+				<text><![CDATA[Valor máximo]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
