@@ -121,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <!-- The user image in the navbar-->
                   <img src="${resource(dir: 'images', file: 'nasus.jpg')}" class="user-image" alt="User Image" />
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs">Nasus - O Curador das Areias</span>
+                  <span class="hidden-xs">Controle Usuário</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
@@ -129,9 +129,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!--<img src="images/nasus.jpg" class="img-circle" alt="User Image" />-->
                     <img src="${resource(dir: 'images', file: 'nasus.jpg')}" class="img-circle" alt="User Image" />
                     <p>
-                      Nasus - O Curador das Areias
-                      <small>O ciclo da vida e da morte continua...</br>
-                        Nós viveremos. Eles morrerão.
+                      Controle Usuário
+                      <small>Controle de Estoque e Financeiro</br>
                       </small>
                     </p>
                   </li>
@@ -192,7 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <img src="${resource(dir: 'images', file: 'nasus.jpg')}" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>Nasus Curador das Areias</p>
+              <p>Controle Usuário</p>
               <!-- Status -->
               <sec:ifLoggedIn>
                 <a href="#/"><i class="fa fa-circle text-success"></i> Logado</a>
@@ -303,6 +302,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </li>
                   <li>
                       <g:link uri="/relatorioFinanceiro#/">Financeiro</g:link>
+                  </li>
+                  <li>
+                      <g:link uri="/relatorioOrdem#/">Ordem de Serviço</g:link>
+                  </li>
+                  <li>
+                      <g:link uri="/relatorioGrupo#/">Grupos</g:link>
+                  </li>
+                  <li>
+                      <g:link uri="/relatorioEstoque#/">Estoque</g:link>
                   </li>
                 </ul>
               </li>

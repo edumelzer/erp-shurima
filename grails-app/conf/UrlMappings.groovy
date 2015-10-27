@@ -23,6 +23,9 @@ class UrlMappings {
         '/relatorioFinanceiro'(view: 'relatorioFinanceiro')
         '/relatorioEmpresa'(view: 'relatorioEmpresa')
         '/relatorioReceber'(view: 'relatorioReceber')
+        '/relatorioOrdem'(view: 'relatorioOrdem')
+        '/relatorioGrupo'(view: 'relatorioGrupo')
+        '/relatorioEstoque'(view: 'relatorioEstoque')
         '/login'(view: 'usuario/login')
         "/$controller/$action?/$id?(.$format)?"{
                 constraints {
