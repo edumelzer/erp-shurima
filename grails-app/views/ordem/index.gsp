@@ -62,7 +62,9 @@
                                                 <td><g:formatDate format="dd/MM/yyyy" date="${p.dataSaida}"/></td>
                                                 <td><g:formatDate format="dd/MM/yyyy" date="${p.dataRetorno}"/></td>
                                                 <td>
-                                                    <button type="submit" class="btn btn-danger">Remover</button>
+                                                    <g:link action="remover" id="${p.id}">
+                                                         <button type="submit" class="btn btn-danger">Remover</button>
+                                                    </g:link>
                                                 </td>
                                             </tr>
                                         </g:each>

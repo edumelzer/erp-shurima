@@ -4,7 +4,7 @@ class OrdemController {
 
     def index() {
         List ordens = Ordem.list()
-        [ordens:ordens]
+        [ ordens:ordens,messages: params.messages]
     }
 
     def show(Long id) {
@@ -23,6 +23,19 @@ class OrdemController {
 
       [empresasList: empresasList, gruposList: gruposList, produtosList: produtosList]
 
+    }
+
+    def remover() {
+        Ordem ordem = Ordem.get(params.long('id'))
+
+        OrdemItem.findAllByOrdem(ordem).each {
+            it.delete()
+        }
+
+        params.success = ordem.delete(flush:true)
+        params.errors = ordem.errors
+
+        redirect(action:"index")
     }
 
     def save() {
@@ -94,15 +107,22 @@ class OrdemController {
 
         if (ordem.save(flush: true)) {
 
-            json.produtos.each { def produto ->
-                if (saveItem(ordem, produto)) {
-                    qtdItensAdicionados++
+            println "Possui produtos?"
+            println possuiProdutos
+
+            if (possuiProdutos) {
+                json.produtos.each { def produto ->
+                    if (saveItem(ordem, produto)) {
+                        qtdItensAdicionados++
+                    }
                 }
             }
 
-            json.grupos.each { def grupo ->
-                if (saveGrupo(ordem, grupo)) {
-                    qtdItensAdicionados++
+            if (possuiGrupos) {
+                json.grupos.each { def grupo ->
+                    if (saveGrupo(ordem, grupo)) {
+                        qtdItensAdicionados++
+                    }
                 }
             }
 
@@ -131,9 +151,22 @@ class OrdemController {
     }
 
     private boolean saveItem(Ordem ordem, Map pars) {
+        Long idGrupo
 
-        Item item = Item.get(pars.id)
+        try {
+            idGrupo = pars.id as Long
+        } catch (Exception e) {
+            println "Nao converteu ID"
+            //e.printStackTrace()
+            println e.getMessage()
+            return false;
+        }
+
+        Item item = Item.get(pars.id as Long)
         OrdemItem ordemItem = OrdemItem.findByOrdemAndItem(ordem, item)
+
+        println "Ordem"
+        println ordemItem
 
         if (!ordemItem) {
             ordemItem = new OrdemItem(
@@ -142,22 +175,34 @@ class OrdemController {
                 quantidadeItens: pars.qtd,
                 valorItem: pars.valor)
         } else {
-            ordemItem.setQuantidade(pars.qtd)
+            ordemItem.setQuantidadeItens(pars.qtd as Long)
         }
-
+        println ordemItem
         try {
             boolean saved = ordemItem.save(flush:true)
+            println ordemItem
+            println "FOI MAL NEM DEU ITEMS"
+            println ordemItem.errors
 
             return saved
         } catch (Exception e) {
+            println "Erro ao salvar Produto:"
+            //e.printStackTrace()
+            println e.getMessage()
             println ordemItem.errors
             return false
         }
     }
 
     private boolean saveGrupo(Ordem ordem, Map pars) {
+        Long idGrupo
+        try {
+            idGrupo = pars.id as Long
+        } catch (Exception e) {
+            return false;
+        }
 
-        Grupo grupo = Grupo.get(pars.id)
+        Grupo grupo = Grupo.get(pars.id as Long)
         OrdemItem ordemItem = OrdemItem.findByOrdemAndGrupo(ordem, grupo)
 
         if (!ordemItem) {
@@ -167,7 +212,7 @@ class OrdemController {
                 quantidadeItens: pars.qtd,
                 valorItem: pars.valor)
         } else {
-            ordemItem.setQuantidade(pars.qtd)
+            ordemItem.setQuantidadeItens(pars.qtd as Long)
         }
 
         try {
@@ -179,6 +224,8 @@ class OrdemController {
             return saved
         } catch (Exception e) {
             println "Erro ao salvar Grupo:"
+            //e.printStackTrace()
+            println e.getMessage()
             println ordemItem.errors
             return false
         }

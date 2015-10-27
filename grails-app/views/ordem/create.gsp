@@ -108,7 +108,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="inputObservacao">Observação</label>
                       <div class="col-sm-10">
-                        <g:textField class="form-control" type="text" id="inputObservacao" name="observacao" placeholder="Placa do Veículo" />
+                        <g:textField class="form-control" type="text" id="inputObservacao" name="observacao" placeholder="Observação" />
                       </div>
                     </div>
 
