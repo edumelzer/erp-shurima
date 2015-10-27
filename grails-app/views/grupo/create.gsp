@@ -143,17 +143,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group" >
-                              <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                  <label>
-                                    <input type="checkbox">
-                                    Grupo Ativo
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-
                         </div><!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_2">
 
@@ -306,6 +295,15 @@
                 }).done(function( msg ) {
                     $("#modalResponseTitle").text(msg.success ? "Sucesso!" : "Falhou!");
                     $("#modalResponseText").html(msg.message);
+
+                    if (msg.success) {
+                        $('#modalResponse').removeClass('modal-danger');
+                        $('#modalResponse').addClass('modal-success');
+                    } else {
+                        $('#modalResponse').removeClass('modal-success');
+                        $('#modalResponse').addClass('modal-danger');
+                    }
+                    
                     $('#modalResponse').modal('show');
                 });
 

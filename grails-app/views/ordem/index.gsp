@@ -51,7 +51,7 @@
                                     <th sortable-column title="Descrição" property="descricao">Cliente</th>
                                     <th sortable-column title="Data Saída" property="valor1">Data Saída</th>
                                     <th sortable-column title="Data Retorno" property="valor2">Data Retorno</th>
-                                    <th>Editar</th>
+                                    <th>Remover</th>
                                 </thead>
                                 <tbody>
                                     <ol>
@@ -62,7 +62,7 @@
                                                 <td><g:formatDate format="dd/MM/yyyy" date="${p.dataSaida}"/></td>
                                                 <td><g:formatDate format="dd/MM/yyyy" date="${p.dataRetorno}"/></td>
                                                 <td>
-                                                    <button type="submit" class="btn btn-primary">Editar</button>
+                                                    <button type="submit" class="btn btn-danger">Remover</button>
                                                 </td>
                                             </tr>
                                         </g:each>

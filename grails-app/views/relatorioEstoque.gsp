@@ -8,9 +8,9 @@
   <br/>
 <h1> Relatório de Estoque. </h1>
 <g:jasperReport
-          jasper="grupos_de_itens"
+          jasper="item"
           format="PDF"
-          name="grupos_de_itens"> <br/>
+          name="Itens"> <br/>
 </g:jasperReport>
 </body>
 </html>

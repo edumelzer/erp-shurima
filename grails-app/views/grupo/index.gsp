@@ -52,7 +52,7 @@
                                     <th sortable-column title="Valor 1" property="valor1">Valor 1</th>
                                     <th sortable-column title="Valor 2" property="valor2">Valor 2</th>
                                     <th sortable-column title="Valor 3" property="valor3">Valor 3</th>
-                                    <th>Editar</th>
+                                    <th>Remover</th>
                                 </thead>
                                 <tbody>
                                     <ol>
@@ -64,7 +64,7 @@
                                                 <td>${p.valor2}</td>
                                                 <td>${p.valor3}</td>
                                                 <td>
-                                                    <button type="submit" class="btn btn-primary">Editar</button>
+                                                    <button type="submit" class="btn btn-danger">Remover</button>
                                                 </td>
                                             </tr>
                                         </g:each>

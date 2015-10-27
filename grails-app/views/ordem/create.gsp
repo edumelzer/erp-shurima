@@ -80,7 +80,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="inputQuantidadeDias"> Dias</label>
                       <div class="col-sm-10">
-                        <g:textField class="form-control" id="inputQuantidadeDias" name="quantidadeDias" placeholder="Dias" />
+                        <g:textField class="form-control" id="inputQuantidadeDias" name="quantidadeDias" placeholder="Dias" value="1" />
                       </div>
                     </div>
 
@@ -388,6 +388,18 @@
           $('.btn-rem-grupo').bind( "click", function(event) {
               var row = $(this).closest('tr');
               var nRow = row[0];
+
+              var tdValue = row.children('td').map(function (index, val) {
+                  return $(this).text();
+              }).toArray();
+
+              var valorDesteProduto = tdValue[3];
+
+              var newTotalOrdem = Number($("#TotalOrdem").val()) -
+                (valorDesteProduto * Number($("#inputQuantidadeDias").val()));
+
+              $("#TotalOrdem").val(newTotalOrdem);
+
               $('#grupos').dataTable().fnDeleteRow(nRow);
 
           });
@@ -399,26 +411,52 @@
 
       $("#btn-save-produto").click(function() {
         var inputProduto = $("#inputProduto"),
-          inputQuantidade = $("#inputQuantidade");
+          inputQuantidade = $("#inputQuantidade"),
+          valorProduto;
 
         if (isNaN(inputQuantidade.val())) {
           alert("Quantidade não é um número válido!");
         } else {
+          valorProduto = Number($("#inputQuantidade").val()) *
+            Number($("#inputProdutoValor").val());
+
           t.row.add([
             $("#inputProduto").val(),
             $("#inputProduto").find(":selected").text(),
             $("#inputQuantidade").val(),
-            $("#inputProdutoValor").val(),
+            //$("#inputProdutoValor").val(), <<< Valor produto cru
+            valorProduto, // <<< Valor do produto calculado já
             '<button class="btn btn-danger btn-rem-prod" type="button">Remover</button>'
           ]).draw();
-          console.log ($("#TotalOrdem").val(), "ValorTotal");
 
-          somaTotal = Number($("#TotalOrdem").val())+(Number($("#inputQuantidade").val()) *Number($("#inputProdutoValor").val()));
+          //Somatotal:
+          //Valor atual + ( (Quantidade * valor do produto) * qtdDias)
+          /*somaTotal = Number($("#TotalOrdem").val())+
+            ( (Number($("#inputQuantidade").val()) *
+               Number($("#inputProdutoValor").val())) *
+               Number($("#inputQuantidadeDias").val())
+           );*/
+
+          somaTotal = Number($("#TotalOrdem").val()) +
+            (valorProduto * Number($("#inputQuantidadeDias").val()));
+
           $("#TotalOrdem").val(somaTotal);
 
           $('.btn-rem-prod').bind( "click", function(event) {
               var row = $(this).closest('tr');
               var nRow = row[0];
+
+              var tdValue = row.children('td').map(function (index, val) {
+                  return $(this).text();
+              }).toArray();
+
+              var valorDesteProduto = tdValue[3];
+
+              var newTotalOrdem = Number($("#TotalOrdem").val()) -
+                (valorDesteProduto * Number($("#inputQuantidadeDias").val()));
+
+              $("#TotalOrdem").val(newTotalOrdem);
+
               $('#items').dataTable().fnDeleteRow(nRow);
 
           });
@@ -449,8 +487,8 @@
 
         console.log("Submit em ajax! Wuuuuuuu");
         event.preventDefault();
-        var produtos = []
-        var grupos = []
+        var produtos = [];
+        var grupos = [];
         var tableItems = $('#items').tableToJSON({
             ignoreHiddenRows: false
         });
@@ -458,18 +496,9 @@
             ignoreHiddenRows: false
         });
 
-        console.log('Testando tabs');
-        console.log($('#items'));
-        console.log($('#grupos'));
-        console.log(tableItems);
-        console.log(tableGrupos);
-
         $('#items').find('tr').each(function (indexArray, indexObject) {
             var row = $(this),
                 curRecord = tableItems[indexArray -1];
-
-            console.log("Da cur record");
-            console.log(curRecord);
 
             if (curRecord) {
                 produtos.push({
@@ -492,10 +521,6 @@
             });
           }
         });
-
-        console.log("Commit");
-        console.log(produtos);
-        console.log(grupos);
 
         var commitParams = {
           empresa: $('#empresa').val(),
@@ -520,6 +545,15 @@
         }).done(function(msg) {
           $("#modalResponseTitle").text(msg.success ? "Sucesso!" : "Falhou!");
           $("#modalResponseText").html(msg.message);
+
+          if (msg.success) {
+              $('#modalResponse').removeClass('modal-danger');
+              $('#modalResponse').addClass('modal-success');
+          } else {
+              $('#modalResponse').removeClass('modal-success');
+              $('#modalResponse').addClass('modal-danger');
+          }
+
           $('#modalResponse').modal('show');
         });
 

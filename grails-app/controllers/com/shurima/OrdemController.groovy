@@ -14,9 +14,6 @@ class OrdemController {
     }
 
     def create() {
-      println "mimis";
-      println "loles";
-
       List gruposList = Grupo.list()
       List produtosList = Item.list()
 
@@ -24,16 +21,16 @@ class OrdemController {
         'eq' 'isCliente', true
       }
 
-      println "Listinha"
-      println empresasList
-
       [empresasList: empresasList, gruposList: gruposList, produtosList: produtosList]
 
     }
 
     def save() {
-        println "SAVING WOW"
         def json = request.JSON
+        Map resp = [
+            success: false,
+            message:''
+        ]
 
         Ordem ordem = new Ordem()
         bindData(ordem, json)
@@ -42,14 +39,58 @@ class OrdemController {
 
         int qtdItensAdicionados = 0
 
-        println "Buscando Empresa"
-        println json.empresa
-        println Empresa.get(json.empresa)
+        if (!ordem.cliente) {
+            resp.message += "<br/>O campo cliente é obrigatório."
+        }
 
-        println "--------------------"
-        println json
-        println "--------------------"
+        if (!ordem.dataSaida) {
+            resp.message += "<br/>O campo Data Saída é obrigatório."
+        }
+
+        if (!ordem.dataRetorno) {
+            resp.message += "<br/>O campo Data Retorno é obrigatório."
+        }
+
+        if (ordem.dataRetorno < ordem.dataSaida) {
+            resp.message += "<br/>O campo Data Retorno deve ser maior que data Saída."
+        }
+
+        if (!ordem.quantidadeDias) {
+            resp.message += "<br/>O campo Quantidade Dias é obrigatório."
+        }
+
+        if (!ordem.total) {
+            resp.message += "<br/>O campo Total é obrigatório."
+        }
+
         println json.produtos
+        println json.grupos
+
+        boolean possuiProdutos
+        boolean possuiGrupos
+
+        try {
+            Long idProduto = json.produtos[0].id as Long
+            possuiProdutos = json.produtos.size() && idProduto
+        } catch (Exception e) {}
+
+        try {
+            Long idGrupo = json.grupos[0].id as Long
+            possuiGrupos = json.grupos.size() && idGrupo
+        } catch (Exception e) {}
+
+        if (!(possuiProdutos || possuiGrupos)) {
+            resp.message += "<br/>Deve existir pelo menos 1 produto ou grupo associado!"
+        }
+
+        resp.message = resp.message ? "<b>Erros:</b>" + resp.message : resp.message
+
+        if (resp.message) {
+            return render(contentType: 'text/json') {
+                resp
+            }
+        }
+
 
         if (ordem.save(flush: true)) {
 
@@ -64,14 +105,17 @@ class OrdemController {
                     qtdItensAdicionados++
                 }
             }
+
+            resp = [
+                success: true,
+                message: "Registro salvo com successo com $qtdItensAdicionados itens!"
+            ]
+
+        } else {
+            resp.message = "<b>Erros Desconhecidos:</b> ${ordem.errors}"
         }
 
         println ordem.errors
-
-        Map resp = [
-            success: true,
-            message: "Registro salvo com successo com $qtdItensAdicionados itens!"
-        ]
 
         render(contentType: 'text/json') {resp}
     }
@@ -91,10 +135,6 @@ class OrdemController {
         Item item = Item.get(pars.id)
         OrdemItem ordemItem = OrdemItem.findByOrdemAndItem(ordem, item)
 
-        println "Tentando salvar ITEM!"
-        println item
-        println ordemItem
-
         if (!ordemItem) {
             ordemItem = new OrdemItem(
                 ordem: ordem,
@@ -108,12 +148,8 @@ class OrdemController {
         try {
             boolean saved = ordemItem.save(flush:true)
 
-            println "FOI MAL NEM DEU"
-            println ordemItem.errors
-
             return saved
         } catch (Exception e) {
-            println "Erro ao salvar item:"
             println ordemItem.errors
             return false
         }
