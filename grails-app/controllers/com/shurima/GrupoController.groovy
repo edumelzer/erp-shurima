@@ -24,6 +24,19 @@ class GrupoController {
         return [grupin: grupin, items: items, produtosList: produtosList]
     }
 
+    def remover() {
+        Grupo grupo = Grupo.get(params.long('id'))
+
+        GrupoItem.findAllByGrupo(grupo).each {
+            it.delete()
+        }
+
+        params.success = grupo.delete(flush:true)
+        params.errors = grupo.errors
+
+        redirect(action:"index")
+    }
+
     def save() {
         def json = request.JSON
         Map resp = [

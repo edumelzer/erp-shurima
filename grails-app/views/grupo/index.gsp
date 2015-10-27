@@ -64,7 +64,9 @@
                                                 <td>${p.valor2}</td>
                                                 <td>${p.valor3}</td>
                                                 <td>
-                                                    <button type="submit" class="btn btn-danger">Remover</button>
+                                                    <g:link action="remover" id="${p.id}">
+                                                         <button type="submit" class="btn btn-danger">Remover</button>
+                                                    </g:link>
                                                 </td>
                                             </tr>
                                         </g:each>
