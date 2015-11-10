@@ -3,52 +3,135 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="id" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="24adc84e-a730-44fa-b849-948b4500fc47"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{id}.hashCode()]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[Select od.id ordem_id
-     , oi.quantidade_itens
-     , od.motorista
-     , od.data_saida
-     , od.placa
-     , od.veiculo
-     , oi.item_id id
-     , it.nome nome
-     , em.endereco||', '||em.numero|| ' - '||em.complemento endereco
-     , em.bairro
-  from ordem od
-  join ordem_item oi on oi.ordem_id = od.id
-  join empresa em on em.id = od.cliente_id
-  join item  it on it.id = oi.item_id
- where od.id = $P{id}
- union all
-Select od.id ordem_id
-     , oi.quantidade_itens
-     , od.motorista
-     , od.data_saida
-     , od.placa
-     , od.veiculo
      , oi.grupo_id id
-     , gp.descricao nome
+     , oi.quantidade_itens * gi.quantidade quantidade
+     , it.nome
+     , it.id    item_id
+     , od.motorista
+     , od.data_saida
+     , od.placa
+     , od.veiculo
+     , gp.descricao descricao
      , em.endereco||', '||em.numero|| ' - '||em.complemento endereco
      , em.bairro
   from ordem od
   join ordem_item oi on oi.ordem_id = od.id
   join empresa em on em.id = od.cliente_id
   join grupo gp on gp.id = oi.grupo_id
- where od.id = $P{id}]]>
+  join grupo_item gi on gi.grupo_id = gp.id
+  join item  it on it.id = gi.item_id
+ where od.id  = $P{id}
+union all
+Select od.id ordem_id
+     , oi.grupo_id id
+     , oi.quantidade_itens  quantidade
+     , it.nome
+     , it.id    item_id
+     , od.motorista
+     , od.data_saida
+     , od.placa
+     , od.veiculo
+     , null descricao
+     , em.endereco||', '||em.numero|| ' - '||em.complemento endereco
+     , em.bairro
+  from ordem od
+  join ordem_item oi on oi.ordem_id = od.id
+  join empresa em on em.id = od.cliente_id
+  join item  it on it.id = oi.item_id
+ where od.id =  $P{id}]]>
 	</queryString>
 	<field name="ordem_id" class="java.lang.Long"/>
-	<field name="quantidade_itens" class="java.lang.Long"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="quantidade" class="java.lang.Long"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="item_id" class="java.lang.Long"/>
 	<field name="motorista" class="java.lang.String"/>
 	<field name="data_saida" class="java.sql.Timestamp"/>
 	<field name="placa" class="java.lang.String"/>
 	<field name="veiculo" class="java.lang.String"/>
-	<field name="id" class="java.lang.Long"/>
-	<field name="nome" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
 	<field name="endereco" class="java.lang.String"/>
 	<field name="bairro" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.String">
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<group name="conjunto">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		<groupHeader>
+			<band height="45">
+				<rectangle>
+					<reportElement x="84" y="25" width="114" height="20" uuid="8fae2c69-e877-4f8e-bcfa-442eca028b71"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="198" y="25" width="187" height="20" uuid="1cc9b8ed-0331-4263-b42b-5ccc6d9c3d6b"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="385" y="25" width="85" height="20" uuid="b43dda4a-cf01-47b6-8eb2-be85872f2812"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="100" y="0" width="370" height="20" uuid="1b3bdcb9-a867-4b28-ba4b-b6410c5b554d"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="198" y="25" width="187" height="20" uuid="d7ac8388-ec97-4d26-8d23-cf9876eeef06"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Descrição]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="100" y="0" width="372" height="20" uuid="da138a07-78f2-442e-adfd-803740df4762"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="0" y="0" width="100" height="20" uuid="3ae8e78b-3bb9-4a49-bd14-6cb59b504bcb"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="34" y="0" width="50" height="20" uuid="56400651-5de2-46b3-adb7-3551d1164721"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Grupo:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="84" y="25" width="114" height="20" uuid="548618fd-4731-4671-8801-a62589f0eee4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Código]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="385" y="25" width="85" height="20" uuid="6c853cd2-244c-45da-8073-9d8665e2f9c6"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Quantidade]]></text>
+				</staticText>
+			</band>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
 	<group name="Group2">
 		<groupFooter>
 			<band/>
@@ -124,7 +207,7 @@ Select od.id ordem_id
 			<textField>
 				<reportElement x="221" y="8" width="100" height="20" uuid="19fdaf81-97ec-405b-a01c-85abb378c125"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ordem_id}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="455" y="8" width="100" height="20" uuid="7add4772-4fab-44a4-b92c-b3493cfd1978"/>
@@ -182,66 +265,24 @@ Select od.id ordem_id
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="47">
-			<rectangle>
-				<reportElement x="0" y="0" width="555" height="20" uuid="275c5cf6-5d3e-49e8-9715-3f2a672882f9"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="0" y="1" width="100" height="20" uuid="7742e602-5ab6-4654-89c5-ed78e94489bd"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Itens da OS]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="83" y="27" width="100" height="20" uuid="3ae8e78b-3bb9-4a49-bd14-6cb59b504bcb"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="83" y="27" width="100" height="20" uuid="548618fd-4731-4671-8801-a62589f0eee4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Código]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="183" y="27" width="187" height="20" uuid="b43dda4a-cf01-47b6-8eb2-be85872f2812"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="228" y="27" width="100" height="20" uuid="d7ac8388-ec97-4d26-8d23-cf9876eeef06"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Descrição]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="370" y="27" width="85" height="20" uuid="8fae2c69-e877-4f8e-bcfa-442eca028b71"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="370" y="27" width="85" height="20" uuid="6c853cd2-244c-45da-8073-9d8665e2f9c6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Quantidade]]></text>
-			</staticText>
-		</band>
+		<band height="15"/>
 	</columnHeader>
 	<detail>
-		<band height="20">
-			<rectangle>
-				<reportElement x="368" y="0" width="87" height="20" uuid="5a9cf8a6-d077-4444-8c98-e9cacf13a065"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="183" y="0" width="187" height="20" uuid="360aa8a8-8466-4d7d-9de8-8e58ec60ab5e"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="83" y="0" width="100" height="20" uuid="27259094-70d8-4099-ade5-7c2b5ef49578"/>
-			</rectangle>
+		<band height="23">
 			<textField>
-				<reportElement x="83" y="0" width="100" height="20" uuid="374126c4-110d-4098-af2c-9553b50e8d0a"/>
+				<reportElement x="385" y="0" width="85" height="20" uuid="0b9b0238-8256-47a5-8e6f-b0a4befc6231"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="183" y="0" width="187" height="20" uuid="29631fc2-1842-4df8-b364-3df64a975892"/>
+				<reportElement x="84" y="0" width="114" height="20" uuid="06935af9-f03c-4d49-99f6-6d69194a3166"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{item_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="198" y="0" width="187" height="20" uuid="d6ce2c49-9d7a-4fbb-a77c-9182e5a7b3a4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="370" y="0" width="85" height="20" uuid="749a1187-9769-435d-a713-2b4c06b8ae48"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{quantidade_itens}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
