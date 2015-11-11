@@ -47,7 +47,7 @@
   join grupo gp on gp.id = oi.grupo_id
   join grupo_item gi on gi.grupo_id = gp.id
   join item  it on it.id = gi.item_id
- where od.id  = ($P{id}.hashCode())
+ where cast($P{id}as int) = cast(od.id as int)
 union all
 Select od.id ordem_id
      , oi.grupo_id id
@@ -65,7 +65,7 @@ Select od.id ordem_id
   join ordem_item oi on oi.ordem_id = od.id
   join empresa em on em.id = od.cliente_id
   join item  it on it.id = oi.item_id
- where od.id = ($P{id}.hashCode()) ]]>
+ where cast($P{id}as int) = cast(od.id as int)]]>
 	</queryString>
 	<field name="ordem_id" class="java.lang.Long"/>
 	<field name="id" class="java.lang.Long"/>
