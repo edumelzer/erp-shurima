@@ -303,7 +303,7 @@
                         $('#modalResponse').removeClass('modal-success');
                         $('#modalResponse').addClass('modal-danger');
                     }
-                    
+
                     $('#modalResponse').modal('show');
                 });
 

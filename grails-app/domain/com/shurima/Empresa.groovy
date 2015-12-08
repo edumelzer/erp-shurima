@@ -15,6 +15,9 @@ class Empresa {
   String telefone1
   String telefone2
   String email
+  String email2
+  String contato
+  String contato2
   boolean isCliente
   boolean isFornecedor
 
@@ -24,6 +27,9 @@ class Empresa {
     telefone1 nullable: true
     telefone2 nullable: true
     email nullable: true
+    email2 nullable: true
+    contato nullable: true
+    contato2 nullable: true
   }
 
   static mapping = {
